@@ -11,7 +11,7 @@ const Home: React.FC = () => {
       </Head>
 
       <RocketseatLogo />
-      <h1 className="text-5xl text-primary mt-10 font-roboto font-bold">
+      <h1 className="text-6xl text-primary mt-10 font-roboto font-bold">
         ReactJS Structure
       </h1>
       <p className="text-2xl text-gray-50 mt-6 leading-8 font-roboto">
