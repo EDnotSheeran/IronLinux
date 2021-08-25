@@ -1,0 +1,61 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    # The OS the workflow will run on
+    runs-on: ubuntu-latest
+    # The versions of node wich will be used
+    strategy:
+      matrix:
+        node-version: [15.x]
+    steps:
+      - uses: actions/checkout@v2
+
+      # Setups the node specific version
+      - name: Using Node.js ${{ matrix.node-version }} 🤖
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # Install the packages
+      - name: Instaling packages 📦
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: clean-install
+
+      # Builds the app
+      - name: Building app ⛏
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
+        env:
+          NEXT_PUBLIC_BASE_PATH: '/Pendencias'
+
+      # Exports the app
+      - name: Exporting app 💥
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: export
+        env:
+          NEXT_PUBLIC_BASE_PATH: /Pendencias
+
+      # Creates a .nojekyll file to disable github jekyll
+      - name: Creating ".nojekyll" file
+        run: sudo touch ./out/.nojekyll
+
+      # Test the app
+      - name: Testing the app 🧪
+        run: npm test
+
+      # Deploys the app
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: out # The folder the action should deploy.

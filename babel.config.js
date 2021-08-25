@@ -1,7 +1,8 @@
 module.exports = {
-  presets: ["next/babel"],
-  plugins: [
-    ["styled-components", { "ssr": true }],
-    "inline-react-svg"
-  ]
-};
+  presets: [
+    ['@babel/preset-env', { targets: { node: 'current' } }],
+    '@babel/preset-typescript',
+    'next/babel'
+  ],
+  plugins: [['styled-components', { ssr: true }], 'inline-react-svg']
+}
