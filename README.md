@@ -9,3 +9,13 @@
 - passar links de fontes para o css
 
 - fazer pasta assets funcionar com o alias do tsconfig
+
+# Links de Docs
+
+- [Heroicons](https://heroicons.com/)
+- [Tailwind](https://tailwindcss.com/docs)
+- [Headlessui](https://headlessui.dev/)
+- [NextJS](https://nextjs.org/docs)
+- [Commitzen](https://commitizen.github.io/cz-cli/)
+- [Husky](https://typicode.github.io/husky/#/)
+- [Commitlint](https://commitlint.js.org/#/)

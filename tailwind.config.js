@@ -12,10 +12,15 @@ module.exports = {
     extend: {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
+        rubik: ['Rubik', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       colors: {
         primary: '#8257e6',
         secondary: '#121214',
+        gold: '#F4BE02',
+        grey: '#4F5665',
+        brown: '#544837',
       },
     },
   },

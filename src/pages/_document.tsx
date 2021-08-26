@@ -22,7 +22,7 @@ class MyDocument extends Document {
           <meta name="build version" content={packageInfo.version} />
           <link rel="icon" href="https://rocketseat.com.br/favicon.ico" />
         </Head>
-        <body className="bg-secondary">
+        <body>
           <Main />
           <NextScript />
         </body>

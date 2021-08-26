@@ -1,23 +1,20 @@
 import React from 'react';
 import Head from 'next/head';
 
-import RocketseatLogo from '../assets/rocketseat.svg';
-
+import Navbar from '../components/Navbar';
+import Container from '../components/Container';
+import MainSection from '../components/MainSection';
 const Home: React.FC = () => {
   return (
-    <div className="min-h-screen pb-2 flex flex-col justify-center items-center h-screen">
+    <>
       <Head>
-        <title>Homepage</title>
+        <title>Página Inicial</title>
       </Head>
-
-      <RocketseatLogo />
-      <h1 className="text-6xl text-primary mt-10 font-roboto font-bold">
-        ReactJS Structure
-      </h1>
-      <p className="text-2xl text-gray-50 mt-6 leading-8 font-roboto">
-        A ReactJS + Next.js structure made by Rocketseat.
-      </p>
-    </div>
+      <Navbar />
+      <Container>
+        <MainSection />
+      </Container>
+    </>
   );
 };
 
