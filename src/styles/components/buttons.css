@@ -164,7 +164,9 @@
   transition: background-color 0.3s;
 }
 
-.button--nina.py-2 {
+.button--nina.py-2,
+.button--nina.py-3,
+.button--nina.py-4 {
   padding-top: 0 /* 0px */;
   padding-bottom: 0 /* 0px */;
 }
@@ -185,6 +187,14 @@
   padding-top: 0.5rem /* 8px */;
   padding-bottom: 0.5rem /* 8px */;
 }
+.button--nina.py-3 > span {
+  padding-top: 0.75rem /* 12px */;
+  padding-bottom: 0.75rem /* 12px */;
+}
+.button--nina.py-4 > span {
+  padding-top: 1rem /* 16px */;
+  padding-bottom: 1rem; /* 16px */
+}
 
 .button--nina::before {
   content: attr(data-text);
@@ -203,6 +213,14 @@
 .button--nina.py-2::before {
   padding-top: 0.5rem /* 8px */;
   padding-bottom: 0.5rem /* 8px */;
+}
+.button--nina.py-3::before {
+  padding-top: 0.75rem /* 12px */;
+  padding-bottom: 0.75rem /* 12px */;
+}
+.button--nina.py-4::before {
+  padding-top: 1rem /* 16px */;
+  padding-bottom: 1rem; /* 16px */
 }
 
 .button--nina:hover::before {
@@ -262,6 +280,14 @@
 .button--nina:hover > span:nth-child(12) {
   -webkit-transition-delay: 0.54s;
   transition-delay: 0.54s;
+}
+.button--nina:hover > span:nth-child(13) {
+  -webkit-transition-delay: 0.595s;
+  transition-delay: 0.595s;
+}
+.button--nina:hover > span:nth-child(14) {
+  -webkit-transition-delay: 0.64s;
+  transition-delay: 0.64s;
 }
 
 .button--glass {
