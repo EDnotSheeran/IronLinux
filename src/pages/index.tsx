@@ -4,6 +4,8 @@ import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import Container from '../components/Container';
 import MainSection from '../components/MainSection';
+import CoursesSection from '../components/CoursesSection';
+import SpecialtiesSection from '../components/SpecialtiesSection';
 const Home: React.FC = () => {
   return (
     <>
@@ -13,6 +15,8 @@ const Home: React.FC = () => {
       <Navbar />
       <Container>
         <MainSection />
+        <SpecialtiesSection />
+        <CoursesSection />
       </Container>
     </>
   );

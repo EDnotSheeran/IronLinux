@@ -3,7 +3,7 @@ import React from 'react';
 const MainSection: React.FC = () => {
   return (
     <section className="flex justify-center items-center gap-10 mt-10 flex-col md:flex-row">
-      <div className="max-w-xl px-5">
+      <div className="max-w-xl">
         <h3 className="font-bold text-4xl font-poppins">
           Quer aprender mais sobre o mundo de{' '}
           <span className="text-gold">Linux</span> e{' '}
