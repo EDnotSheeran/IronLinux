@@ -35,7 +35,7 @@ jobs:
         with:
           cmd: build
         env:
-          NEXT_PUBLIC_BASE_PATH: '/Pendencias'
+          NEXT_PUBLIC_BASE_PATH: '/IronLinuxFrontEnd'
 
       # Exports the app
       - name: Exporting app 💥
@@ -43,7 +43,7 @@ jobs:
         with:
           cmd: export
         env:
-          NEXT_PUBLIC_BASE_PATH: /Pendencias
+          NEXT_PUBLIC_BASE_PATH: /IronLinuxFrontEnd
 
       # Creates a .nojekyll file to disable github jekyll
       - name: Creating ".nojekyll" file

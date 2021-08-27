@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
     <Disclosure as="nav">
       {({ open }) => (
         <>
-          <div className="mx-auto py-8 px-8 max-w-screen-2xl">
+          <div className="mx-auto py-4 md:py-8 px-8 max-w-screen-2xl">
             <div className="flex items-center justify-between h-16">
               <div className="flex w-full items-center justify-between">
                 <div className="flex-shrink-0">
@@ -48,7 +48,10 @@ const Navbar: React.FC = () => {
                         </a>
                       ) : null
                     )}
-                    <ButtonGold data-text="Fale Conosco">
+                    <ButtonGold
+                      data-text="Fale Conosco"
+                      className="ml-10 xl:ml-24 py-2 tracking-widest"
+                    >
                       Fale Conosco
                     </ButtonGold>
                   </div>

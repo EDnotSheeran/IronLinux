@@ -3,9 +3,9 @@ import Head from 'next/head';
 
 import Navbar from '../components/Navbar';
 import Container from '../components/Container';
-import MainSection from '../components/MainSection';
-import CoursesSection from '../components/CoursesSection';
-import SpecialtiesSection from '../components/SpecialtiesSection';
+import MainSection from '../components/Sections/MainSection';
+import CoursesSection from '../components/Sections/CoursesSection';
+import SpecialtiesSection from '../components/Sections/SpecialtiesSection';
 const Home: React.FC = () => {
   return (
     <>
