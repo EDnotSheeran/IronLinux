@@ -289,6 +289,14 @@
   -webkit-transition-delay: 0.64s;
   transition-delay: 0.64s;
 }
+.button--nina:hover > span:nth-child(15) {
+  -webkit-transition-delay: 0.695s;
+  transition-delay: 0.695s;
+}
+.button--nina:hover > span:nth-child(16) {
+  -webkit-transition-delay: 0.74s;
+  transition-delay: 0.74s;
+}
 
 .button--glass {
   overflow: hidden;

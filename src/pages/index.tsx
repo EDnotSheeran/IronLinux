@@ -1,24 +1,26 @@
 import React from 'react';
 import Head from 'next/head';
+import Layout from '@components/Layout';
+import {
+  MainSection,
+  CoursesSection,
+  SpecialtiesSection,
+  ContactSection,
+  RecentPosts,
+} from '@components/Sections';
 
-import Navbar from '../components/Navbar';
-import Container from '../components/Container';
-import MainSection from '../components/Sections/MainSection';
-import CoursesSection from '../components/Sections/CoursesSection';
-import SpecialtiesSection from '../components/Sections/SpecialtiesSection';
 const Home: React.FC = () => {
   return (
-    <>
+    <Layout>
       <Head>
         <title>Página Inicial</title>
       </Head>
-      <Navbar />
-      <Container>
-        <MainSection />
-        <SpecialtiesSection />
-        <CoursesSection />
-      </Container>
-    </>
+      <MainSection />
+      <SpecialtiesSection />
+      <CoursesSection />
+      <RecentPosts />
+      <ContactSection />
+    </Layout>
   );
 };
 

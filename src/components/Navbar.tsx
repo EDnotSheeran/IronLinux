@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
                     )}
                     <ButtonGold
                       data-text="Fale Conosco"
-                      className="ml-10 xl:ml-24 py-2 tracking-widest"
+                      className="ml-10 xl:ml-24 py-2 tracking-widest w-60"
                     >
                       Fale Conosco
                     </ButtonGold>

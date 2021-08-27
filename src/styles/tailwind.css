@@ -5,6 +5,7 @@
 @tailwind components;
 @tailwind utilities;
 @import './components/buttons.css';
+@import './components/scrollbar.css';
 
 @layer base {
   h1,
