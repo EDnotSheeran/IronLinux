@@ -18,7 +18,10 @@ module.exports = {
       colors: {
         primary: '#8257e6',
         secondary: '#121214',
-        gold: '#F4BE02',
+        gold: {
+          DEFAULT: '#F4BE02',
+          dark: '#e0b000',
+        },
         grey: '#4F5665',
         brown: '#544837',
       },

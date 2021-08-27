@@ -4,12 +4,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './components/buttons.css';
 
 @layer base {
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Rubik', 'Roboto', 'sans-serif';
+  h1,
+  h2,
+  h3,
+  h4,
+  h6,
+  a,
+  p {
+    @apply font-rubik;
   }
 }

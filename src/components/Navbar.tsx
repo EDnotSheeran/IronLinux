@@ -1,6 +1,7 @@
 import React from 'react';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { ButtonGold } from '@components/Buttons';
 
 const navigation = [
   { name: 'Home', href: '#', current: true },
@@ -8,6 +9,7 @@ const navigation = [
   { name: 'Consultoria', href: '#', current: false },
   { name: 'Blog', href: '#', current: false },
   { name: 'Sobre Nós', href: '#', current: false },
+  { name: 'Fale Conosco', href: '#', current: false },
 ];
 
 function classNames(...classes: string[]) {
@@ -31,27 +33,29 @@ const Navbar: React.FC = () => {
                 </div>
                 <div className="hidden lg:block">
                   <div className="ml-10 items-center flex ">
-                    {navigation.map(item => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current ? 'text-gold' : 'text-grey',
-                          'px-3 py-2 text-base hover:underline'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                    <button className="text-white font-semibold font-poppins border-gold border-2 bg-gold px-8 py-1.5 rounded-md ml-10 xl:ml-24 hover:text-gold hover:bg-transparent">
+                    {navigation.map(item =>
+                      item.name != 'Fale Conosco' ? (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className={classNames(
+                            item.current ? 'text-gold' : 'text-grey',
+                            'px-3 py-2 text-base hover:underline'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
+                        </a>
+                      ) : null
+                    )}
+                    <ButtonGold data-text="Fale Conosco">
                       Fale Conosco
-                    </button>
+                    </ButtonGold>
                   </div>
                 </div>
                 <div className="-mr-2 flex lg:hidden">
                   {/* Mobile menu button */}
-                  <Disclosure.Button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-50 hover:text-gray-200 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-gray-800">
+                  <Disclosure.Button className="bg-gold inline-flex items-center justify-center p-2 rounded-md text-gray-50 hover:text-gray-200 hover:bg-gold-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gold0 focus:ring-gold">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
                       <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -71,8 +75,8 @@ const Navbar: React.FC = () => {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? 'bg-gray-800 text-white'
-                      : 'text-gray-800 hover:bg-gray-700 hover:text-white',
+                      ? 'text-gold'
+                      : 'text-gray-500 hover:text-black',
                     'block px-3 py-2 rounded-md text-base'
                   )}
                   aria-current={item.current ? 'page' : undefined}
@@ -80,9 +84,6 @@ const Navbar: React.FC = () => {
                   {item.name}
                 </a>
               ))}
-              <button className="text-white font-semibold font-poppins bg-gold px-8 py-1.5 rounded-md mx-auto block">
-                Fale Conosco
-              </button>
             </div>
           </Disclosure.Panel>
         </>
