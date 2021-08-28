@@ -4,6 +4,10 @@
   scroll-behavior: smooth;
 }
 
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+
 .scroll-snap-align-start {
   scroll-snap-align: start;
 }

@@ -15,6 +15,6 @@
   h6,
   a,
   p {
-    @apply font-rubik;
+    @apply font-poppins;
   }
 }

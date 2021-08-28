@@ -16,7 +16,7 @@ const Carousel: React.FC = ({ children }) => {
     <div className="w-full">
       <div
         ref={carousel}
-        className="flex overflow-x-auto scroll-snap-x-m"
+        className="flex overflow-x-auto scroll-snap-x-m scroll-hidden"
         onWheel={handleCarouselWheelEvent}
       >
         {children}
