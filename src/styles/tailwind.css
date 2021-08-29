@@ -6,6 +6,7 @@
 @tailwind utilities;
 @import './components/buttons.css';
 @import './components/scrollbar.css';
+@import './components/speech-bubble.css';
 
 @layer base {
   h1,
@@ -16,5 +17,25 @@
   a,
   p {
     @apply font-poppins;
+  }
+
+  body::-webkit-scrollbar {
+    width: 8px;
+    background: #e5e5e5;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply bg-gold;
+  }
+
+  .w-fit {
+    width: fit-content;
+  }
+
+  .bg-oval {
+    background: url('/shapes/oval.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 50%;
   }
 }

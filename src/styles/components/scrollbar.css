@@ -1,13 +1,17 @@
-.scroll-snap-x-m {
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
+@tailwind base;
 
-.scroll-hidden::-webkit-scrollbar {
-  display: none;
-}
+@layer base {
+  .scroll-snap-x-m {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
 
-.scroll-snap-align-start {
-  scroll-snap-align: start;
+  .scroll-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-snap-align-start {
+    scroll-snap-align: start;
+  }
 }

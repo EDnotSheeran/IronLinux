@@ -3,3 +3,4 @@ export { default as CoursesSection } from './CoursesSection';
 export { default as SpecialtiesSection } from './SpecialtiesSection';
 export { default as ContactSection } from './ContactSection';
 export { default as RecentPosts } from './RecentPosts';
+export { default as NeedASuperHero } from './NeedASuperHero';
