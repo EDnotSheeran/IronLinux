@@ -9,6 +9,7 @@ import {
   RecentPosts,
   NeedASuperHero,
   Certification,
+  Varieties,
 } from '@components/Sections';
 
 const Home: React.FC = () => {
@@ -20,6 +21,7 @@ const Home: React.FC = () => {
       <MainSection />
       <SpecialtiesSection />
       <CoursesSection />
+      <Varieties />
       <Certification />
       <NeedASuperHero />
       <RecentPosts />

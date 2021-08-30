@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { ButtonGold } from '@components/Buttons';
-
 const Certification: React.FC = ({ children }) => {
   return (
     <section className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto mb-10 flex gap-10 px-10 flex-col-reverse lg:flex-row">
