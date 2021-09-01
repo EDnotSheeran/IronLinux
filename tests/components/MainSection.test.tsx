@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MainSection from '@components/MainSection';
+import MainSection from '@root/src/components/Sections/MainSection';
 
 describe('Should render the MainSection', () => {
   it('Renders the MainSection heading', () => {
@@ -16,15 +16,6 @@ describe('Should render the MainSection', () => {
     expect(
       screen.getByRole('button', {
         name: 'Conheça nossas Consultorias',
-      })
-    ).toBeInTheDocument();
-  });
-
-  it('Renders the second button', () => {
-    render(<MainSection />);
-    expect(
-      screen.getByRole('button', {
-        name: 'Veja os Cursos',
       })
     ).toBeInTheDocument();
   });

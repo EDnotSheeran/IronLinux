@@ -8,7 +8,7 @@ const GoldButton: React.FC<ButtonHTMLAttributes<HTMLButtonElement>> = props => {
     <button
       {...props}
       className={
-        'button button--nina relative py-2 text-white block text-center focus:outline-none tracking-widest overflow-hidden bg-gold w-60 font-semibold font-poppins rounded-md ml-10 xl:ml-24 ' +
+        'button button--nina relative text-white block text-center focus:outline-none overflow-hidden bg-gold font-semibold font-poppins rounded-md ' +
         props.className
       }
     >

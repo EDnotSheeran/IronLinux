@@ -1,4 +1,2 @@
-import ButtonGlass from './ButtonGlass';
-import ButtonGold from './ButtonGold';
-
-export { ButtonGlass, ButtonGold };
+export { default as ButtonGlass } from './ButtonGlass';
+export { default as ButtonGold } from './ButtonGold';

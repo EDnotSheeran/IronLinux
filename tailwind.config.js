@@ -22,8 +22,21 @@ module.exports = {
           DEFAULT: '#F4BE02',
           dark: '#e0b000',
         },
-        grey: '#4F5665',
+        blue: {
+          bluesh: '#BCD0E5',
+          1: '#567592',
+        },
+        grey: {
+          DEFAULT: '#4F5665',
+          300: '#544837',
+          500: '#2F281E',
+        },
         brown: '#544837',
+      },
+      spacing: {
+        41: '10.25rem',
+        42: '10.5rem',
+        43: '10.75rem',
       },
     },
   },
