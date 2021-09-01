@@ -38,6 +38,15 @@
     background-size: cover;
     background-position-x: 50%;
   }
+
+  .bg-oval-bottom {
+    background: url('/shapes/oval.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 50%;
+    background: linear-gradient(to top);
+  }
+
   body {
     overflow-x: hidden;
   }

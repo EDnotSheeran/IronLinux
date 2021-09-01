@@ -2,8 +2,16 @@ import React from 'react';
 
 const ContactSection: React.FC = ({ children }) => {
   return (
-    <section className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto mb-5 lg:flex lg:flex-row-reverse">
-      <div className="px-6 sm:px-10 lg:w-6/12">
+    <section className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto mb-5 lg:flex lg:flex-row-reverse bg-oval-bottom  transparent_class pb-28 pt-28 rotate-180">
+      <div className="flex lg:w-6/12 rotate-180 ">
+        <img
+          src="/telemarketing.svg"
+          className="md:hidden lg:block w-full "
+          style={{ marginLeft: 50 }}
+          alt="Fale Conosco"
+        />
+      </div>
+      <div className="px-6 sm:px-10 lg:w-6/12 rotate-180">
         <h3 className="text-4xl pb-6 font-bold">Fale Conosco</h3>
         <div className="text-xl mb-5 ">
           <label className="block text-xl" htmlFor="name">
@@ -45,9 +53,6 @@ const ContactSection: React.FC = ({ children }) => {
             name="message"
           />
         </div>
-      </div>
-      <div className="px-6 sm:px-10 lg:w-6/12">
-        <img src="/telemarketing.svg" alt="Fale Conosco" />
       </div>
     </section>
   );
