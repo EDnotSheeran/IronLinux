@@ -8,17 +8,18 @@ import CoursesSection from '../components/CoursesSection';
 import SpecialtiesSection from '../components/SpecialtiesSection';
 const Home: React.FC = () => {
   return (
-    <>
+    <div>
       <Head>
         <title>Página Inicial</title>
       </Head>
+
       <Navbar />
       <Container>
         <MainSection />
         <SpecialtiesSection />
         <CoursesSection />
       </Container>
-    </>
+    </div>
   );
 };
 
