@@ -34,15 +34,18 @@ const MainSection: React.FC = ({ children }) => {
         <p className="font-poppins text-brown text-base mt-2 md:mt-6 xl:text-lg 2xl:text-xl">
           {data.paragraph}
         </p>
-        <button className="mt-4 md:mt-8 text-xs md:text-sm border-2 rounded-lg w-3/6 sm:w-56 p-3 font-bold border-black hover:bg-black hover:text-white transition-colors">
-          Conheça nossas Consultorias
-        </button>
-        <ButtonGold
-          data-text="Veja os Cursos"
-          className="mt-4 md:mt-8 text-xs md:text-base w-2/6 sm:w-48 py-3 inline-block ml-2 md:ml-9"
-        >
-          Veja os Cursos
-        </ButtonGold>
+        <div className="w-full h-34 flex flex-row">
+          <div className="w-1/2 sm:w-auto h-full flex justify-start">
+            <button className="mt-8 border-2 rounded-lg p-3 font-bold border-black hover:bg-black hover:text-white transition-colors">
+              Conheça nossas Consultorias
+            </button>
+          </div>
+          <div className="w-1/2 sm:w-auto h-full flex justify-start">
+            <button className="mt-8 bg-gold text-white border-gold font-bold border-2 rounded-lg py-3 px-6 ml-4 gold-button">
+              Veja os Cursos
+            </button>
+          </div>
+        </div>
       </div>
       <div className="w-full max-w-sm xl:max-w-lg 2xl:max-w-xl md:flex items-center justify-center justify-items-center">
         <img className="w-full" src={data.imageURL} alt="image" />
