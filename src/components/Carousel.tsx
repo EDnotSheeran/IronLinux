@@ -18,7 +18,7 @@ const Carousel: React.FC<CarouselProps> = ({
   className,
   buttons,
 }) => {
-  const carousel = useRef(null);
+  const carousel = useRef<HTMLDivElement>(null);
 
   const handleCarouselWheelEvent: WheelEventHandler<HTMLDivElement> = e => {
     const width = (e.target as HTMLElement).offsetWidth;
@@ -29,43 +29,19 @@ const Carousel: React.FC<CarouselProps> = ({
     }
   };
 
-  const scrollFn = (direction: 'right' | 'left') => {
-    if (!carousel.current) return;
+  const scrollRight = () => {
     const e = carousel.current as unknown as HTMLElement;
-    switch (direction) {
-      case 'right':
-        return () => {
-          e.scrollBy(e.offsetWidth, 0);
-        };
-      case 'left':
-        return () => {
-          e.scrollBy(0 - e.offsetWidth, 0);
-        };
-    }
+    e.scrollBy(e.offsetWidth, 0);
   };
 
-  // Carousel with buttons
-  if (buttons) {
-    return (
-      <div className="w-full flex items-center">
-        <buttons.left onClick={scrollFn('left')} />
-        <div
-          ref={carousel}
-          className={
-            'flex overflow-x-auto scroll-snap-x-m scroll-hidden ' +
-            (className || '')
-          }
-          onWheel={handleCarouselWheelEvent}
-        >
-          {children}
-        </div>
-        <buttons.right onClick={scrollFn('right')} />
-      </div>
-    );
-  }
-  // Carousel with no buttons
+  const scrollLeft = () => {
+    const e = carousel.current as unknown as HTMLElement;
+    e.scrollBy(0 - e.offsetWidth, 0);
+  };
+
   return (
     <div className="w-full flex items-center">
+      {buttons && <buttons.left onClick={scrollLeft} />}
       <div
         ref={carousel}
         className={
@@ -76,6 +52,7 @@ const Carousel: React.FC<CarouselProps> = ({
       >
         {children}
       </div>
+      {buttons && <buttons.right onClick={scrollRight} />}
     </div>
   );
 };
