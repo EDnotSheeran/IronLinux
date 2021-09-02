@@ -4,7 +4,7 @@
   /* https://codepen.io/michealjroberts/pen/ExjYKXL */
   .button {
     min-width: 150px;
-    max-width: 250px;
+    /* max-width: 250px; */
     z-index: 1;
     -webkit-backface-visibility: hidden;
     -moz-osx-font-smoothing: grayscale;
@@ -200,7 +200,7 @@
   }
 
   .button--nina::before {
-    content: attr(data-text);
+    content: attr(data-text) !important;
     position: absolute;
     top: 0;
     left: 0;
@@ -323,6 +323,26 @@
   .button--nina:hover > span:nth-child(22) {
     -webkit-transition-delay: 1.095s;
     transition-delay: 1.095s;
+  }
+  .button--nina:hover > span:nth-child(23) {
+    -webkit-transition-delay: 1.14s;
+    transition-delay: 1.14s;
+  }
+  .button--nina:hover > span:nth-child(24) {
+    -webkit-transition-delay: 1.195s;
+    transition-delay: 1.195s;
+  }
+  .button--nina:hover > span:nth-child(25) {
+    -webkit-transition-delay: 1.24s;
+    transition-delay: 1.24s;
+  }
+  .button--nina:hover > span:nth-child(26) {
+    -webkit-transition-delay: 1.295s;
+    transition-delay: 1.295s;
+  }
+  .button--nina:hover > span:nth-child(27) {
+    -webkit-transition-delay: 1.34s;
+    transition-delay: 1.34s;
   }
 
   .button--glass {

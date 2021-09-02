@@ -19,6 +19,7 @@ module.exports = {
         primary: '#8257e6',
         secondary: '#121214',
         gold: {
+          rose: '#FEA250',
           DEFAULT: '#F4BE02',
           dark: '#e0b000',
         },

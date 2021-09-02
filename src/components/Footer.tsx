@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonGold } from '@components/Buttons';
+import { AnimatedButton } from '@components/Buttons';
 
 const Footer: React.FC = ({ children }) => {
   return (
@@ -41,12 +41,9 @@ const Footer: React.FC = ({ children }) => {
             type="text"
             placeholder="Digite seu e-mail..."
           />
-          <ButtonGold
-            className="py-3 w-44 rounded-t rounded-b"
-            data-text="Receba Novidades"
-          >
+          <AnimatedButton className="bg-gold text-white rounded-md py-3 px-3 rounded-t rounded-b">
             Receba Novidades
-          </ButtonGold>
+          </AnimatedButton>
           <p className="text-grey-500 font-bold my-3">Redes Sociais</p>
           <ul className="flex mt-6">
             <li className="mr-4">

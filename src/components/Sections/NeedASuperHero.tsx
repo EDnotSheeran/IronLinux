@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { ButtonGold } from '../Buttons/';
+import { AnimatedButton } from '@components/Buttons';
 import Carousel, { Item } from '../Carousel';
 
 const NeedASuperHero: React.FC = ({ children }) => {
@@ -17,12 +16,9 @@ const NeedASuperHero: React.FC = ({ children }) => {
           Linux, Segurança, Servidores ou Roteadores?
         </p>
       </div>
-      <ButtonGold
-        data-text="Contate nossos experts"
-        className="w-56 mx-auto my-4"
-      >
+      <AnimatedButton className="bg-gold text-white mx-auto my-4 px-4 py-4 rounded-md font-bold font-poppins tracking-wider">
         Contate nossos experts
-      </ButtonGold>
+      </AnimatedButton>
       <>
         <Carousel className="lg:flex lg:justify-around mt-10">
           <Item className="w-full lg:w-fit">

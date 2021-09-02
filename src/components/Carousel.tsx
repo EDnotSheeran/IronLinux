@@ -37,7 +37,7 @@ type ItemProps = {
   className?: string;
 };
 
-const Item: React.FC<ItemProps> = ({ children, className }) => {
+export const Item: React.FC<ItemProps> = ({ children, className }) => {
   return (
     <div
       className={
@@ -48,5 +48,3 @@ const Item: React.FC<ItemProps> = ({ children, className }) => {
     </div>
   );
 };
-
-export { Item };
