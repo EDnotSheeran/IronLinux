@@ -20,41 +20,29 @@ const NeedASuperHero: React.FC = ({ children }) => {
         Contate nossos experts
       </AnimatedButton>
       <>
-        <Carousel className="lg:flex lg:justify-around mt-10">
-          <Item className="w-full lg:w-fit">
-            <img
-              className="w-40 mx-auto"
-              src="/avatars/vinicius.png"
-              alt="Vinicius"
-            />
+        <Carousel className="w-full lg:justify-around mt-10 block">
+          <Item className="w-full lg:w-1/3 flex flex-col items-center">
+            <img className="w-40" src="/avatars/vinicius.png" alt="Vinicius" />
             <p className="text-center font-bold font-rubik text-lg">Vinicius</p>
-            <div className="speech-bubble-right mx-auto">
+            <div className="speech-bubble-right ">
               <p className="font-medium text-base">
                 Eu posso ajudar com Servidores
               </p>
             </div>
           </Item>
-          <Item className="w-full lg:w-fit">
-            <img
-              className="w-40 mx-auto"
-              src="/avatars/gustavo.png"
-              alt="Lucas"
-            />
+          <Item className="w-full lg:w-1/3 flex flex-col items-center">
+            <img className="w-40" src="/avatars/gustavo.png" alt="Lucas" />
             <p className="text-center font-bold font-rubik text-lg ">Gustavo</p>
-            <div className="speech-bubble-middle mx-auto">
+            <div className="speech-bubble-middle">
               <p className="font-medium text-base">
                 Eu posso ajudar com pentest
               </p>
             </div>
           </Item>
-          <Item className="w-full lg:w-fit">
-            <img
-              className="w-40 mx-auto"
-              src="/avatars/lucas.png"
-              alt="Lucas"
-            />
+          <Item className="w-full lg:w-1/3 flex flex-col items-center">
+            <img className="w-40" src="/avatars/lucas.png" alt="Lucas" />
             <p className="text-center font-bold font-rubik text-lg">Lucas</p>
-            <div className="speech-bubble-left mx-auto">
+            <div className="speech-bubble-left">
               <p className="font-medium text-base">Eu posso ajudar com redes</p>
             </div>
           </Item>
