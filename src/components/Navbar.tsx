@@ -4,8 +4,8 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { AnimatedButton } from '@components/Buttons';
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Cursos', href: '#', current: false },
+  { name: 'Home', href: '/', current: true },
+  { name: 'Cursos', href: '/courses', current: false },
   { name: 'Consultoria', href: '#', current: false },
   { name: 'Blog', href: '#', current: false },
   { name: 'Sobre Nós', href: '#', current: false },

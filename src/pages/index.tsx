@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Layout from '@components/Layout';
 import {
   MainSection,
-  CoursesSection,
-  SpecialtiesSection,
+  Courses,
+  Specialties,
   ContactSection,
   RecentPosts,
   NeedASuperHero,
@@ -20,8 +20,8 @@ const Home: React.FC = () => {
         <title>Página Inicial</title>
       </Head>
       <MainSection />
-      <SpecialtiesSection />
-      <CoursesSection />
+      <Specialties />
+      <Courses />
       <Comments />
       <Varieties />
       <Certification />

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactSection: React.FC = ({ children }) => {
   return (
-    <div className="bg-oval-bottom mb-10">
+    <div className="oval oval-bottom mb-10">
       <section className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto lg:flex lg:flex-row pb-28 pt-28 ">
         <div className="lg:w-1/2">
           <img

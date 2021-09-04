@@ -19,6 +19,10 @@
     @apply font-poppins;
   }
 
+  body {
+    overflow-x: hidden;
+  }
+
   body::-webkit-scrollbar {
     width: 8px;
     background: #e5e5e5;
@@ -32,30 +36,85 @@
     width: fit-content;
   }
 
-  .bg-oval {
-    background: url('/shapes/oval.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: 50%;
-  }
-
-  .bg-oval-bottom {
+  .oval {
     position: relative;
-    overflow: hidden;
   }
 
-  .bg-oval-bottom::before {
+  .oval-top::before {
     content: '';
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 40%;
+    top: 0;
+    z-index: -1;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: linear-gradient(
+      180deg,
+      rgba(244, 190, 2, 0.2) 0%,
+      rgba(244, 190, 2, 0) 60%
+    );
+  }
+
+  @media (min-width: 640px) {
+    .oval-top::before {
+      height: 50%;
+    }
+  }
+  @media (min-width: 768px) {
+    .oval-top::before {
+      height: 60%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .oval-top::before {
+      height: 70%;
+    }
+  }
+  @media (min-width: 1536px) {
+    .oval-top::before {
+      height: 100%;
+    }
+  }
+
+  .oval-bottom::before {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 40%;
     bottom: 0;
     z-index: -1;
-    background: url('/shapes/oval.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: linear-gradient(
+      180deg,
+      rgba(244, 190, 2, 0.2) 0%,
+      rgba(244, 190, 2, 0) 60%
+    );
     transform: rotate(180deg);
+  }
+
+  @media (min-width: 640px) {
+    .oval-bottom::before {
+      height: 50%;
+    }
+  }
+  @media (min-width: 768px) {
+    .oval-bottom::before {
+      height: 60%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .oval-bottom::before {
+      height: 70%;
+    }
+  }
+  @media (min-width: 1536px) {
+    .oval-bottom::before {
+      height: 100%;
+    }
   }
 
   .bg-gradient {

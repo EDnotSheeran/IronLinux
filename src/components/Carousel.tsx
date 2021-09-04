@@ -45,7 +45,7 @@ const Carousel: React.FC<CarouselProps> = ({
       <div
         ref={carousel}
         className={
-          'flex overflow-x-auto scroll-snap-x-m scroll-hidden ' +
+          'w-full flex overflow-x-auto scroll-snap-x-m scroll-hidden ' +
           (className || '')
         }
         onWheel={handleCarouselWheelEvent}
