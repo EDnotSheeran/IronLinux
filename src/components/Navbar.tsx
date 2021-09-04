@@ -1,7 +1,7 @@
 import React from 'react';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import { ButtonGold } from '@components/Buttons';
+import { AnimatedButton } from '@components/Buttons';
 
 const navigation = [
   { name: 'Home', href: '#', current: true },
@@ -48,12 +48,9 @@ const Navbar: React.FC = () => {
                         </a>
                       ) : null
                     )}
-                    <ButtonGold
-                      data-text="Fale Conosco"
-                      className="ml-10 xl:ml-24 py-2 tracking-widest w-60"
-                    >
+                    <AnimatedButton className="bg-gold rounded-md text-white font-poppins font-medium ml-10 xl:ml-24 py-2 tracking-widest w-60">
                       Fale Conosco
-                    </ButtonGold>
+                    </AnimatedButton>
                   </div>
                 </div>
                 <div className="-mr-2 flex lg:hidden">

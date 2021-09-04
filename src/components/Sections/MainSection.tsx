@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonGold } from '@components/Buttons';
+import { AnimatedButton } from '@components/Buttons';
 
 const data = {
   heading: {
@@ -34,17 +34,13 @@ const MainSection: React.FC = ({ children }) => {
         <p className="font-poppins text-brown text-base mt-2 md:mt-6 xl:text-lg 2xl:text-xl">
           {data.paragraph}
         </p>
-        <div className="w-full h-34 flex flex-row">
-          <div className="w-1/2 sm:w-auto h-full flex justify-start">
-            <button className="mt-8 border-2 rounded-lg p-3 font-bold border-black hover:bg-black hover:text-white transition-colors">
-              Conheça nossas Consultorias
-            </button>
-          </div>
-          <div className="w-1/2 sm:w-auto h-full flex justify-start">
-            <button className="mt-8 bg-gold text-white border-gold font-bold border-2 rounded-lg py-3 px-6 ml-4 gold-button">
-              Veja os Cursos
-            </button>
-          </div>
+        <div className="w-full flex flex-row">
+          <button className="mt-8 border-2 rounded-lg py-1 sm:py-3 px-0 sm:px-3 font-bold border-black hover:bg-black hover:text-white transition-colors">
+            Conheça nossas Consultorias
+          </button>
+          <AnimatedButton className="mt-8 bg-gold text-white border-gold font-bold border-2 rounded-lg before:leading-8 sm:before:leading-5 py-3 px-2 md:px-6 ml-4">
+            Veja os Cursos
+          </AnimatedButton>
         </div>
       </div>
       <div className="w-full max-w-sm xl:max-w-lg 2xl:max-w-xl md:flex items-center justify-center justify-items-center">

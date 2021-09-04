@@ -1,11 +1,24 @@
-import React, { useRef, WheelEventHandler } from 'react';
+import React, {
+  FunctionComponent,
+  HTMLAttributes,
+  useRef,
+  WheelEventHandler,
+} from 'react';
 
 type CarouselProps = {
   className?: string;
+  buttons?: {
+    left: FunctionComponent<HTMLAttributes<HTMLButtonElement>>;
+    right: FunctionComponent<HTMLAttributes<HTMLButtonElement>>;
+  };
 };
 
-const Carousel: React.FC<CarouselProps> = ({ children, className }) => {
-  const carousel = useRef(null);
+const Carousel: React.FC<CarouselProps> = ({
+  children,
+  className,
+  buttons,
+}) => {
+  const carousel = useRef<HTMLDivElement>(null);
 
   const handleCarouselWheelEvent: WheelEventHandler<HTMLDivElement> = e => {
     const width = (e.target as HTMLElement).offsetWidth;
@@ -16,17 +29,30 @@ const Carousel: React.FC<CarouselProps> = ({ children, className }) => {
     }
   };
 
+  const scrollRight = () => {
+    const e = carousel.current as unknown as HTMLElement;
+    e.scrollBy(e.offsetWidth, 0);
+  };
+
+  const scrollLeft = () => {
+    const e = carousel.current as unknown as HTMLElement;
+    e.scrollBy(0 - e.offsetWidth, 0);
+  };
+
   return (
-    <div className="w-full">
+    <div className="w-full flex items-center">
+      {buttons && <buttons.left onClick={scrollLeft} />}
       <div
         ref={carousel}
         className={
-          'flex overflow-x-auto scroll-snap-x-m scroll-hidden ' + className
+          'flex overflow-x-auto scroll-snap-x-m scroll-hidden ' +
+          (className || '')
         }
         onWheel={handleCarouselWheelEvent}
       >
         {children}
       </div>
+      {buttons && <buttons.right onClick={scrollRight} />}
     </div>
   );
 };
@@ -37,7 +63,7 @@ type ItemProps = {
   className?: string;
 };
 
-const Item: React.FC<ItemProps> = ({ children, className }) => {
+export const Item: React.FC<ItemProps> = ({ children, className }) => {
   return (
     <div
       className={
@@ -48,5 +74,3 @@ const Item: React.FC<ItemProps> = ({ children, className }) => {
     </div>
   );
 };
-
-export { Item };

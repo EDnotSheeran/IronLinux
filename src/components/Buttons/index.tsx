@@ -1,2 +1,1 @@
-export { default as ButtonGlass } from './ButtonGlass';
-export { default as ButtonGold } from './ButtonGold';
+export { default as AnimatedButton } from './AnimatedButton';

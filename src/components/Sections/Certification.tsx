@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnimatedButton } from '@components/Buttons';
 
 const Certification: React.FC = ({ children }) => {
   return (
@@ -39,9 +40,9 @@ const Certification: React.FC = ({ children }) => {
             </p>
           </li>
         </ul>
-        <button className="bg-gold text-white font-bold text-base md:text-lg rounded-md p-3 mt-5">
+        <AnimatedButton className="bg-gold text-white font-bold text-base md:text-lg rounded-md mt-5 px-3 py-4">
           Conheça nossas consultorias
-        </button>
+        </AnimatedButton>
       </div>
     </section>
   );
