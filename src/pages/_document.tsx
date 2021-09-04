@@ -20,7 +20,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#000000" />
           <meta name="description" content="Iron Linux" />
           <meta name="build version" content={packageInfo.version} />
-          <link rel="icon" href="https://rocketseat.com.br/favicon.ico" />
+          <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>
           <Main />
