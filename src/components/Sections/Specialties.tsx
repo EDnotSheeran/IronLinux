@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel, { Item } from '@components/Carousel';
-import { AnimatedButton } from '@components/Buttons';
+import { Button } from '@components/index';
 
 type SpecialtiesProps = {
   specialities: {
@@ -36,7 +36,7 @@ const specialities = [
 const SpecialtiesSection: React.FC = () => {
   return (
     <div className="oval oval-bottom">
-      <section className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto">
+      <section className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto pb-10">
         <h3 className="font-bold text-3xl text-center mb-14">
           Uma ampla diversidades de aprendizados
         </h3>
@@ -60,9 +60,9 @@ const SpecialtiesSection: React.FC = () => {
               </Item>
             ))}
         </Carousel>
-        <AnimatedButton className="mx-auto mt-28 bg-gold text-white rounded-md py-3 px-14 mb-10">
+        <Button className="mx-auto mt-28 bg-gold text-white rounded-md py-3 px-14">
           Saiba mais
-        </AnimatedButton>
+        </Button>
       </section>
     </div>
   );

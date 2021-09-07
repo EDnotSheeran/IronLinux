@@ -1,7 +1,7 @@
 import React from 'react';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import { AnimatedButton } from '@components/Buttons';
+import { Button } from '@components/index';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -48,9 +48,9 @@ const Navbar: React.FC = () => {
                         </a>
                       ) : null
                     )}
-                    <AnimatedButton className="bg-gold rounded-md text-white font-poppins font-medium ml-10 xl:ml-24 py-2 tracking-widest w-60">
+                    <Button className="bg-gold rounded-md text-white font-poppins font-medium ml-10 xl:ml-24 py-2 tracking-widest w-60">
                       Fale Conosco
-                    </AnimatedButton>
+                    </Button>
                   </div>
                 </div>
                 <div className="-mr-2 flex lg:hidden">

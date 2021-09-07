@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel, { Item } from '../Carousel';
-import { AnimatedButton } from '@components/Buttons';
-import { Currency } from '@helpers/currency';
+import { Button } from '@components/index';
+import { Currency } from '@helpers/index';
 
 type Course = {
   title: string;
@@ -103,9 +103,9 @@ const CoursesSection: React.FC = () => {
                 <h2 className="text-center text-brown font-bold mt-auto">
                   {Currency(course.price, 'pt-BR', 'BRL')}
                 </h2>
-                <AnimatedButton className="bg-gold font-poppins text-white text-bold rounded-md py-2 px-5 pointer-events-auto mt-3">
+                <Button className="bg-gold font-poppins text-white text-bold rounded-md py-2 px-5 pointer-events-auto mt-3">
                   Comprar
-                </AnimatedButton>
+                </Button>
               </div>
             </Item>
           );

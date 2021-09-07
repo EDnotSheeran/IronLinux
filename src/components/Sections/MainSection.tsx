@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnimatedButton } from '@components/Buttons';
+import { Button } from '@components/index';
 
 const data = {
   heading: {
@@ -37,9 +37,9 @@ const MainSection: React.FC = ({ children }) => {
         <button className="text-xs md:text-base mt-8 border-2 rounded-lg py-3 px-3 max-w-52 md:max-w-max  sm:px-3 font-bold border-black hover:bg-black hover:text-white transition-colors">
           Conheça nossas Consultorias
         </button>
-        <AnimatedButton className="text-xs md:text-base inline-block mt-8 bg-gold py-3 px-3 ml-5 text-white font-bold rounded-lg border-2 border-gold">
+        <Button className="text-xs md:text-base inline-block mt-8 bg-gold py-3 px-3 ml-5 text-white font-bold rounded-lg border-2 border-gold">
           Veja os Cursos
-        </AnimatedButton>
+        </Button>
       </div>
       <div className="w-full max-w-sm xl:max-w-lg 2xl:max-w-xl md:flex items-center justify-center justify-items-center">
         <img className="w-full" src={data.imageURL} alt="image" />

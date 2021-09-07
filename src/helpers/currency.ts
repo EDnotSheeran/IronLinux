@@ -1,4 +1,4 @@
-export const Currency = (
+const Currency = (
   num: number,
   lang: string = 'en',
   currency: string = 'USD'
@@ -8,3 +8,5 @@ export const Currency = (
     currency: currency,
   }).format(num);
 };
+
+export default Currency;
