@@ -105,5 +105,32 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  corePlugins: {
+    container: false,
+  },
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        '.container': {
+          maxWidth: '100%',
+          padding: '0 2.5rem',
+          '@screen sm': {
+            maxWidth: '40rem',
+          },
+          '@screen md': {
+            maxWidth: '52rem',
+          },
+          '@screen lg': {
+            maxWidth: '60rem',
+          },
+          '@screen xl': {
+            maxWidth: '72rem',
+          },
+          '@screen 2xl': {
+            maxWidth: ' 80rem',
+          },
+        },
+      });
+    },
+  ],
 };

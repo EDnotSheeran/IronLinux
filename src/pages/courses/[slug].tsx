@@ -2,10 +2,9 @@ import React from 'react';
 import Head from 'next/head';
 import Layout from '@components/Layout';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
-import Container from '@components/Container';
 import { FaShoppingCart } from 'react-icons/fa';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsResult } from 'next';
+import Link from 'next/link';
 
 type CourseProps = {
   top10StudentsList: {
@@ -22,39 +21,38 @@ const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
       <Head>
         <title>Página Inicial</title>
       </Head>
-      <header className="h-56 max-h-56 bg-oval rotate-180">
-        <div className="rotate-180  h-full">
-          <Container>
-            <h1 className="py-20 font-semibold text-5xl font-poppins">
-              CCNA Cisco
-            </h1>
-          </Container>
-        </div>
-      </header>
-      <Container>
-        <section id="month_students" className="flex flex-col">
-          <h1 className="text-xl font-semibold">Estudando esse mês</h1>
-          <div className="flex flex-row -ml-1">
-            {top10StudentsList.map((student, index) => {
-              return (
-                <div key={index} className="-mr-5">
-                  <Image
-                    width={60}
-                    height={60}
-                    src="/students/people.jpg"
-                    alt={student.alt}
-                    className="rounded-full"
-                  />
-                </div>
-              );
-            })}
+      <div className="container px-0 mx-auto flex mb-10">
+        <div className="w-full">
+          <h1 className="font-semibold text-7xl">CCNA Cisco</h1>
+          <div>
+            <h3 className="font-bold text-xl mb-5">Estudando esse mês</h3>
+            <div className="relative h-28">
+              <img
+                className="max-w-28 max-h-28 w-full h-full absolute top-0 left-0"
+                src="/avatars/lucas.png"
+                alt=""
+              />
+              <img
+                className="max-w-28 max-h-28 w-full h-full absolute top-0 left-14"
+                src="/avatars/lucas.png"
+                alt=""
+              />
+              <img
+                className="max-w-28 max-h-28 w-full h-full absolute top-0 left-28"
+                src="/avatars/lucas.png"
+                alt=""
+              />
+              <img
+                className="max-w-28 max-h-28 w-full h-full absolute top-0 left-42"
+                src="/avatars/lucas.png"
+                alt=""
+              />
+            </div>
+            <p className="mt-5">e mais 200 alunos(as)</p>
           </div>
-          <p className="text-base">E mais de 2000 alunos(as)</p>
-        </section>
-        <div className="flex">
-          <section className="bg-yellow-300 w-2/3 h-screen">
-            <h1 className="text-xl font-semibold">Resumo</h1>
-            <p>
+          <div>
+            <h3 className="font-semibold text-xl">Resumo</h3>
+            <p className="font-medium">
               Python é uma linguagem ultra moderna, utilizada por grandes
               empresas como Google, YouTube, Industrial Light & Magic, Globo e
               muitas outras. Fácil de aprender, com código limpo e organizado,
@@ -62,58 +60,65 @@ const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
               aprender. Curso criado pelo Prof. Gustavo Guanabara com uma
               temática divertida de vídeo-game para motivar seus alunos, é
               dividido em mundos para facilitar o estudo.
-              <br />O primeiro mundo foi pensando de forma a apresentar a
+              <br /> <br />O primeiro mundo foi pensando de forma a apresentar a
               linguagem ao aluno, o professor irá introduzir a linguagem, seus
               conceitos, montar o primeiro programa e ensinar alguns recursos
               básicos.
             </p>
-          </section>
-          <section className="bg-red-600 w-1/3">
-            <div
-              className="w-96
-              absolute
-                  bg-white
-                shadow-md
-                drop-shadow-xl
-               rounded-md
-                flex flex-col
-                items-center
-                overflow-hidden"
-            >
-              <div className="flex flex-col text-center justify-center items-center">
-                <img
-                  src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80"
-                  alt="image"
-                />
-                <h2 className="text-2xl font-semibold mt-2">
-                  Preço: R$ 250,00
-                </h2>
-                <div className="flex flex-col text-center items-center">
-                  <button className="button flex justify-center items-center drop-shadow-lg mt-2 text-xs md:text-sm lg:text-base text-white text-center focus:outline-none tracking-widest bg-gold font-semibold font-poppins rounded-sm">
-                    <i className="h-full p-1">
-                      <FaShoppingCart size={20} />
-                    </i>
-                    <p className="h-full p-2">Comprar</p>
-                  </button>
-
-                  <h1 className="text-lg font-semibold">Phyton</h1>
-                  <span className="text-xs text-indigo-300 mt-0 ">
-                    Segurança
-                  </span>
-                </div>
-                <p className="text-xs md:text-sm lg:text-base w-4/5 mt-2">
-                  Fique especialista em banco de dados com os melhores
-                  profissionais do mercado
+          </div>
+        </div>
+        {/* Card ao lado */}
+        <div className="w-full max-w-sm">
+          <img className="w-full mb-3" src="/oracle.svg" alt="" />
+          <div className="divide-y p-2 shadow-lg rounded-md">
+            <div className="flex flex-col items-center mb-3">
+              <p className="text-brown text-2xl mb-3">
+                <strong>Preço:</strong> R$250,00
+              </p>
+              <Link href="/">
+                <a className="flex items-center justify-center bg-gold text-white text-xl p-2 rounded-md">
+                  <FaShoppingCart className="w-10" />
+                  <strong>Comprar</strong>
+                </a>
+              </Link>
+            </div>
+            <div className="pt-3">
+              <div className="flex items-center">
+                <FaShoppingCart className="w-10 mr-3" />
+                <p className="text-brown text-2xl">
+                  <strong>Carga Horaria:</strong> 15h
+                </p>
+              </div>
+              <div className="flex items-center">
+                <FaShoppingCart className="w-10 mr-3" />
+                <p className="text-brown text-2xl">
+                  <strong>Categoria:</strong> Programação, Segurança
+                </p>
+              </div>
+              <div className="flex items-center">
+                <FaShoppingCart className="w-10 mr-3" />
+                <p className="text-brown text-2xl">
+                  <strong>Nível:</strong> Básico
+                </p>
+              </div>
+              <div className="flex items-center">
+                <FaShoppingCart className="w-10 mr-3" />
+                <p className="text-brown text-2xl">
+                  <strong>Idioma:</strong> Português
+                </p>
+              </div>
+              <div className="flex items-center">
+                <FaShoppingCart className="w-10 mr-3" />
+                <p className="text-brown text-2xl">
+                  <strong>Certificado:</strong> Sim
                 </p>
               </div>
             </div>
-          </section>
+          </div>
         </div>
-      </Container>
-
-      <Container>
-        <h1>Você está vendo o curso do ID: {router.query.id} </h1>
-      </Container>
+        {/* Card ao lado */}
+      </div>
+      <div className="container"></div>
     </Layout>
   );
 };

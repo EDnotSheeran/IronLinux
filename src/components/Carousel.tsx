@@ -1,23 +1,12 @@
-import React, {
-  FunctionComponent,
-  HTMLAttributes,
-  useRef,
-  WheelEventHandler,
-} from 'react';
+import React, { useRef, WheelEventHandler } from 'react';
+import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/solid';
+import { HTMLAttributes } from 'react';
 
-type CarouselProps = {
-  className?: string;
-  buttons?: {
-    left: FunctionComponent<HTMLAttributes<HTMLButtonElement>>;
-    right: FunctionComponent<HTMLAttributes<HTMLButtonElement>>;
-  };
-};
-
-const Carousel: React.FC<CarouselProps> = ({
-  children,
-  className,
-  buttons,
-}) => {
+const Carousel: React.FC<CarouselProps> & {
+  Item: React.FC<ItemProps>;
+  RightButton: React.FC<HTMLAttributes<HTMLButtonElement>>;
+  LeftButton: React.FC<HTMLAttributes<HTMLButtonElement>>;
+} = ({ children, className, buttons = false }) => {
   const carousel = useRef<HTMLDivElement>(null);
 
   const handleCarouselWheelEvent: WheelEventHandler<HTMLDivElement> = e => {
@@ -41,7 +30,7 @@ const Carousel: React.FC<CarouselProps> = ({
 
   return (
     <div className="w-full flex items-center">
-      {buttons && <buttons.left onClick={scrollLeft} />}
+      {buttons && <Carousel.LeftButton onClick={scrollLeft} />}
       <div
         ref={carousel}
         className={
@@ -52,18 +41,12 @@ const Carousel: React.FC<CarouselProps> = ({
       >
         {children}
       </div>
-      {buttons && <buttons.right onClick={scrollRight} />}
+      {buttons && <Carousel.RightButton onClick={scrollRight} />}
     </div>
   );
 };
 
-export default Carousel;
-
-type ItemProps = {
-  className?: string;
-};
-
-export const Item: React.FC<ItemProps> = ({ children, className }) => {
+Carousel.Item = function Item({ children, className }) {
   return (
     <div
       className={
@@ -74,3 +57,21 @@ export const Item: React.FC<ItemProps> = ({ children, className }) => {
     </div>
   );
 };
+
+Carousel.RightButton = function RightButton(props) {
+  return (
+    <button {...props} className="border-2 border-gold rounded-full p-3 m-10">
+      <ArrowRightIcon className="w-7 text-gold" />
+    </button>
+  );
+};
+
+Carousel.LeftButton = function LeftButton(props) {
+  return (
+    <button {...props} className="border-2 border-gold rounded-full p-3 m-10">
+      <ArrowLeftIcon className="w-7 text-gold" />
+    </button>
+  );
+};
+
+export default Carousel;

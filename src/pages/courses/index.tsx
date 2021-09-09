@@ -3,6 +3,7 @@ import { GetServerSideProps, GetServerSidePropsResult } from 'next';
 import { SearchIcon } from '@heroicons/react/solid';
 import { Currency } from '@helpers';
 import { Layout, Select, Button, Pagination } from '@components';
+import Link from 'next/link';
 
 const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
   return (
@@ -63,9 +64,11 @@ const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
                   <h2 className="text-center text-brown font-bold mt-auto">
                     {Currency(course.price, 'pt-BR', 'BRL')}
                   </h2>
-                  <Button className="bg-gold font-poppins text-white text-bold rounded-md py-2 px-5 pointer-events-auto mt-3">
-                    Comprar
-                  </Button>
+                  <Link href="/courses/1">
+                    <a className="bg-gold font-poppins text-white text-bold rounded-md py-2 px-5 pointer-events-auto mt-3">
+                      Comprar
+                    </a>
+                  </Link>
                 </div>
               </div>
             );

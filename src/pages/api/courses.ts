@@ -1,4 +1,4 @@
-import { NextApiHandler, NextApiResponse } from 'next';
+import { NextApiHandler } from 'next';
 
 const CoursesRoute: NextApiHandler = (req, res) => {
   return res.json([
