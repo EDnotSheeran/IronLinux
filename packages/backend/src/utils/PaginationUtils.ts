@@ -54,13 +54,11 @@ export class PaginationUtils {
     const prisma = new PrismaClient();
     const keyProperty = key[0].toLowerCase() + key.slice(1);
 
-    // @ts-expect-error
     const results = await prisma[keyProperty].findMany({
       take: pageSize,
       skip: offset,
       orderBy,
     });
-    // @ts-expect-error
     const total = await await prisma[keyProperty].count();
 
     return { results, total };
