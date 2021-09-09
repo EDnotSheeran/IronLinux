@@ -45,16 +45,12 @@ const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
         </section>
       </div>
       <section className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto min-h-screen">
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap mt-10">
           {courses.map((course, i) => {
             return (
-              <div key={i} className="w-full md:w-1/2 lg:w-1/4 my-10">
-                <div className="flex flex-col justify-center items-center px-2 h-full">
-                  <img
-                    className="w-full max-w-70"
-                    src={course.imageURL}
-                    alt="image"
-                  />
+              <div key={i} className="w-full md:w-1/2 lg:w-1/4 mb-10">
+                <div className="flex flex-col justify-center items-center mx-2 pb-6 h-full bx-shaddow rounded-md">
+                  <img className="w-full" src={course.imageURL} alt="image" />
                   <h3 className="text-lg font-semibold text-center my-5 ">
                     {course.title}
                   </h3>

@@ -330,6 +330,7 @@ const Home: React.FC<HomePageProps> = ({
         </Carousel>
       </section>
       {/* Últimos posts do blog */}
+      {/* Fale Conosco */}
       <div className="oval oval-bottom mb-10">
         <section className="container mx-auto lg:flex lg:flex-row pb-28 pt-28 ">
           <div className="lg:w-1/2">
@@ -384,6 +385,7 @@ const Home: React.FC<HomePageProps> = ({
           </div>
         </section>
       </div>
+      {/* Fale Conosco */}
     </Layout>
   );
 };

@@ -132,5 +132,15 @@ module.exports = {
         },
       });
     },
+    function ({ addComponents }) {
+      addComponents({
+        '.bx-shaddow': {
+          boxShadow: ' 0px 1px 10px rgba(0, 0, 0, 0.1);',
+        },
+        '.btn-shaddow': {
+          boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25);',
+        },
+      });
+    },
   ],
 };

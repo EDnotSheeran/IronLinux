@@ -2,8 +2,21 @@ import React from 'react';
 import Head from 'next/head';
 import Layout from '@components/Layout';
 import { useRouter } from 'next/router';
-import { FaShoppingCart } from 'react-icons/fa';
+import {
+  ShoppingCartIcon,
+  ChartBarIcon,
+  AcademicCapIcon,
+  BeakerIcon,
+  ChevronDownIcon,
+  LightBulbIcon,
+} from '@heroicons/react/solid';
+import {
+  ClockIcon,
+  GlobeAltIcon,
+  TranslateIcon,
+} from '@heroicons/react/outline';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsResult } from 'next';
+import { Disclosure } from '@headlessui/react';
 import Link from 'next/link';
 
 type CourseProps = {
@@ -19,39 +32,42 @@ const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
   return (
     <Layout>
       <Head>
-        <title>Página Inicial</title>
+        <title>CCNA Cisco</title>
       </Head>
-      <div className="container px-0 mx-auto flex mb-10">
-        <div className="w-full">
+      <div className="oval-bg-t-page"></div>
+      {/* Sobre o Curso */}
+      <div className="container lg:px-0 mx-auto flex mb-10">
+        {/* Resumo */}
+        <div className="w-full mt-20">
           <h1 className="font-semibold text-7xl">CCNA Cisco</h1>
-          <div>
+          <div className="mt-20">
             <h3 className="font-bold text-xl mb-5">Estudando esse mês</h3>
-            <div className="relative h-28">
+            <div className="relative h-20">
               <img
-                className="max-w-28 max-h-28 w-full h-full absolute top-0 left-0"
-                src="/avatars/lucas.png"
+                className="max-w-20 max-h-20 w-full h-full absolute top-0 left-0"
+                src="/avatars/vinicius.png"
                 alt=""
               />
               <img
-                className="max-w-28 max-h-28 w-full h-full absolute top-0 left-14"
-                src="/avatars/lucas.png"
+                className="max-w-20 max-h-20 w-full h-full absolute top-0 left-14"
+                src="/avatars/vinicius.png"
                 alt=""
               />
               <img
-                className="max-w-28 max-h-28 w-full h-full absolute top-0 left-28"
-                src="/avatars/lucas.png"
+                className="max-w-20 max-h-20 w-full h-full absolute top-0 left-28"
+                src="/avatars/vinicius.png"
                 alt=""
               />
               <img
-                className="max-w-28 max-h-28 w-full h-full absolute top-0 left-42"
-                src="/avatars/lucas.png"
+                className="max-w-20 max-h-20 w-full h-full absolute top-0 left-42"
+                src="/avatars/vinicius.png"
                 alt=""
               />
             </div>
             <p className="mt-5">e mais 200 alunos(as)</p>
           </div>
-          <div>
-            <h3 className="font-semibold text-xl">Resumo</h3>
+          <div className="mt-16 pr-10 max-w-3xl">
+            <h3 className="font-semibold text-xl mb-5">Resumo</h3>
             <p className="font-medium">
               Python é uma linguagem ultra moderna, utilizada por grandes
               empresas como Google, YouTube, Industrial Light & Magic, Globo e
@@ -67,58 +83,152 @@ const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
             </p>
           </div>
         </div>
-        {/* Card ao lado */}
+        {/* Card de Informações */}
         <div className="w-full max-w-sm">
-          <img className="w-full mb-3" src="/oracle.svg" alt="" />
-          <div className="divide-y p-2 shadow-lg rounded-md">
-            <div className="flex flex-col items-center mb-3">
+          <img
+            className="w-full max-h-64 object-cover mb-3 rounded-md"
+            src="/oracle.svg"
+            alt=""
+          />
+          <div className="divide-y p-4 rounded-md bx-shaddow">
+            <div className="flex flex-col items-center mb-4">
               <p className="text-brown text-2xl mb-3">
                 <strong>Preço:</strong> R$250,00
               </p>
               <Link href="/">
-                <a className="flex items-center justify-center bg-gold text-white text-xl p-2 rounded-md">
-                  <FaShoppingCart className="w-10" />
-                  <strong>Comprar</strong>
+                <a className="flex items-center justify-center bg-gold text-white px-3 py-2 rounded-t rounded-b btn-shaddow">
+                  <ShoppingCartIcon className="w-7" />
+                  <strong className="text-lg ml-3">Comprar</strong>
                 </a>
               </Link>
             </div>
-            <div className="pt-3">
-              <div className="flex items-center">
-                <FaShoppingCart className="w-10 mr-3" />
-                <p className="text-brown text-2xl">
+            <ul className="pt-3">
+              <li className="flex align-middle my-5">
+                <ClockIcon className="w-7 mr-3 text-gold" />
+                <p className="text-brown text-xl max-w-5/6">
                   <strong>Carga Horaria:</strong> 15h
                 </p>
-              </div>
-              <div className="flex items-center">
-                <FaShoppingCart className="w-10 mr-3" />
-                <p className="text-brown text-2xl">
+              </li>
+              <li className="flex align-middle my-5">
+                <GlobeAltIcon className="w-7 mr-3 text-gold" />
+                <p className="text-brown text-xl max-w-5/6">
                   <strong>Categoria:</strong> Programação, Segurança
                 </p>
-              </div>
-              <div className="flex items-center">
-                <FaShoppingCart className="w-10 mr-3" />
-                <p className="text-brown text-2xl">
+              </li>
+              <li className="flex align-middle my-5">
+                <ChartBarIcon className="w-7 mr-3 text-gold" />
+                <p className="text-brown text-xl max-w-5/6">
                   <strong>Nível:</strong> Básico
                 </p>
-              </div>
-              <div className="flex items-center">
-                <FaShoppingCart className="w-10 mr-3" />
-                <p className="text-brown text-2xl">
+              </li>
+              <li className="flex align-middle my-5">
+                <TranslateIcon className="w-7 mr-3 text-gold" />
+                <p className="text-brown text-xl max-w-5/6">
                   <strong>Idioma:</strong> Português
                 </p>
-              </div>
-              <div className="flex items-center">
-                <FaShoppingCart className="w-10 mr-3" />
-                <p className="text-brown text-2xl">
+              </li>
+              <li className="flex align-middle my-5">
+                <AcademicCapIcon className="w-7 mr-3 text-gold" />
+                <p className="text-brown text-xl max-w-5/6">
                   <strong>Certificado:</strong> Sim
                 </p>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
-        {/* Card ao lado */}
       </div>
-      <div className="container"></div>
+      {/* Counteúdo */}
+      <div className="container mx-auto lg:px-0 mb-10">
+        <ul className="divide-y rounded-md bx-shaddow px-4">
+          <li className="flex items-center py-4">
+            <BeakerIcon className="w-8 mr-3 text-gold" />
+            <span className="font-semibold text-xl">Conteúdo</span>
+          </li>
+          <Disclosure as="li" className="flex flex-col py-4">
+            {({ open }) => (
+              <>
+                <Disclosure.Button className="flex w-full justify-between">
+                  <span className="text-brown text-left text-lg font-medium ml-3">
+                    1 - Preparando o ambiente
+                  </span>
+                  <ChevronDownIcon
+                    className={`text-gold w-8 mr-6 ${
+                      open ? 'transform rotate-180 transition-transform' : ''
+                    }`}
+                  />
+                </Disclosure.Button>
+
+                <Disclosure.Panel>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                    optio corporis quas, rerum in ullam asperiores dignissimos
+                    deleniti soluta laborum veniam quia eius iure aliquam
+                    distinctio sit quidem. Necessitatibus, doloribus?
+                  </span>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
+          <Disclosure as="li" className="flex flex-col py-4">
+            {({ open }) => (
+              <>
+                <Disclosure.Button className="flex w-full justify-between">
+                  <span className="text-brown text-left text-lg font-medium ml-3">
+                    2 - Váriaveis
+                  </span>
+                  <ChevronDownIcon
+                    className={`text-gold w-8 mr-6 ${
+                      open ? 'transform rotate-180 transition-transform' : ''
+                    }`}
+                  />
+                </Disclosure.Button>
+
+                <Disclosure.Panel>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                    optio corporis quas, rerum in ullam asperiores dignissimos
+                    deleniti soluta laborum veniam quia eius iure aliquam
+                    distinctio sit quidem. Necessitatibus, doloribus?
+                  </span>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
+        </ul>
+      </div>
+      {/* Instrutor */}
+      <div className="container mx-auto lg:px-0">
+        <div className="bx-shaddow rounded-md p-4 pb-16">
+          <div className="flex items-center mb-7">
+            <LightBulbIcon className="text-gold w-10 mr-3" />
+            <span className="font-semibold text-xl">Instrutor</span>
+          </div>
+          <ul className="divide-y px-2">
+            <li className="flex flex-col lg:flex-row gap-7">
+              <img
+                className="max-w-24 max-h-24"
+                src="/avatars/vinicius.png"
+                alt=""
+              />
+              <div>
+                <h6 className="font-semibold text-lg lg:text-xl mb-3">
+                  Vinicius Souza
+                </h6>
+                <p className="text-base lg:text-lg">
+                  Meu nome é Vinicius, conhecido por Lucio ou Vini e sou um dos
+                  fundadores da IronLinux. Formado em Redes de computadores,
+                  trabalho na área de Tecnologia há 5 anos e hoje atuo como
+                  Analista de Segurança da Informação-CSIRT. Sou fanático por
+                  Linux, segurança, e como alguém que gosta de aproveitar todo o
+                  tempo disponível, amo automatizar tudo.
+                  <br /> Sou uma pessoa super empolgada em aprender coisas
+                  novas, transferir conhecimento e incentivar meus colegas.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </Layout>
   );
 };

@@ -3,7 +3,7 @@ import { Button } from '@components/index';
 
 const Footer: React.FC = ({ children }) => {
   return (
-    <footer>
+    <footer className="mt-10">
       <div className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto border-t-2 pt-7 border-b-2 pb-7 flex flex-wrap justify-start pl-10 md:grid md:grid-cols-2 lg:grid-cols-3 place-content-center">
         <ul className="font-poppins">
           <li className="mb-10">
