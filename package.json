@@ -1,0 +1,13 @@
+{
+  "name": "IronLinuxMonoRepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "repository": "https://github.com/DevFigueiredo/IronLinux.git",
+  "license": "MIT"
+}
