@@ -31,8 +31,8 @@ class HomePageRepository {
         ]);
       return { infoHomePage, aboutCourses, aboutConsulting };
     } catch (error) {
-      console.log(error.message);
       if (
+        error instanceof Error &&
         error.message.includes(
           "Invalid `prisma.infoHomePage.upsert()` invocation"
         )
