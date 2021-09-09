@@ -10,8 +10,14 @@
     "typeRoots": ["./node_modules/@types", "./src/@types"],
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    "sourceMap": true /* Generates corresponding '.map' file. */,
     "emitDecoratorMetadata": true,
+    "declaration": true /* Generates corresponding '.d.ts' file. */,
+    "declarationMap": true,
     "skipLibCheck": true,
+    "types": [
+      "node" /* Type declaration files to be included in compilation. */
+    ],
     "baseUrl": ".",
     "paths": {},
     "moduleResolution": "Node",
@@ -20,8 +26,7 @@
     "plugins": [
       { "transform": "ts-interface-keys-transformer/transformer" },
       { "transform": "ts-reflection/transformer" }
-    ],
-    "forceConsistentCasingInFileNames": false
+    ]
   },
   "include": ["src/**/*"]
 }
