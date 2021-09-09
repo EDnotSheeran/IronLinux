@@ -1,0 +1,535 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "API aplicação da AncarX.",
+        "version": "1.0.0",
+        "title": "Swagger IronLinux",
+        "license": {
+            "name": "IronLinux",
+            "url": "https://ironlinux.com.br/"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3333/v1",
+            "description": "API Local"
+        }
+    ],
+    "tags": [
+        {
+            "name": "HomePage",
+            "description": "Todos os endpoints da página inicial da aplicação"
+        },
+        {
+            "name": "User",
+            "description": "Todos os endpoints de usuários da aplicação"
+        }
+    ],
+    "paths": {
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Listar as informações de um usuário específico",
+                "description": "Listar as informações de um usuário específico",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                },
+                                "examples": {
+                                    "UserInfo": {
+                                        "value": {
+                                            "id": "LNQT8FFFo0Qgy33Ca6E5NmQia8P2",
+                                            "name": "Usuário de Exemplo",
+                                            "status": "active",
+                                            "email": "email@teste.com.br",
+                                            "accesspanel": true,
+                                            "fcmToken": "eF1fPaI8SUmMKLrqOrqKLA:APA91bHyh5GJQLrpJ6TVBNng4EitgVZtIsRnvDoVdzk9DUqBU9t6qybtKYR8t5_AHNWx_9_GkBDTw4h8T5XWzXMmJqsiKyRwtU8zcRIakM91Cbq5Nu3l3xZsQccg93Eng3PEnVNrG6oW",
+                                            "storeId": "0011I00000KMbGzQAL",
+                                            "role": "Manager",
+                                            "shoppingCode": "SNA",
+                                            "shoppingCodeList": [
+                                                "SNA",
+                                                "SNE"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Atualizar um usuário",
+                "description": "Atualizar um usuário",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/200"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Deletar um usuário",
+                "description": "Deletar um usuário",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/200"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Inativar um usuário",
+                "description": "Inativar um usuário",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/200"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do usuário",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "shoppingCode",
+                        "in": "query",
+                        "description": "Código do shopping",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status do usuário",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "active",
+                                "inactive"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "Quantidade total de registros por página (O valor padrão é 25).",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Número da página que está sendo requisitada (O valor padrão é 1).",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "summary": "Listar as informações de todos os usuário da aplicação",
+                "description": "Listar as informações de todos os usuário da aplicação",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "users": {
+                                            "type": "array",
+                                            "items": {
+                                                "description": "An array of user",
+                                                "$ref": "#/components/schemas/User"
+                                            }
+                                        },
+                                        "totalRecords": {
+                                            "type": "integer",
+                                            "format": "int32",
+                                            "description": "Número total de registros no resultado",
+                                            "example": 1
+                                        },
+                                        "totalPages": {
+                                            "type": "integer",
+                                            "format": "int32",
+                                            "description": "Número total de páginas no resultado",
+                                            "example": 1
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Criar um novo usuário",
+                "description": "Criar um novo usuário",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "users": {
+                                        "value": {
+                                            "id": "dsa1s9da8d98a1sda6s5d46s5ad4"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "examples": {
+            "UserWithoutID": {
+                "value": {
+                    "id": "LNQT8FFFo0Qgy33Ca6E5NmQia8P2",
+                    "name": "Usuário de Exemplo",
+                    "email": "email@teste.com.br",
+                    "status": "active",
+                    "accesspanel": true,
+                    "fcmToken": "eF1fPaI8SUmMKLrqOrqKLA:APA91bHyh5GJQLrpJ6TVBNng4EitgVZtIsRnvDoVdzk9DUqBU9t6qybtKYR8t5_AHNWx_9_GkBDTw4h8T5XWzXMmJqsiKyRwtU8zcRIakM9",
+                    "storeId": "0011I00000KMbGzQAL",
+                    "role": "Manager",
+                    "shoppingCode": "SNA",
+                    "shoppingCodeList": [
+                        "SNA",
+                        "SNE"
+                    ]
+                }
+            },
+            "UserWithID": {
+                "value": {
+                    "id": "LNQT8FFFo0Qgy33Ca6E5NmQia8P2",
+                    "name": "Usuário de Exemplo",
+                    "email": "email@teste.com.br",
+                    "fcmToken": "eF1fPaI8SUmMKLrqOrqKLA:APA91bHyh5GJQLrpJ6TVBNng4EitgVZtIsRnvDoVdzk9DUqBU9t6qybtKYR8t5_AHNWx_9_GkBDTw4h8T5XWzXMmJqsiKyRwtU8zcRIakM9",
+                    "storeId": "0011I00000KMbGzQAL",
+                    "role": "Manager",
+                    "shoppingCode": "SNA"
+                }
+            },
+            "UserResponseList": {
+                "value": [
+                    {
+                        "id": "LNQT8FFFo0Qgy33Ca6E5NmQia8P2",
+                        "name": "Usuário de Exemplo",
+                        "status": "active",
+                        "accesspanel": true,
+                        "fcmToken": "eF1fPaI8SUmMKLrqOrqKLA:APA91bHyh5GJQLrpJ6TVBNng4EitgVZtIsRnvDoVdzk9DUqBU9t6qybtKYR8t5_AHNWx_9_GkBDTw4h8T5XWzXMmJqsiKyRwtU8zcRIakM9",
+                        "storeId": "0011I00000KMbGzQAL",
+                        "role": "Manager",
+                        "shoppingCode": "SNA",
+                        "shoppingCodeList": [
+                            "SNA",
+                            "SNE"
+                        ]
+                    },
+                    {
+                        "id": "LNQT8FFFo0Qgy33Ca6E5NmQia8P2",
+                        "name": "Usuário de Exemplo",
+                        "status": "active",
+                        "accesspanel": true,
+                        "fcmToken": "eF1fPaI8SUmMKLrqOrqKLA:APA91bHyh5GJQLrpJ6TVBNng4EitgVZtIsRnvDoVdzk9DUqBU9t6qybtKYR8t5_AHNWx_9_GkBDTw4h8T5XWzXMmJqsiKyRwtU8zcRIakM9",
+                        "storeId": "0011I00000KMbGzQAL",
+                        "role": "Manager",
+                        "shoppingCode": "SNA",
+                        "shoppingCodeList": [
+                            "SNA",
+                            "SNE"
+                        ]
+                    }
+                ]
+            }
+        },
+        "securitySchemes": {
+            "JWT_Token": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "schema": {},
+                        "examples": {
+                            "OK": {
+                                "value": {
+                                    "status": "200",
+                                    "code": "200",
+                                    "message": "OK",
+                                    "description": "OK"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "401": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "unauthorized-fixed-token": {
+                                "value": {
+                                    "status": "401",
+                                    "code": "401",
+                                    "message": "Unauthorized",
+                                    "description": "Unauthorized"
+                                }
+                            },
+                            "unauthorized-google": {
+                                "value": {
+                                    "error": "Não foi possível fazer login na conta do Google. Tente novamente."
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "403": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "forbbiden-role-access-panel": {
+                                "value": {
+                                    "error": "Usuário sem permissão de acesso ao painel administrativo"
+                                }
+                            },
+                            "forbbiden-role-access": {
+                                "value": {
+                                    "error": "Usuário sem permissão de acesso"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "422": {
+                "description": "Unprocessable Entity",
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "failed-email-already-exists": {
+                                "value": {
+                                    "error": "Falha ao criar o usuário. O e-mail já está sendo usado por outra conta."
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "failed-sensedia": {
+                                "value": {
+                                    "error": "Falha ao validar as permissões de acesso do usuário"
+                                }
+                            },
+                            "failed-google": {
+                                "value": {
+                                    "error": "Falha ao validar o token do usuário."
+                                }
+                            },
+                            "failed-role-access": {
+                                "value": {
+                                    "error": "Usuário sem permissão de acesso ao painel administrativo"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        {
+            "JWT_Token": []
+        }
+    ]
+}

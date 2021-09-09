@@ -1,0 +1,237 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Page {
+  HOMEPAGE
+  ABOUT_US
+  CONSULTING
+  COURSES
+  VIEW_COURSE
+  BLOG
+}
+
+model InfoHomePage {
+  id                       Int    @id @default(autoincrement())
+  title                    String @db.VarChar(255)
+  description              String @db.VarChar(255)
+  imageURL                 String @db.VarChar(255)
+  titleHomePageSpecialties String @db.VarChar(255)
+  titleHomePageCourses     String @db.VarChar(255)
+  titleHomePagePosts     String @db.VarChar(255)
+  titleHomePageExperts     String @db.VarChar(255)
+  descriptionHomePageExperts     String @db.VarChar(255)
+  titleContactUS     String @db.VarChar(255)
+  page                     Page   @default(HOMEPAGE)
+}
+
+model HomePageSpecialties {
+  page        Page        @default(HOMEPAGE)
+  specialty   Specialties @relation(fields: [specialtyId], references: [id])
+  specialtyId Int
+
+  @@id([specialtyId])
+}
+
+model HomePageCourses {
+  page     Page   @default(HOMEPAGE)
+  courses   Course @relation(fields: [course], references: [id])
+  course Int
+
+  @@id([course])
+}
+
+model HomePageRatings {
+  page      Page    @default(HOMEPAGE)
+  ratings   Ratings @relation(fields: [ratingsId], references: [id])
+  ratingsId Int
+
+  @@id([ratingsId])
+}
+
+model HomePageExperts {
+  page     Page    @default(HOMEPAGE)
+  experts  Experts @relation(fields: [expertId], references: [id])
+  expertId Int
+
+  @@id([expertId])
+}
+
+model Specialties {
+  id                  Int                   @id @default(autoincrement())
+  title               String                @db.VarChar(255)
+  description         String                @db.VarChar(255)
+  positions           Int
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  page                Page                  @default(HOMEPAGE)
+  HomePageSpecialties HomePageSpecialties[]
+}
+
+model Ratings {
+  id              Int               @id @default(autoincrement())
+  rantingName     String            @db.VarChar(255)
+  name            String            @db.VarChar(255)
+  office          String            @db.VarChar(255)
+  imageURL        String            @db.VarChar(255)
+  position        Int
+  description     String            @db.VarChar(255)
+  starts          Float
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  page            Page              @default(HOMEPAGE)
+  HomePageRatings HomePageRatings[]
+}
+
+model AboutCourses {
+  id           Int      @id @default(autoincrement())
+  titleFirst   String   @db.VarChar(255)
+  title1       String   @db.VarChar(255)
+  description1 String   @db.VarChar(255)
+  title2       String   @db.VarChar(255)
+  description2 String   @db.VarChar(255)
+  title3       String   @db.VarChar(255)
+  description3 String   @db.VarChar(255)
+  title4       String   @db.VarChar(255)
+  description4 String   @db.VarChar(255)
+  imageURL     String   @db.VarChar(255)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  page         Page     @default(HOMEPAGE)
+
+
+}
+
+model AboutConsulting {
+  id                  Int      @id @default(autoincrement())
+  titleFirst          String   @db.VarChar(255)
+  title               String   @db.VarChar(255)
+  description               String   @db.VarChar(255)
+  checkedDescription1 String   @db.VarChar(255)
+  checkedDescription2 String   @db.VarChar(255)
+  checkedDescription3 String   @db.VarChar(255)
+  imageURL            String   @db.VarChar(255)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  page                Page     @default(HOMEPAGE)
+}
+
+model Experts {
+  id              Int               @id @default(autoincrement())
+  name            String            @db.VarChar(255)
+  description     String            @db.VarChar(255)
+  imageURL        String            @db.VarChar(255)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  HomePageExperts HomePageExperts[]
+}
+
+model Settings {
+  id                   Int     @id @default(autoincrement())
+  headerIcon           String  @db.VarChar(255)
+  menuIcon             String  @db.VarChar(255)
+  footerIcon           String  @db.VarChar(255)
+  cookies_policy       String
+  notifications_policy String
+  companyName          String  @db.VarChar(255)
+  companySocialName    String  @db.VarChar(255)
+  facebookURL          String  @db.VarChar(255)
+  facebookActive       Boolean
+  twitterURL           String  @db.VarChar(255)
+  twitterActive        Boolean
+  instagramURL         String  @db.VarChar(255)
+  instagramActive      Boolean
+  hotmartURL           String  @db.VarChar(255)
+  hotmartActive        Boolean
+  linkedinURL          String  @db.VarChar(255)
+  linkedinActive       Boolean
+
+}
+
+model HomePagePosts {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(255)
+  description String   @db.VarChar(255)
+  author      String   @db.VarChar(255)
+  imageURL    String   @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  page        Page     @default(HOMEPAGE)
+}
+
+model Course {
+  id               Int               @id @default(autoincrement())
+  title            String            @db.VarChar(255)
+  price            Float
+  description      String
+  slug     String           @unique @db.VarChar(20)
+  course_hours     String            @db.VarChar(20)
+  certified        Boolean           @default(false)
+  published        Boolean           @default(false)
+  levelCourseId    Int
+  languageCourseId Int
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  users            UserToCourse[]
+  courseGrade      CourseGrade[]
+  level            CourseLevel       @relation(fields: [levelCourseId], references: [id])
+  language         CourseLanguage    @relation(fields: [languageCourseId], references: [id])
+  HomePageCourses  HomePageCourses[]
+}
+
+model Categories {
+  id          Int    @id @default(autoincrement())
+  description String @db.VarChar(255)
+}
+
+model CourseLevel {
+  id          Int      @id @default(autoincrement())
+  description String   @db.VarChar(255)
+  Course      Course[]
+}
+
+model CourseLanguage {
+  id          Int      @id @default(autoincrement())
+  description String   @db.VarChar(255)
+  Course      Course[]
+}
+
+model User {
+  id          Int            @id @default(autoincrement())
+  name        String         @db.VarChar(255)
+  description String         @db.VarChar(255)
+  email       String         @unique
+  password    String         @db.VarChar(255)
+  active      Boolean
+  courses     UserToCourse[]
+}
+
+model CourseGrade {
+  id          Int      @default(autoincrement())
+  title       String    @db.VarChar(255)
+  description String
+  position    Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  courses     Course   @relation(fields: [courseId], references: [id])
+  courseId    Int
+
+  @@id([courseId, id])
+  @@unique([courseId, id])
+}
+
+model UserToCourse {
+  authors  User   @relation(fields: [authorId], references: [id])
+  authorId Int
+  courses  Course @relation(fields: [courseId], references: [id])
+  courseId Int
+
+  @@id([authorId, courseId])
+}
