@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
+    "target": "ES2021",
+    "module": "ES2020",
     "lib": ["es6"],
     "allowJs": true,
     "outDir": "./dist",
@@ -9,12 +9,13 @@
     "removeComments": true,
     "typeRoots": ["./node_modules/@types", "./src/@types"],
     "esModuleInterop": true,
-    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {},
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
     "strictNullChecks": false,
     "plugins": [
       { "transform": "ts-interface-keys-transformer/transformer" },
