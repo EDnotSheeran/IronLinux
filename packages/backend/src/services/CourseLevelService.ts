@@ -1,8 +1,8 @@
 import { ErrorRequest } from "../classes/ErrorRequest";
 import * as dotenv from "dotenv";
-import { ICourseLevelRepository } from "../repository/interfaces/IcourseLevelRepository";
-import { CourseLevelRepository } from "../repository/courseLevelRepository";
-import { CourseLevel } from "../domains/courseLevel";
+import { ICourseLevelRepository } from "../repository/interfaces/ICourseLevelRepository";
+import { CourseLevelRepository } from "../repository/CourseLevelRepository";
+import { CourseLevel } from "../domains/CourseLevel";
 dotenv.config();
 class CourseLevelService {
   private courseLevelRepository: ICourseLevelRepository;
