@@ -1,4 +1,4 @@
-import { prisma, Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { ErrorRequest } from "../classes/ErrorRequest";
 import { User } from "../domains/User";
 import { IUserRepository } from "./interfaces/IUserRepository";

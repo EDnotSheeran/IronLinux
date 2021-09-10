@@ -1,4 +1,4 @@
-import { Page } from "@prisma/client";
+import { Page } from "./enums/Page";
 
 export interface AboutCourses {
   id: number;
