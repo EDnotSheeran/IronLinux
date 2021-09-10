@@ -1,8 +1,8 @@
 import { ErrorRequest } from "../classes/ErrorRequest";
 import * as dotenv from "dotenv";
-import { ISpecialtiesRepository } from "../repository/interfaces/IspecialtiesRepository";
-import { SpecialtiesRepository } from "../repository/specialtiesRepository";
-import { Specialties } from "../domains/specialties";
+import { ISpecialtiesRepository } from "../repository/interfaces/ISpecialtiesRepository";
+import { SpecialtiesRepository } from "../repository/SpecialtiesRepository";
+import { Specialties } from "../domains/Specialties";
 dotenv.config();
 class SpecialtiesService {
   private specialtiesRepository: ISpecialtiesRepository;
