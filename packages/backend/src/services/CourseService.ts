@@ -13,7 +13,6 @@ class CourseService {
   private courseLanguageService;
   private courseLevelService;
   private paginationUtils;
-
   constructor() {
     this.courseRepository = new CourseRepository();
     this.courseLanguageService = new CourseLanguageService();
