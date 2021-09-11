@@ -8,7 +8,7 @@ const navigation = [
   { name: 'Cursos', href: '/courses', current: false },
   { name: 'Consultoria', href: '#', current: false },
   { name: 'Blog', href: '#', current: false },
-  { name: 'Sobre Nós', href: '#', current: false },
+  { name: 'Sobre Nós', href: '/about', current: false },
   { name: 'Fale Conosco', href: '#', current: false },
 ];
 

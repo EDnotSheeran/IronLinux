@@ -3,6 +3,10 @@ import Head from 'next/head';
 import { Button, Carousel, Stars, Layout } from '@components';
 import { Currency, WordHighLight } from '@helpers';
 import { GetStaticProps } from 'next';
+import { comments } from './api/comments';
+import { courses } from './api/courses';
+import { recentPosts } from './api/posts';
+import { specialities } from './api/specialities';
 
 const Home: React.FC<HomePageProps> = ({
   recentPosts,
@@ -393,22 +397,6 @@ const Home: React.FC<HomePageProps> = ({
 export default Home;
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async context => {
-  const recentPosts = await (
-    await fetch('http://localhost:3000/api/posts')
-  ).json();
-
-  const comments = await (
-    await fetch('http://localhost:3000/api/comments')
-  ).json();
-
-  const courses = await (
-    await fetch('http://localhost:3000/api/courses')
-  ).json();
-
-  const specialities = await (
-    await fetch('http://localhost:3000/api/specialities')
-  ).json();
-
   return {
     props: {
       recentPosts,
