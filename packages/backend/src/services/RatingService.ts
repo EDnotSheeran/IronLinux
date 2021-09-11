@@ -4,7 +4,10 @@ import { Ratings } from "../interfaces/Ratings";
 import { RatingsRepository } from "../repository/RatingsRepository";
 import { IRatingsRepository } from "../repository/interfaces/IRatingsRepository";
 import { PaginationUtils } from "../utils/PaginationUtils";
-import { IRatingService } from "./interfaces/IRatingService";
+import {
+  IRatingService,
+  TypeFilterRatingsService,
+} from "./interfaces/IRatingService";
 dotenv.config();
 class RatingsService implements IRatingService {
   private ratingsRepository: IRatingsRepository;
@@ -23,7 +26,7 @@ class RatingsService implements IRatingService {
     imageURL,
     rantingName,
     starts,
-  }: Ratings) {
+  }: Ratings): Promise<Ratings> {
     const ratingsCreated = await this.ratingsRepository.save({
       name,
       description,
@@ -42,7 +45,7 @@ class RatingsService implements IRatingService {
     page?: number,
     sort?: string,
     sortField?: string
-  ) {
+  ): Promise<TypeFilterRatingsService> {
     const { results, currentPage, totalPages, totalRecords } =
       await this.paginationUtils.pagination(
         pageSize,
@@ -53,14 +56,14 @@ class RatingsService implements IRatingService {
       );
 
     return {
-      course: results,
+      ratings: results,
       totalPages,
       totalRecords,
       currentPage,
     };
   }
 
-  async getById(id: number) {
+  async getById(id: number): Promise<Ratings> {
     const ratings = await this.ratingsRepository.getById(id);
     if (!ratings) {
       throw new ErrorRequest("Avaliação não encontrado", 404);
@@ -68,7 +71,7 @@ class RatingsService implements IRatingService {
     return ratings;
   }
 
-  async delete(id: number) {
+  async delete(id: number): Promise<boolean> {
     await this.getById(id);
     this.ratingsRepository.delete(id);
 
@@ -84,7 +87,7 @@ class RatingsService implements IRatingService {
     imageURL,
     rantingName,
     starts,
-  }: Ratings) {
+  }: Ratings): Promise<Ratings> {
     await this.getById(id);
 
     const ratings = this.ratingsRepository.update({

@@ -12,7 +12,7 @@ class HomePageService implements IHomePageService {
   constructor() {
     this.homePageRepository = new HomePageRepository();
   }
-  async updateOrCreate(HomePage: HomePage) {
+  async updateOrCreate(HomePage: HomePage): Promise<HomePage> {
     const aboutConsulting = this.AboutConsultingPrepare(
       HomePage.aboutConsulting
     );
@@ -27,7 +27,7 @@ class HomePageService implements IHomePageService {
     return homePage;
   }
 
-  async getLast() {
+  async getLast(): Promise<HomePage> {
     const homePage = await this.homePageRepository.getLastCreated();
     if (!homePage) {
       throw new ErrorRequest(

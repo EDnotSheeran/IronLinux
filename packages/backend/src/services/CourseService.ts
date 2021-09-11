@@ -2,13 +2,11 @@ import { ErrorRequest } from "../classes/ErrorRequest";
 import * as dotenv from "dotenv";
 import { ICourseRepository } from "../repository/interfaces/ICourseRepository";
 import { CourseRepository } from "../repository/CourseRepository";
-import { Course } from "../interfaces/Course";
 import { CourseWithCourseGrade } from "../interfaces/CourseWithCourseGrade";
 import { CourseLanguageService } from "./CourseLanguageService";
 import { CourseLevelService } from "./CourseLevelService";
 import { PaginationUtils } from "../utils/PaginationUtils";
 import { ICourseService } from "./interfaces/ICourseService";
-import { CourseGrade } from "src/interfaces/CourseGrade";
 dotenv.config();
 class CourseService implements ICourseService {
   private courseRepository: ICourseRepository;
@@ -22,20 +20,20 @@ class CourseService implements ICourseService {
     this.paginationUtils = new PaginationUtils();
   }
 
-  async create(
-    course: Course,
-    courseGrade: CourseGrade[]
-  ): Promise<CourseWithCourseGrade> {
+  async create(course: CourseWithCourseGrade): Promise<CourseWithCourseGrade> {
     await this.courseLevelService.getById(course.levelCourseId);
     await this.courseLanguageService.getById(course.languageCourseId);
     const courseSlugExists = await this.courseRepository.getBySlug(course.slug);
-    if (courseSlugExists) {
+    if (courseSlugExists || !course.slug) {
       throw new ErrorRequest(
         "Não é possível criar um curso com esta abreviação, por favor tente outro."
       );
     }
 
-    const courseCreated = await this.courseRepository.save(course, courseGrade);
+    const courseCreated = await this.courseRepository.save(
+      course,
+      course.courseGrade
+    );
 
     return courseCreated;
   }
@@ -86,20 +84,23 @@ class CourseService implements ICourseService {
     return true;
   }
 
-  async update(
-    course: Course,
-    courseGrade: CourseGrade
-  ): Promise<CourseWithCourseGrade> {
+  async update(course: CourseWithCourseGrade): Promise<CourseWithCourseGrade> {
     await this.getById(course.id);
     const courseSlugExists = await this.courseRepository.getBySlug(course.slug);
 
-    if (courseSlugExists && courseSlugExists.id != course.id) {
+    if (
+      (courseSlugExists && courseSlugExists.id != course.id) ||
+      !course.slug
+    ) {
       throw new ErrorRequest(
         "Não é possível criar um curso com esta abreviação, por favor tente outro."
       );
     }
 
-    const courseUpdated = this.courseRepository.update(course, courseGrade);
+    const courseUpdated = this.courseRepository.update(
+      course,
+      course.courseGrade
+    );
 
     return courseUpdated;
   }

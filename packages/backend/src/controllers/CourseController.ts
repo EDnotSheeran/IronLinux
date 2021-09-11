@@ -8,9 +8,9 @@ import { CourseService } from "../services/CourseService";
 
 class CourseController {
   async create(request: Request, response: Response) {
-    const { course, courseGrade } = request.body;
+    const courseWithCourseGrade: CourseWithCourseGrade = request.body;
     const courseService = new CourseService();
-    const courseCreated = await courseService.create(course, courseGrade);
+    const courseCreated = await courseService.create(courseWithCourseGrade);
     return response.status(201).json(courseCreated);
   }
 
@@ -42,9 +42,9 @@ class CourseController {
   }
 
   async update(request: Request, response: Response) {
-    const { course, courseGrade } = request.body;
+    const courseWithCourseGrade: CourseWithCourseGrade = request.body;
     const courseService = new CourseService();
-    const courseUpdated = await courseService.update(course, courseGrade);
+    const courseUpdated = await courseService.update(courseWithCourseGrade);
     return response.status(200).json(courseUpdated);
   }
 

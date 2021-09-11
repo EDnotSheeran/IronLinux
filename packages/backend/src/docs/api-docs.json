@@ -45,40 +45,11 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/User"
-                                },
-                                "examples": {
-                                    "UserInfo": {
-                                        "value": {
-                                            "id": "LNQT8FFFo0Qgy33Ca6E5NmQia8P2",
-                                            "name": "Usuário de Exemplo",
-                                            "status": "active",
-                                            "email": "email@teste.com.br",
-                                            "accesspanel": true,
-                                            "fcmToken": "eF1fPaI8SUmMKLrqOrqKLA:APA91bHyh5GJQLrpJ6TVBNng4EitgVZtIsRnvDoVdzk9DUqBU9t6qybtKYR8t5_AHNWx_9_GkBDTw4h8T5XWzXMmJqsiKyRwtU8zcRIakM91Cbq5Nu3l3xZsQccg93Eng3PEnVNrG6oW",
-                                            "storeId": "0011I00000KMbGzQAL",
-                                            "role": "Manager",
-                                            "shoppingCode": "SNA",
-                                            "shoppingCodeList": [
-                                                "SNA",
-                                                "SNE"
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                    "201": {
+                        "$ref": "#/components/responses/User"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -113,13 +84,10 @@
                 },
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/200"
+                        "$ref": "#/components/responses/User"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -145,13 +113,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/200"
+                        "description": "User was deleted successfully."
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -177,13 +142,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/200"
+                        "$ref": "#/components/responses/User"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -196,96 +158,14 @@
                 "tags": [
                     "User"
                 ],
-                "parameters": [
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "Nome do usuário",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "shoppingCode",
-                        "in": "query",
-                        "description": "Código do shopping",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "status",
-                        "in": "query",
-                        "description": "Status do usuário",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "enum": [
-                                "active",
-                                "inactive"
-                            ]
-                        }
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "Quantidade total de registros por página (O valor padrão é 25).",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Número da página que está sendo requisitada (O valor padrão é 1).",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
                 "summary": "Listar as informações de todos os usuário da aplicação",
                 "description": "Listar as informações de todos os usuário da aplicação",
                 "responses": {
                     "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "users": {
-                                            "type": "array",
-                                            "items": {
-                                                "description": "An array of user",
-                                                "$ref": "#/components/schemas/User"
-                                            }
-                                        },
-                                        "totalRecords": {
-                                            "type": "integer",
-                                            "format": "int32",
-                                            "description": "Número total de registros no resultado",
-                                            "example": 1
-                                        },
-                                        "totalPages": {
-                                            "type": "integer",
-                                            "format": "int32",
-                                            "description": "Número total de páginas no resultado",
-                                            "example": 1
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        "$ref": "#/components/responses/ArrayOfUser"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -309,24 +189,10 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "examples": {
-                                    "users": {
-                                        "value": {
-                                            "id": "dsa1s9da8d98a1sda6s5d46s5ad4"
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        "$ref": "#/components/responses/User"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -406,19 +272,46 @@
             }
         },
         "responses": {
-            "200": {
+            "User": {
                 "description": "",
                 "content": {
                     "application/json": {
-                        "schema": {},
                         "examples": {
-                            "OK": {
+                            "user-info": {
                                 "value": {
-                                    "status": "200",
-                                    "code": "200",
-                                    "message": "OK",
-                                    "description": "OK"
+                                    "id": 1,
+                                    "name": "Daniel",
+                                    "description": "Sou um cara muito legal",
+                                    "email": "devfigueiredo@gmail.com",
+                                    "active": false
                                 }
+                            }
+                        }
+                    }
+                }
+            },
+            "ArrayOfUser": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "user-info": {
+                                "value": [
+                                    {
+                                        "id": 1,
+                                        "name": "Daniel",
+                                        "description": "Sou um cara muito legal",
+                                        "email": "devfigueiredo@gmail.com",
+                                        "active": false
+                                    },
+                                    {
+                                        "id": 1,
+                                        "name": "Daniel",
+                                        "description": "Sou um cara muito legal",
+                                        "email": "devfigueiredo@gmail.com",
+                                        "active": false
+                                    }
+                                ]
                             }
                         }
                     }
@@ -429,50 +322,23 @@
                 "content": {
                     "application/json": {
                         "examples": {
-                            "unauthorized-fixed-token": {
+                            "unauthorized": {
                                 "value": {
-                                    "status": "401",
-                                    "code": "401",
-                                    "message": "Unauthorized",
-                                    "description": "Unauthorized"
-                                }
-                            },
-                            "unauthorized-google": {
-                                "value": {
-                                    "error": "Não foi possível fazer login na conta do Google. Tente novamente."
+                                    "error": "Unable to authenticate user. Please try to login again!"
                                 }
                             }
                         }
                     }
                 }
             },
-            "403": {
+            "400": {
                 "description": "",
-                "content": {
-                    "application/json": {
-                        "examples": {
-                            "forbbiden-role-access-panel": {
-                                "value": {
-                                    "error": "Usuário sem permissão de acesso ao painel administrativo"
-                                }
-                            },
-                            "forbbiden-role-access": {
-                                "value": {
-                                    "error": "Usuário sem permissão de acesso"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "422": {
-                "description": "Unprocessable Entity",
                 "content": {
                     "application/json": {
                         "examples": {
                             "failed-email-already-exists": {
                                 "value": {
-                                    "error": "Falha ao criar o usuário. O e-mail já está sendo usado por outra conta."
+                                    "error": "User Already Exists"
                                 }
                             }
                         }
@@ -484,19 +350,9 @@
                 "content": {
                     "application/json": {
                         "examples": {
-                            "failed-sensedia": {
+                            "failed-token": {
                                 "value": {
-                                    "error": "Falha ao validar as permissões de acesso do usuário"
-                                }
-                            },
-                            "failed-google": {
-                                "value": {
-                                    "error": "Falha ao validar o token do usuário."
-                                }
-                            },
-                            "failed-role-access": {
-                                "value": {
-                                    "error": "Usuário sem permissão de acesso ao painel administrativo"
+                                    "error": "Error validating access permissions!"
                                 }
                             }
                         }

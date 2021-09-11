@@ -73,7 +73,7 @@ export class CourseRepository implements ICourseRepository {
   }
   async update(
     course: Course,
-    courseGrade: CourseGrade
+    courseGrade: CourseGrade[]
   ): Promise<CourseWithCourseGrade> {
     const prisma = new PrismaClient();
 

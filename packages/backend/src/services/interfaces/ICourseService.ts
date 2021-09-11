@@ -13,10 +13,7 @@ export interface TypeFilterCourseService {
 }
 
 export interface ICourseService {
-  create(
-    course: Course,
-    courseGrade: CourseGrade[]
-  ): Promise<CourseWithCourseGrade>;
+  create(course: CourseWithCourseGrade): Promise<CourseWithCourseGrade>;
   filterCourses(
     pageSize?: number,
     page?: number,
@@ -26,9 +23,6 @@ export interface ICourseService {
   getById(id: number): Promise<CourseWithCourseGrade>;
   getBySlug(slug: string): Promise<CourseWithCourseGrade>;
   delete(id: number): Promise<boolean>;
-  update(
-    course: Course,
-    courseGrade: CourseGrade
-  ): Promise<CourseWithCourseGrade>;
+  update(course: CourseWithCourseGrade): Promise<CourseWithCourseGrade>;
   inactiveCourse(id: number, published: boolean): Promise<Course>;
 }

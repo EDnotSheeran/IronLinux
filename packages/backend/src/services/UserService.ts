@@ -13,7 +13,13 @@ class UserService implements IUserService {
     this.usersRepository = new UsersRepository();
   }
 
-  async create({ name, email, password, description, active }: User) {
+  async create({
+    name,
+    email,
+    password,
+    description,
+    active,
+  }: User): Promise<Omit<User, "password">> {
     const userAlreadyExists = await this.usersRepository.getByEmail(email);
     if (!email) {
       throw new ErrorRequest("Email Incorret");
@@ -37,7 +43,7 @@ class UserService implements IUserService {
     return userCreated;
   }
 
-  async getAll() {
+  async getAll(): Promise<Array<Omit<User, "password">>> {
     const user = await this.usersRepository.getAll();
     if (!user) {
       throw new ErrorRequest("Usuário não encontrado", 404);
@@ -45,14 +51,14 @@ class UserService implements IUserService {
     return user;
   }
 
-  async getByEmail(email: string) {
+  async getByEmail(email: string): Promise<User> {
     const user = await this.usersRepository.getByEmail(email);
     if (!user) {
       throw new ErrorRequest("Usuário não encontrado", 404);
     }
     return user;
   }
-  async getById(id: number) {
+  async getById(id: number): Promise<Omit<User, "password">> {
     const user = await this.usersRepository.getById(id);
     if (!user) {
       throw new ErrorRequest("Usuário não encontrado", 404);
@@ -60,21 +66,26 @@ class UserService implements IUserService {
     return user;
   }
 
-  async delete(id: number) {
+  async delete(id: number): Promise<void> {
     await this.getById(id);
     this.usersRepository.delete(id);
-
-    return true;
   }
 
-  async inactiveUser(id: number) {
+  async inactiveUser(id: number): Promise<Omit<User, "password">> {
     const userAlreadyExists = await this.getById(id);
     userAlreadyExists.active = false;
-    const user = this.usersRepository.update(userAlreadyExists);
+    const user = this.usersRepository.inactive(id);
     return user;
   }
 
-  async update({ name, email, password, description, active, id }: User) {
+  async update({
+    name,
+    email,
+    password,
+    description,
+    active,
+    id,
+  }: User): Promise<Omit<User, "password">> {
     await this.getById(id);
 
     const user = this.usersRepository.update({

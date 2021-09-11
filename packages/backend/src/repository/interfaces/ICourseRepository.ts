@@ -8,7 +8,7 @@ export interface ICourseRepository {
   ): Promise<CourseWithCourseGrade>;
   update(
     course: Course,
-    courseGrade: CourseGrade
+    courseGrade: CourseGrade[]
   ): Promise<CourseWithCourseGrade>;
   delete(id: number): Promise<boolean>;
   filterCourse(
