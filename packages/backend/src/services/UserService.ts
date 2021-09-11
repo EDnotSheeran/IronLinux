@@ -2,10 +2,11 @@ import { ErrorRequest } from "../classes/ErrorRequest";
 import * as dotenv from "dotenv";
 import { IUserRepository } from "../repository/interfaces/IUserRepository";
 import { UsersRepository } from "../repository/UserRepository";
-import { User } from "../domains/User";
+import { User } from "../interfaces/User";
 import { hash } from "bcryptjs";
+import { IUserService } from "./interfaces/IUserService";
 dotenv.config();
-class UserService {
+class UserService implements IUserService {
   private usersRepository: IUserRepository;
 
   constructor() {

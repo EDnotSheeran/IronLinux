@@ -1,11 +1,12 @@
 import { ErrorRequest } from "../classes/ErrorRequest";
 import * as dotenv from "dotenv";
-import { Ratings } from "../domains/Ratings";
+import { Ratings } from "../interfaces/Ratings";
 import { RatingsRepository } from "../repository/RatingsRepository";
 import { IRatingsRepository } from "../repository/interfaces/IRatingsRepository";
 import { PaginationUtils } from "../utils/PaginationUtils";
+import { IRatingService } from "./interfaces/IRatingService";
 dotenv.config();
-class RatingsService {
+class RatingsService implements IRatingService {
   private ratingsRepository: IRatingsRepository;
   private paginationUtils: PaginationUtils;
 

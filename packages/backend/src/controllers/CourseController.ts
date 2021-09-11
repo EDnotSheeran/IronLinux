@@ -1,14 +1,16 @@
 import { Request, Response } from "express";
-import { Course } from "../domains/Course";
-import { CourseGrade } from "../domains/CourseGrade";
-import { CourseWithCourseGrade } from "../domains/CourseWithCourseGrade";
+import { Course } from "../interfaces/Course";
+import {
+  CourseAndCourseGrade,
+  CourseWithCourseGrade,
+} from "../interfaces/CourseWithCourseGrade";
 import { CourseService } from "../services/CourseService";
 
 class CourseController {
   async create(request: Request, response: Response) {
-    const course: CourseWithCourseGrade = request.body;
+    const { course, courseGrade } = request.body;
     const courseService = new CourseService();
-    const courseCreated = await courseService.create(course);
+    const courseCreated = await courseService.create(course, courseGrade);
     return response.status(201).json(courseCreated);
   }
 
@@ -40,9 +42,9 @@ class CourseController {
   }
 
   async update(request: Request, response: Response) {
-    const course: Course = request.body;
+    const { course, courseGrade } = request.body;
     const courseService = new CourseService();
-    const courseUpdated = await courseService.update(course);
+    const courseUpdated = await courseService.update(course, courseGrade);
     return response.status(200).json(courseUpdated);
   }
 

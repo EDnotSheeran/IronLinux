@@ -1,4 +1,4 @@
-import { Ratings } from "../../domains/Ratings";
+import { Ratings } from "../../interfaces/Ratings";
 export interface IRatingsRepository {
   save(ratings: Ratings): Promise<Ratings>;
   update(ratings: Ratings): Promise<Ratings>;

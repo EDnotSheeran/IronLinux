@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AuthenticateUser } from "../domains/AuthenticateUser";
+import { AuthenticateUser } from "../interfaces/AuthenticateUser";
 import { AuthenticateUserService } from "../services/AuthenticateUserService";
 
 class AuthenticateUserController {

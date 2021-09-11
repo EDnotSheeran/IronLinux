@@ -1,7 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import { ErrorRequest } from "../classes/ErrorRequest";
-import { HomePage } from "../domains/HomePage";
-class HomePageRepository {
+import { HomePage } from "../interfaces/HomePage";
+import { IHomePageRepository } from "./interfaces/IHomePageRepository";
+class HomePageRepository implements IHomePageRepository {
   async updateOrCreate(HomePage: HomePage): Promise<HomePage> {
     try {
       const prisma = new PrismaClient();
@@ -38,6 +39,7 @@ class HomePageRepository {
         )
       )
         throw new ErrorRequest("Dados inconsistentes", 406);
+      throw error;
     }
   }
 

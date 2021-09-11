@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { HomePage } from "../domains/HomePage";
+import { HomePage } from "../interfaces/HomePage";
 import { HomePageService } from "../services/HomePageService";
 
 class HomePageController {

@@ -1,10 +1,17 @@
+import { IHomePageRepository } from "src/repository/interfaces/IHomePageRepository";
 import { ErrorRequest } from "../classes/ErrorRequest";
-import { AboutConsulting } from "../domains/AboutConsulting";
-import { AboutCourses } from "../domains/AboutCourses";
-import { HomePage } from "../domains/HomePage";
-import { InfoHomePage } from "../domains/InfoHomePage";
+import { AboutConsulting } from "../interfaces/AboutConsulting";
+import { AboutCourses } from "../interfaces/AboutCourses";
+import { HomePage } from "../interfaces/HomePage";
+import { InfoHomePage } from "../interfaces/InfoHomePage";
 import { HomePageRepository } from "../repository/HomePageRepository";
-class HomePageService {
+import { IHomePageService } from "./interfaces/IHomePageService";
+class HomePageService implements IHomePageService {
+  private homePageRepository: IHomePageRepository;
+
+  constructor() {
+    this.homePageRepository = new HomePageRepository();
+  }
   async updateOrCreate(HomePage: HomePage) {
     const aboutConsulting = this.AboutConsultingPrepare(
       HomePage.aboutConsulting
@@ -12,8 +19,7 @@ class HomePageService {
     const aboutCourses = this.AboutCoursesPrepare(HomePage.aboutCourses);
     const infoHomePage = this.InfoHomePagePrepare(HomePage.infoHomePage);
 
-    const homePageRepository = new HomePageRepository();
-    const homePage = await homePageRepository.updateOrCreate({
+    const homePage = await this.homePageRepository.updateOrCreate({
       infoHomePage,
       aboutConsulting,
       aboutCourses,
@@ -22,15 +28,14 @@ class HomePageService {
   }
 
   async getLast() {
-    const aboutConsultingRepository = new HomePageRepository();
-    const aboutConsulting = await aboutConsultingRepository.getLastCreated();
-    if (!aboutConsulting) {
+    const homePage = await this.homePageRepository.getLastCreated();
+    if (!homePage) {
       throw new ErrorRequest(
         "Não foi encontrado as informações da página inicial",
         404
       );
     }
-    return aboutConsulting;
+    return homePage;
   }
 
   private InfoHomePagePrepare(InfoHomePage: InfoHomePage) {

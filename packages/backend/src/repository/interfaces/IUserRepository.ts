@@ -1,4 +1,4 @@
-import { User } from "../../domains/User";
+import { User } from "../../interfaces/User";
 export interface IUserRepository {
   save(user: User): Promise<User>;
   update(user: User): Promise<User>;

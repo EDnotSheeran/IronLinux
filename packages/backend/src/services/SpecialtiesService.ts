@@ -2,9 +2,10 @@ import { ErrorRequest } from "../classes/ErrorRequest";
 import * as dotenv from "dotenv";
 import { ISpecialtiesRepository } from "../repository/interfaces/ISpecialtiesRepository";
 import { SpecialtiesRepository } from "../repository/SpecialtiesRepository";
-import { Specialties } from "../domains/Specialties";
+import { Specialties } from "../interfaces/Specialties";
+import { ISpecialtiesService } from "./interfaces/ISpecialtiesService";
 dotenv.config();
-class SpecialtiesService {
+class SpecialtiesService implements ISpecialtiesService {
   private specialtiesRepository: ISpecialtiesRepository;
 
   constructor() {
