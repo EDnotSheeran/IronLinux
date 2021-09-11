@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Specialties } from "prisma/prisma-client";
+import { Specialties } from "src/domains/Specialties";
 import { SpecialtiesService } from "../services/SpecialtiesService";
 
 class SpecialtiesController {
