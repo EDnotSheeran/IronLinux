@@ -1,19 +1,23 @@
 import { ErrorRequest } from "../classes/ErrorRequest";
-import { AuthenticateUser } from "../domains/AuthenticateUser";
+import { AuthenticateUser } from "../interfaces/AuthenticateUser";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import * as dotenv from "dotenv";
 import { IUserRepository } from "../repository/interfaces/IUserRepository";
 import { UsersRepository } from "../repository/UserRepository";
+import {
+  IAuthenticateUserService,
+  ResponseLogin,
+} from "./interfaces/IAuthenticateUserService";
 dotenv.config();
-class AuthenticateUserService {
+class AuthenticateUserService implements IAuthenticateUserService {
   private usersRepository: IUserRepository;
 
   constructor() {
     this.usersRepository = new UsersRepository();
   }
 
-  async execute({ email, password }: AuthenticateUser) {
+  async execute({ email, password }: AuthenticateUser): Promise<ResponseLogin> {
     const userExists = await this.usersRepository.getByEmail(email);
     if (!userExists) {
       throw new ErrorRequest("Email/Password incorret!");

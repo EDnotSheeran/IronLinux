@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { CourseLevel } from "../domains/CourseLevel";
+import { CourseLevel } from "../interfaces/CourseLevel";
 import { ICourseLevelRepository } from "./interfaces/ICourseLevelRepository";
 export class CourseLevelRepository implements ICourseLevelRepository {
   async getById(id: number): Promise<CourseLevel> {

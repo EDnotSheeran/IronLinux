@@ -1,4 +1,4 @@
-import { CourseLevel } from "../../domains/CourseLevel";
+import { CourseLevel } from "../../interfaces/CourseLevel";
 export interface ICourseLevelRepository {
   save(courseLevel: CourseLevel): Promise<CourseLevel>;
   update(courseLevel: CourseLevel): Promise<CourseLevel>;

@@ -2,9 +2,10 @@ import { ErrorRequest } from "../classes/ErrorRequest";
 import * as dotenv from "dotenv";
 import { ICourseLanguageRepository } from "../repository/interfaces/ICourseLanguageRepository";
 import { CourseLanguageRepository } from "../repository/CourseLanguageRepository";
-import { CourseLanguage } from "../domains/CourseLanguage";
+import { CourseLanguage } from "../interfaces/CourseLanguage";
+import { ICourseLanguageService } from "./interfaces/ICourseLanguageService";
 dotenv.config();
-class CourseLanguageService {
+class CourseLanguageService implements ICourseLanguageService {
   private courseLanguageRepository: ICourseLanguageRepository;
 
   constructor() {

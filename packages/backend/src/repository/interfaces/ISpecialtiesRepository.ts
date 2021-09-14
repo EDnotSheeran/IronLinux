@@ -1,4 +1,4 @@
-import { Specialties } from "../../domains/Specialties";
+import { Specialties } from "../../interfaces/Specialties";
 export interface ISpecialtiesRepository {
   save(specialties: Specialties): Promise<Specialties>;
   update(specialties: Specialties): Promise<Specialties>;

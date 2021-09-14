@@ -2,13 +2,13 @@ import { ErrorRequest } from "../classes/ErrorRequest";
 import * as dotenv from "dotenv";
 import { ICourseRepository } from "../repository/interfaces/ICourseRepository";
 import { CourseRepository } from "../repository/CourseRepository";
-import { Course } from "../domains/Course";
-import { CourseWithCourseGrade } from "../domains/CourseWithCourseGrade";
+import { CourseWithCourseGrade } from "../interfaces/CourseWithCourseGrade";
 import { CourseLanguageService } from "./CourseLanguageService";
 import { CourseLevelService } from "./CourseLevelService";
 import { PaginationUtils } from "../utils/PaginationUtils";
+import { ICourseService } from "./interfaces/ICourseService";
 dotenv.config();
-class CourseService {
+class CourseService implements ICourseService {
   private courseRepository: ICourseRepository;
   private courseLanguageService;
   private courseLevelService;
@@ -20,17 +20,20 @@ class CourseService {
     this.paginationUtils = new PaginationUtils();
   }
 
-  async create({ course, courseGrade }: CourseWithCourseGrade) {
+  async create(course: CourseWithCourseGrade): Promise<CourseWithCourseGrade> {
     await this.courseLevelService.getById(course.levelCourseId);
     await this.courseLanguageService.getById(course.languageCourseId);
     const courseSlugExists = await this.courseRepository.getBySlug(course.slug);
-    if (courseSlugExists) {
+    if (courseSlugExists || !course.slug) {
       throw new ErrorRequest(
         "Não é possível criar um curso com esta abreviação, por favor tente outro."
       );
     }
 
-    const courseCreated = await this.courseRepository.save(course, courseGrade);
+    const courseCreated = await this.courseRepository.save(
+      course,
+      course.courseGrade
+    );
 
     return courseCreated;
   }
@@ -58,7 +61,7 @@ class CourseService {
     };
   }
 
-  async getById(id: number) {
+  async getById(id: number): Promise<CourseWithCourseGrade> {
     const Course = await this.courseRepository.getById(id);
     if (!Course) {
       throw new ErrorRequest("Curso não encontrado", 404);
@@ -66,7 +69,7 @@ class CourseService {
     return Course;
   }
 
-  async getBySlug(slug: string) {
+  async getBySlug(slug: string): Promise<CourseWithCourseGrade> {
     const Course = await this.courseRepository.getBySlug(slug);
     if (!Course) {
       throw new ErrorRequest("Curso não encontrado", 404);
@@ -74,55 +77,38 @@ class CourseService {
     return Course;
   }
 
-  async delete(id: number) {
+  async delete(id: number): Promise<boolean> {
     await this.getById(id);
     this.courseRepository.delete(id);
 
     return true;
   }
 
-  async update({
-    id,
-    title,
-    description,
-    certified,
-    course_hours,
-    languageCourseId,
-    levelCourseId,
-    price,
-    published,
-    slug,
-  }: Course) {
-    await this.getById(id);
-    const courseSlugExists = await this.courseRepository.getBySlug(slug);
+  async update(course: CourseWithCourseGrade): Promise<CourseWithCourseGrade> {
+    await this.getById(course.id);
+    const courseSlugExists = await this.courseRepository.getBySlug(course.slug);
 
-    if (courseSlugExists && courseSlugExists.id != id) {
+    if (
+      (courseSlugExists && courseSlugExists.id != course.id) ||
+      !course.slug
+    ) {
       throw new ErrorRequest(
         "Não é possível criar um curso com esta abreviação, por favor tente outro."
       );
     }
 
-    const course = this.courseRepository.update({
-      id,
-      title,
-      description,
-      certified,
-      course_hours,
-      languageCourseId,
-      levelCourseId,
-      price,
-      published,
-      slug,
-      updatedAt: new Date(),
-    });
+    const courseUpdated = this.courseRepository.update(
+      course,
+      course.courseGrade
+    );
 
-    return course;
+    return courseUpdated;
   }
 
   async inactiveCourse(id: number, published: boolean) {
     const courseExisted = await this.getById(id);
 
-    const course = this.courseRepository.update({
+    const course = this.courseRepository.inactive({
       ...courseExisted,
       published,
     });

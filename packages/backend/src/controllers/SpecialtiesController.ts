@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Specialties } from "src/domains/Specialties";
+import { Specialties } from "src/interfaces/Specialties";
 import { SpecialtiesService } from "../services/SpecialtiesService";
 
 class SpecialtiesController {

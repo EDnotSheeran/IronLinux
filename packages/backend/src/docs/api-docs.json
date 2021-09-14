@@ -23,6 +23,10 @@
         {
             "name": "User",
             "description": "Todos os endpoints de usuários da aplicação"
+        },
+        {
+            "name": "Authenticate",
+            "description": "Todos os endpoint de autenticação da aplicação"
         }
     ],
     "paths": {
@@ -45,40 +49,11 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/User"
-                                },
-                                "examples": {
-                                    "UserInfo": {
-                                        "value": {
-                                            "id": "LNQT8FFFo0Qgy33Ca6E5NmQia8P2",
-                                            "name": "Usuário de Exemplo",
-                                            "status": "active",
-                                            "email": "email@teste.com.br",
-                                            "accesspanel": true,
-                                            "fcmToken": "eF1fPaI8SUmMKLrqOrqKLA:APA91bHyh5GJQLrpJ6TVBNng4EitgVZtIsRnvDoVdzk9DUqBU9t6qybtKYR8t5_AHNWx_9_GkBDTw4h8T5XWzXMmJqsiKyRwtU8zcRIakM91Cbq5Nu3l3xZsQccg93Eng3PEnVNrG6oW",
-                                            "storeId": "0011I00000KMbGzQAL",
-                                            "role": "Manager",
-                                            "shoppingCode": "SNA",
-                                            "shoppingCodeList": [
-                                                "SNA",
-                                                "SNE"
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                    "201": {
+                        "$ref": "#/components/responses/User"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -113,13 +88,10 @@
                 },
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/200"
+                        "$ref": "#/components/responses/User"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -144,14 +116,11 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/200"
+                    "204": {
+                        "description": "No Content"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -177,13 +146,39 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/200"
+                        "$ref": "#/components/responses/User"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
                     },
-                    "403": {
-                        "$ref": "#/components/responses/403"
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/authenticate": {
+            "post": {
+                "tags": [
+                    "Authenticate"
+                ],
+                "summary": "Autenticar o usuário da aplicação",
+                "description": "Autenticar o usuário da aplicação",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Authenticate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "$ref": "#/components/responses/Authenticated-Successful"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -196,96 +191,14 @@
                 "tags": [
                     "User"
                 ],
-                "parameters": [
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "Nome do usuário",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "shoppingCode",
-                        "in": "query",
-                        "description": "Código do shopping",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "status",
-                        "in": "query",
-                        "description": "Status do usuário",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "enum": [
-                                "active",
-                                "inactive"
-                            ]
-                        }
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "Quantidade total de registros por página (O valor padrão é 25).",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Número da página que está sendo requisitada (O valor padrão é 1).",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
                 "summary": "Listar as informações de todos os usuário da aplicação",
                 "description": "Listar as informações de todos os usuário da aplicação",
                 "responses": {
                     "200": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "users": {
-                                            "type": "array",
-                                            "items": {
-                                                "description": "An array of user",
-                                                "$ref": "#/components/schemas/User"
-                                            }
-                                        },
-                                        "totalRecords": {
-                                            "type": "integer",
-                                            "format": "int32",
-                                            "description": "Número total de registros no resultado",
-                                            "example": 1
-                                        },
-                                        "totalPages": {
-                                            "type": "integer",
-                                            "format": "int32",
-                                            "description": "Número total de páginas no resultado",
-                                            "example": 1
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        "$ref": "#/components/responses/ArrayOfUser"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -309,24 +222,181 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "examples": {
-                                    "users": {
-                                        "value": {
-                                            "id": "dsa1s9da8d98a1sda6s5d46s5ad4"
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        "$ref": "#/components/responses/User"
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
                     },
-                    "403": {
-                        "$ref": "#/components/responses/403"
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/home_page": {
+            "get": {
+                "tags": [
+                    "HomePage"
+                ],
+                "summary": "Listar informações da página inicial",
+                "description": "Listar informações da página inicial",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/HomePage"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "HomePage"
+                ],
+                "summary": "Criar/Atualizar as informações da página inicial",
+                "description": "Criar/Atualizar as informações da página inicial",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HomePage"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "$ref": "#/components/responses/HomePage"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/rating/{id}": {
+            "delete": {
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Deletar uma avaliação",
+                "description": "Deletar uma avaliação",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da avaliação",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/rating": {
+            "get": {
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Buscar avaliações dos Cursos",
+                "description": "Buscar avaliações dos Cursos",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "ratings": [
+                                        {
+                                            "id": 2,
+                                            "rantingName": "teste",
+                                            "name": "a",
+                                            "office": "teste",
+                                            "imageURL": "teste",
+                                            "position": 1,
+                                            "description": "teste",
+                                            "starts": 4.5,
+                                            "createdAt": "2021-09-06T01:26:16.687Z",
+                                            "updatedAt": "2021-09-06T01:26:16.688Z",
+                                            "page": "HOMEPAGE"
+                                        },
+                                        {
+                                            "id": 3,
+                                            "rantingName": "teste",
+                                            "name": "a",
+                                            "office": "teste",
+                                            "imageURL": "teste",
+                                            "position": 1,
+                                            "description": "teste",
+                                            "starts": 4.5,
+                                            "createdAt": "2021-09-11T00:27:46.743Z",
+                                            "updatedAt": "2021-09-11T00:27:46.744Z",
+                                            "page": "HOMEPAGE"
+                                        },
+                                        {
+                                            "id": 4,
+                                            "rantingName": "teste",
+                                            "name": "a",
+                                            "office": "teste",
+                                            "imageURL": "teste",
+                                            "position": 1,
+                                            "description": "teste",
+                                            "starts": 4.5,
+                                            "createdAt": "2021-09-11T00:28:05.660Z",
+                                            "updatedAt": "2021-09-11T00:28:05.660Z",
+                                            "page": "HOMEPAGE"
+                                        }
+                                    ],
+                                    "totalPages": 1,
+                                    "totalRecords": 3,
+                                    "currentPage": 1
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Rating"
+                ],
+                "summary": "Criar Avaliação dos Cursos",
+                "description": "Criar Avaliação dos Cursos",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "rantingName": "avaliacoes_principais",
+                                    "name": "Lucas",
+                                    "office": "CEO",
+                                    "imageBase64": "SFDSFD651SFD651SFDS65FD1FS6D51SFD61FSD651SFF6D51FS6.6a1.s4af651gg.fds4sa64.sgd4.fdg",
+                                    "position": 1,
+                                    "description": "Muito legal o curso, sensacional",
+                                    "starts": 4.5
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "$ref": "#/components/responses/Rating"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
                     },
                     "500": {
                         "$ref": "#/components/responses/500"
@@ -406,18 +476,139 @@
             }
         },
         "responses": {
-            "200": {
+            "Rating": {
                 "description": "",
                 "content": {
                     "application/json": {
-                        "schema": {},
                         "examples": {
-                            "OK": {
+                            "rating": {
                                 "value": {
-                                    "status": "200",
-                                    "code": "200",
-                                    "message": "OK",
-                                    "description": "OK"
+                                    "id": 4,
+                                    "rantingName": "avaliacoes_principais",
+                                    "name": "Lucas",
+                                    "office": "CEO",
+                                    "imageURL": "https://localhost:3000/images/image.png",
+                                    "position": 1,
+                                    "description": "Muito legal o curso, sensacional",
+                                    "starts": 4.5,
+                                    "createdAt": "2021-09-11T00:28:05.660Z",
+                                    "updatedAt": "2021-09-11T00:28:05.660Z",
+                                    "page": "HOMEPAGE"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Authenticated-Successful": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "Authenticated-Successful": {
+                                "value": {
+                                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRldmZpZ3VlaXJlZG9AZ21haWwuY29tIiwiaWF0IjoxNjMwODYyNzk0LCJleHAiOjE2MzA5NDkxOTQsInN1YiI6IjEifQ.E6UvrVpXbqPGV9ec6ButjBKCcIyNN6UraYTl58dOLrc",
+                                    "expiresIn": "2021-09-11 19:00:00"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "User": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "user-info": {
+                                "value": {
+                                    "id": 1,
+                                    "name": "Daniel",
+                                    "description": "Sou um cara muito legal",
+                                    "email": "devfigueiredo@gmail.com",
+                                    "active": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ArrayOfUser": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "user-info": {
+                                "value": [
+                                    {
+                                        "id": 1,
+                                        "name": "Daniel",
+                                        "description": "Sou um cara muito legal",
+                                        "email": "devfigueiredo@gmail.com",
+                                        "active": false
+                                    },
+                                    {
+                                        "id": 1,
+                                        "name": "Daniel",
+                                        "description": "Sou um cara muito legal",
+                                        "email": "devfigueiredo@gmail.com",
+                                        "active": false
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "HomePage": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "user-info": {
+                                "value": {
+                                    "infoHomePage": {
+                                        "id": 1,
+                                        "title": "Quer aprender mais sobre o mundo de Linux e Segurança ?",
+                                        "description": "IronLinux presta serviços de treinamento e consultoria nas principais áreas de segurança e sistemas operacionais. Descubra mais entrando em contato conosco.",
+                                        "imageURL": "",
+                                        "titleHomePageSpecialties": "Uma ampla diversidades de aprendizados",
+                                        "titleHomePageCourses": "Cursos Disponíveis",
+                                        "titleHomePagePosts": "Últimos posts do blog:",
+                                        "titleHomePageExperts": "Precisa de um especialista?",
+                                        "descriptionHomePageExperts": "Você precisa de alguma ajuda com:Linux, Segurança, Servidores ou Roteadores?",
+                                        "titleContactUS": "Fale Conosco",
+                                        "page": "HOMEPAGE"
+                                    },
+                                    "aboutCourses": {
+                                        "id": 1,
+                                        "titleFirst": "Conheça as variedades da IronLinux",
+                                        "title1": "Uma ampla seleção de cursos",
+                                        "description1": "Somos especialistas em implementar soluções com software open source e depois mostrar para o cliente como realizar a utilização das mesas..",
+                                        "title2": "Aprenda Sem Limites",
+                                        "description2": "Desenvolva habilidades com cursos, certificados e graduações on-line.",
+                                        "title3": "Prepare-se para uma carreira",
+                                        "description3": "Em áreas de alta demanda, como TI, IA e engenharia de nuvem, exige conhecimentos em Segurança de Informação",
+                                        "title4": "Tenha um histórico reconhecido pelo setor",
+                                        "description4": "Demonstre suas novas habilidades compartilhando o certificado do curso, certificado profissional e afins...",
+                                        "imageURL": "teste.png",
+                                        "createdAt": "2021-09-05T02:11:51.802Z",
+                                        "updatedAt": "2021-09-04T00:00:00.000Z",
+                                        "page": "HOMEPAGE"
+                                    },
+                                    "aboutConsulting": {
+                                        "id": 1,
+                                        "titleFirst": "Não deixe para amanhã, o que se pode ter hoje.",
+                                        "title": "Certificação Expert",
+                                        "description": "Nossa plataforma de cursos possuem funções que auxiliam o aluno no processo de ensino e aprendizagem, possibilitando o emprego prático dos conhecimentos adquiridos!",
+                                        "checkedDescription1": "Alto Nivel de Conhecimento e Aprendizado",
+                                        "checkedDescription2": "Você apredenderá os niveis mais baixos das regras padrões de segurança da informação",
+                                        "checkedDescription3": "Qualidade e experiência em treinamentos imersivos e práticos.",
+                                        "imageURL": "tete.png",
+                                        "createdAt": "2021-09-05T02:10:27.398Z",
+                                        "updatedAt": "2021-09-04T00:00:00.000Z",
+                                        "page": "HOMEPAGE"
+                                    }
                                 }
                             }
                         }
@@ -429,50 +620,28 @@
                 "content": {
                     "application/json": {
                         "examples": {
-                            "unauthorized-fixed-token": {
+                            "unauthorized": {
                                 "value": {
-                                    "status": "401",
-                                    "code": "401",
-                                    "message": "Unauthorized",
-                                    "description": "Unauthorized"
+                                    "error": "Unable to authenticate user. Please try to login again!"
                                 }
                             },
-                            "unauthorized-google": {
+                            "incorret-email-password": {
                                 "value": {
-                                    "error": "Não foi possível fazer login na conta do Google. Tente novamente."
+                                    "error": "Email/Password incorret!"
                                 }
                             }
                         }
                     }
                 }
             },
-            "403": {
+            "400": {
                 "description": "",
-                "content": {
-                    "application/json": {
-                        "examples": {
-                            "forbbiden-role-access-panel": {
-                                "value": {
-                                    "error": "Usuário sem permissão de acesso ao painel administrativo"
-                                }
-                            },
-                            "forbbiden-role-access": {
-                                "value": {
-                                    "error": "Usuário sem permissão de acesso"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "422": {
-                "description": "Unprocessable Entity",
                 "content": {
                     "application/json": {
                         "examples": {
                             "failed-email-already-exists": {
                                 "value": {
-                                    "error": "Falha ao criar o usuário. O e-mail já está sendo usado por outra conta."
+                                    "error": "User Already Exists"
                                 }
                             }
                         }
@@ -484,19 +653,9 @@
                 "content": {
                     "application/json": {
                         "examples": {
-                            "failed-sensedia": {
+                            "failed-token": {
                                 "value": {
-                                    "error": "Falha ao validar as permissões de acesso do usuário"
-                                }
-                            },
-                            "failed-google": {
-                                "value": {
-                                    "error": "Falha ao validar o token do usuário."
-                                }
-                            },
-                            "failed-role-access": {
-                                "value": {
-                                    "error": "Usuário sem permissão de acesso ao painel administrativo"
+                                    "error": "Error validating access permissions!"
                                 }
                             }
                         }
@@ -505,11 +664,51 @@
             }
         },
         "schemas": {
+            "Authenticate": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Rating": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "rantingName": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "office": {
+                        "type": "string"
+                    },
+                    "imageURL": {
+                        "type": "string"
+                    },
+                    "position": {
+                        "type": "number"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "starts": {
+                        "type": "number"
+                    }
+                }
+            },
             "User": {
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "number"
                     },
                     "name": {
                         "type": "string"
@@ -517,11 +716,142 @@
                     "email": {
                         "type": "string"
                     },
+                    "password": {
+                        "type": "string"
+                    },
                     "description": {
                         "type": "string"
                     },
                     "active": {
                         "type": "boolean"
+                    }
+                }
+            },
+            "HomePage": {
+                "type": "object",
+                "properties": {
+                    "infoHomePage": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "number"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "imageURL": {
+                                "type": "string"
+                            },
+                            "titleHomePageSpecialties": {
+                                "type": "string"
+                            },
+                            "titleHomePageCourses": {
+                                "type": "string"
+                            },
+                            "titleHomePagePosts": {
+                                "type": "string"
+                            },
+                            "titleHomePageExperts": {
+                                "type": "string"
+                            },
+                            "descriptionHomePageExperts": {
+                                "type": "string"
+                            },
+                            "titleContactUS": {
+                                "type": "string"
+                            },
+                            "page": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "aboutCourses": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "number"
+                            },
+                            "titleFirst": {
+                                "type": "string"
+                            },
+                            "title1": {
+                                "type": "string"
+                            },
+                            "description1": {
+                                "type": "string"
+                            },
+                            "title2": {
+                                "type": "string"
+                            },
+                            "description2": {
+                                "type": "string"
+                            },
+                            "title3": {
+                                "type": "string"
+                            },
+                            "description3": {
+                                "type": "string"
+                            },
+                            "title4": {
+                                "type": "string"
+                            },
+                            "description4": {
+                                "type": "string"
+                            },
+                            "imageURL": {
+                                "type": "string"
+                            },
+                            "createdAt": {
+                                "type": "string"
+                            },
+                            "updatedAt": {
+                                "type": "string"
+                            },
+                            "page": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "aboutConsulting": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "number"
+                            },
+                            "titleFirst": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "checkedDescription1": {
+                                "type": "string"
+                            },
+                            "checkedDescription2": {
+                                "type": "string"
+                            },
+                            "checkedDescription3": {
+                                "type": "string"
+                            },
+                            "imageURL": {
+                                "type": "string"
+                            },
+                            "createdAt": {
+                                "type": "string"
+                            },
+                            "updatedAt": {
+                                "type": "string"
+                            },
+                            "page": {
+                                "type": "string"
+                            }
+                        }
                     }
                 }
             }

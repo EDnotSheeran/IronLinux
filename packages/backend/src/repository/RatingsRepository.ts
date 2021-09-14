@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { Ratings } from "../domains/Ratings";
+import { Ratings } from "../interfaces/Ratings";
 import { IRatingsRepository } from "./interfaces/IRatingsRepository";
 export class RatingsRepository implements IRatingsRepository {
   async getById(id: number): Promise<Ratings> {

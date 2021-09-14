@@ -1,9 +1,10 @@
-import { User } from "../../domains/User";
+import { User } from "../../interfaces/User";
 export interface IUserRepository {
   save(user: User): Promise<User>;
   update(user: User): Promise<User>;
   delete(id: number): Promise<boolean>;
-  getAll(): Promise<User[]>;
-  getById(id: number): Promise<User>;
+  getAll(): Promise<Array<Omit<User, "password">>>;
+  getById(id: number): Promise<Omit<User, "password">>;
   getByEmail(email: string): Promise<User>;
+  inactive(id: number): Promise<User>;
 }

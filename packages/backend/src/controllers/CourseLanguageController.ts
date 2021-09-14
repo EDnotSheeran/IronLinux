@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { Course } from "../domains/Course";
-import { CourseLanguage } from "../domains/CourseLanguage";
+import { Course } from "../interfaces/Course";
+import { CourseLanguage } from "../interfaces/CourseLanguage";
 import { CourseLanguageService } from "../services/CourseLanguageService";
 
 class CourseLanguageController {

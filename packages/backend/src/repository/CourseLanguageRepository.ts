@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { Course } from "../domains/Course";
-import { CourseLanguage } from "../domains/CourseLanguage";
+import { Course } from "../interfaces/Course";
+import { CourseLanguage } from "../interfaces/CourseLanguage";
 import { ICourseLanguageRepository } from "./interfaces/ICourseLanguageRepository";
 export class CourseLanguageRepository implements ICourseLanguageRepository {
   async getById(id: number): Promise<CourseLanguage> {

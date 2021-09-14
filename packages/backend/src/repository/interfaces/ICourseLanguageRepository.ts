@@ -1,5 +1,5 @@
-import { Course } from "../../domains/Course";
-import { CourseLanguage } from "../../domains/CourseLanguage";
+import { Course } from "../../interfaces/Course";
+import { CourseLanguage } from "../../interfaces/CourseLanguage";
 export interface ICourseLanguageRepository {
   save(courseLanguage: CourseLanguage): Promise<CourseLanguage>;
   update(courseLanguage: CourseLanguage): Promise<CourseLanguage>;

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Ratings } from "../domains/Ratings";
+import { Ratings } from "../interfaces/Ratings";
 import { RatingsService } from "../services/RatingService";
 
 class RatingsController {
