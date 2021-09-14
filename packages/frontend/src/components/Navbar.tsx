@@ -6,7 +6,7 @@ import { Button } from '@components/index';
 const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'Cursos', href: '/courses', current: false },
-  { name: 'Consultoria', href: '#', current: false },
+  { name: 'Consultoria', href: '/consultancies', current: false },
   { name: 'Blog', href: '#', current: false },
   { name: 'Sobre Nós', href: '/about', current: false },
   { name: 'Fale Conosco', href: '#', current: false },

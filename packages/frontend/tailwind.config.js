@@ -20,6 +20,7 @@ module.exports = {
         secondary: '#121214',
         gold: {
           rose: '#FEA250',
+          80: '#F4BE02CC',
           light: '#F4BE0232',
           DEFAULT: '#F4BE02',
           dark: '#e0b000',

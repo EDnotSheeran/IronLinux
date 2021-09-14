@@ -56,10 +56,10 @@ const about: React.FC = ({ children }) => {
           </p>
         </div>
       </section>
-      <section className="container mx-auto lg:px-0">
+      <section className="container mx-auto lg:px-0 pb-10">
         <h1 className="text-4xl font-bold text-center">Fundadores</h1>
         <div className="flex gap-3 flex-wrap">
-          <div className="relative flex-1 bg-gold-light p-4 pt-20 border-2 min-w-96 mt-20">
+          <div className="relative flex-1 bg-gold-light p-4 pt-20 border-2 min-w-80 mt-20">
             <img
               className="w-28 absolute -top-14 left-1/2 transform -translate-x-1/2"
               src="/avatars/vinicius.png"
@@ -76,7 +76,7 @@ const about: React.FC = ({ children }) => {
               transferir conhecimento e incentivar meus colegas.
             </p>
           </div>
-          <div className="relative flex-1 bg-gold-light p-4 pt-20 border-2 min-w-96 mt-20">
+          <div className="relative flex-1 bg-gold-light p-4 pt-20 border-2 min-w-80 mt-20">
             <img
               className="w-28 absolute -top-14 left-1/2 transform -translate-x-1/2"
               src="/avatars/gustavo.png"
@@ -94,7 +94,7 @@ const about: React.FC = ({ children }) => {
               com Python.
             </p>
           </div>
-          <div className="relative flex-1 bg-gold-light p-4 pt-20 border-2 min-w-96 mt-20">
+          <div className="relative flex-1 bg-gold-light p-4 pt-20 border-2 min-w-80 mt-20">
             <img
               className="w-28 absolute -top-14 left-1/2 transform -translate-x-1/2"
               src="/avatars/lucas.png"
@@ -114,15 +114,74 @@ const about: React.FC = ({ children }) => {
           </div>
         </div>
       </section>
-      <section className="bg-gold">
-        <div className="container">
-          <h2 className="text-center">Alguns números</h2>
-          <p>
-            A Iron Linux é uma empresa para ensino e aprendizado, focada na
-            qualificação e construção de carreira de seus alunos, oferecendo os
-            melhores instrutores.
-          </p>
-          <div className=""></div>
+      <section className="bg-gold-80 p-10 lg:p-8">
+        <h2 className="text-center text-white font-bold text-5xl my-5">
+          Alguns números
+        </h2>
+        <p className="text-white text-xl text-center">
+          A Iron Linux é uma empresa para ensino e aprendizado, focada na
+          qualificação e construção de carreira de seus alunos, oferecendo os
+          melhores instrutores.
+        </p>
+        <div className="w-3/4 mx-auto flex flex-col sm:flex-row justify-evenly">
+          <div className="flex-1  flex flex-col items-center mt-8 lg:mt-20">
+            <p className="text-white text-7xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+              20
+            </p>
+            <p className="text-white text-center text-xl max-w-56">
+              instrutores
+            </p>
+          </div>
+          <div className="flex-1 flex flex-col items-center mt-8 lg:mt-20">
+            <p className="text-white text-7xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+              35
+            </p>
+            <p className="text-white text-center text-xl max-w-56">
+              cursos disponiveis
+            </p>
+          </div>
+          <div className="flex-1 flex flex-col items-center mt-8 lg:mt-20">
+            <p className="text-white text-7xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+              50
+            </p>
+            <p className="text-white text-center text-xl max-w-56">
+              mil minutos em video
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col sm:flex-row flex-wrap justify-evenly mb-5">
+          <div className="flex-1 flex flex-col items-center mt-8 lg:mt-20">
+            <p className="text-white text-7xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+              12
+            </p>
+            <p className="text-white text-center text-xl max-w-56">
+              mil lições feitas pelos alunos
+            </p>
+          </div>
+          <div className="flex-1 flex flex-col items-center mt-8 lg:mt-20">
+            <p className="text-white text-7xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+              3+
+            </p>
+            <p className="text-white text-center text-xl max-w-56">
+              mil alunos cadastrados e ativos
+            </p>
+          </div>
+          <div className="flex-1 flex flex-col items-center mt-8 lg:mt-20">
+            <p className="text-white text-7xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+              15
+            </p>
+            <p className="text-white text-center text-xl max-w-56">
+              tipos de consultorias
+            </p>
+          </div>
+          <div className="flex-1 flex flex-col items-center mt-8 lg:mt-20">
+            <p className="text-white text-7xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+              10+
+            </p>
+            <p className="text-white text-center text-xl max-w-56">
+              mil acessos no blog
+            </p>
+          </div>
         </div>
       </section>
     </Layout>
