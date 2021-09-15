@@ -34,10 +34,10 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "yarn lint src",
-      "next build .",
-      "yarn test --whatchAll=false --findRelatedTests --bail"
+    "/packages/frontend/**/*.{js,jsx,ts,tsx}": [
+      "yarn workspace @iron-linux/frontend run lint src",
+      "workspace @iron-linux/frontend run build .",
+      "yarn workspace @iron-linux/frontend run test --whatchAll=false --findRelatedTests --bail"
     ]
   }
 }
