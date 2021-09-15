@@ -14,8 +14,30 @@
     "test:backend": "yarn workspace @iron-linux/backend run test",
     "dev": "yarn workspace @iron-linux/frontend run dev & yarn workspace @iron-linux/backend run dev",
     "dev:frontend": "yarn workspace @iron-linux/frontend run dev",
-    "dev:backend": "yarn workspace @iron-linux/backend run dev"
+    "dev:backend": "yarn workspace @iron-linux/backend run dev",
+    "prepare": "husky install"
   },
   "repository": "https://github.com/DevFigueiredo/IronLinux.git",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "commitizen": "^4.2.4",
+    "gh-pages": "^3.2.3",
+    "husky": "^7.0.1",
+    "jest": "26.4.2",
+    "lint-staged": "^11.1.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "yarn lint src",
+      "next build .",
+      "yarn test --whatchAll=false --findRelatedTests --bail"
+    ]
+  }
 }
