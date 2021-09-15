@@ -49,12 +49,6 @@ jobs:
       - name: Creating ".nojekyll" file
         run: sudo touch ./packages/frontend/out/.nojekyll
 
-      # Test the app
-      - name: Testing the app 🧪
-        uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: yarn workspace @iron-linux/frontend run test
-
       # Deploys the app
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4

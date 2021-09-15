@@ -389,7 +389,6 @@ const Home: React.FC<HomePageProps> = ({
           </div>
         </section>
       </div>
-      {/* Fale Conosco */}
     </>
   );
 };
