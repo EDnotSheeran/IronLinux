@@ -1,6 +1,6 @@
 import React from 'react';
 
-const consultancies: React.FC = ({ children }) => {
+const Consultancies: React.FC = ({ children }) => {
   return (
     <>
       <div className="oval-bg-t-page"></div>
@@ -128,4 +128,4 @@ const consultancies: React.FC = ({ children }) => {
   );
 };
 
-export default consultancies;
+export default Consultancies;

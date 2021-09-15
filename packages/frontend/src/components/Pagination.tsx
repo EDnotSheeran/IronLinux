@@ -2,11 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/solid';
 
-type PaginationProps = {
-  pages: number;
-  activePage: number;
-};
-
 const Pagination: React.FC<PaginationProps> = ({ pages }) => {
   return (
     <div className="flex">

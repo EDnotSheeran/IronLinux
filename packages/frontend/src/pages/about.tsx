@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@components';
 
-const about: React.FC = ({ children }) => {
+const About: React.FC = ({ children }) => {
   return (
     <>
       <div className="oval-bg-t-page relative"></div>
@@ -188,4 +188,4 @@ const about: React.FC = ({ children }) => {
   );
 };
 
-export default about;
+export default About;

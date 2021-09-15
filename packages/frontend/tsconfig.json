@@ -26,7 +26,9 @@
       "@components/*":["./src/components/*"],
       "@helpers":["./src/helpers"],
       "@helpers/*":["./src/helpers/*"],
-      "@assets/*":["./src/assets/*"],
+      "@assets/*":["./src/context/*"],
+      "@context":["./src/context"],
+      "@context/*":["./src/context/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

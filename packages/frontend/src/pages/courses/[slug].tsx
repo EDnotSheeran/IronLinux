@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import {
   ShoppingCartIcon,
   ChartBarIcon,
@@ -26,8 +25,6 @@ type CourseProps = {
 };
 
 const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
-  const router = useRouter();
-
   return (
     <>
       <Head>
