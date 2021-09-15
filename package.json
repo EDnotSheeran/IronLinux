@@ -1,5 +1,5 @@
 {
-  "name": "ironlinuxmonorepo",
+  "name": "iron-linux",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
@@ -7,6 +7,14 @@
     "packages": [
       "packages/*"
     ]
+  },
+  "scripts": {
+    "test": "echo script de teste não definido; exit $1",
+    "test:frontend": "yarn workspace @iron-linux/frontend run test",
+    "test:backend": "yarn workspace @iron-linux/backend run test",
+    "dev": "yarn workspace @iron-linux/frontend run dev & yarn workspace @iron-linux/backend run dev",
+    "dev:frontend": "yarn workspace @iron-linux/frontend run dev",
+    "dev:backend": "yarn workspace @iron-linux/backend run dev"
   },
   "repository": "https://github.com/DevFigueiredo/IronLinux.git",
   "license": "MIT"

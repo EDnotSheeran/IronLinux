@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 
 type NavigationProps = {
   navigation: { name: string; href: string; current: boolean }[];
