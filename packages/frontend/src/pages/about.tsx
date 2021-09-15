@@ -1,9 +1,9 @@
 import React from 'react';
-import { Layout, Button } from '@components';
+import { Button } from '@components';
 
 const about: React.FC = ({ children }) => {
   return (
-    <Layout>
+    <>
       <div className="oval-bg-t-page relative"></div>
       <section className="container mx-auto px-10 lg:px-0 flex">
         <div className="float-left mt-10">
@@ -184,7 +184,7 @@ const about: React.FC = ({ children }) => {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

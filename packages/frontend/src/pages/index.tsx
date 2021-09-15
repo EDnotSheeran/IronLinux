@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Button, Carousel, Stars, Layout } from '@components';
+import { Button, Carousel, Stars } from '@components';
 import { Currency, WordHighLight } from '@helpers';
 import { GetStaticProps } from 'next';
 import { comments } from './api/comments';
@@ -16,7 +16,7 @@ const Home: React.FC<HomePageProps> = ({
   sections: { main },
 }) => {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Página Inicial</title>
       </Head>
@@ -390,7 +390,7 @@ const Home: React.FC<HomePageProps> = ({
         </section>
       </div>
       {/* Fale Conosco */}
-    </Layout>
+    </>
   );
 };
 

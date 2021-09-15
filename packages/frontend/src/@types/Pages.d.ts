@@ -1,3 +1,11 @@
+type NextPageWithLayout<T = {}> = import('next').NextPage<T> & {
+  getLayout?: (page: import('react').ReactElement) => import('react').ReactNode;
+};
+
+type AppPropsWithLayout = import('next').AppProps & {
+  Component: NextPageWithLayout;
+};
+
 type HomePageProps = {
   recentPosts: Post[];
   comments: PostComment[];

@@ -1,9 +1,8 @@
 import React from 'react';
-import { Layout } from '@components';
 
 const consultancies: React.FC = ({ children }) => {
   return (
-    <Layout>
+    <>
       <div className="oval-bg-t-page"></div>
       <section className="container mx-auto lg:px-0">
         <h1 className="text-4xl font-bold text-grey-500 mb-20">Consultorias</h1>
@@ -125,17 +124,8 @@ const consultancies: React.FC = ({ children }) => {
         </div>
       </section>
       <div className="oval-bg-reverse h-60"></div>
-    </Layout>
+    </>
   );
 };
 
 export default consultancies;
-
-interface oi {
-  oi: string;
-}
-
-interface oi {
-  oi: string;
-  asd: string;
-}

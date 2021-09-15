@@ -2,12 +2,12 @@ import React from 'react';
 import { GetServerSideProps, GetServerSidePropsResult } from 'next';
 import { SearchIcon } from '@heroicons/react/solid';
 import { Currency } from '@helpers';
-import { Layout, Select, Button, Pagination } from '@components';
+import { Select, Button, Pagination } from '@components';
 import Link from 'next/link';
 
 const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
   return (
-    <Layout>
+    <>
       <div className="oval-bg">
         <section className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto p-5 pt-0 flex">
           <div className="float-left w-full">
@@ -75,7 +75,7 @@ const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
         </div>
       </section>
       <div className="oval-bg-reverse h-60"></div>
-    </Layout>
+    </>
   );
 };
 

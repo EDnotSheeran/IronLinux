@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Layout from '@components/Layout';
 import { useRouter } from 'next/router';
 import {
   ShoppingCartIcon,
@@ -30,7 +29,7 @@ const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
   const router = useRouter();
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>CCNA Cisco</title>
       </Head>
@@ -229,7 +228,7 @@ const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
           </ul>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 
