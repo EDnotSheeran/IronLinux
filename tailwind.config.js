@@ -171,5 +171,5 @@ module.exports = {
   corePlugins: {
     container: false,
   },
-  plugins: [require('./plugins/tailwindcss.plugin')],
+  plugins: [require('./src/plugins/tailwindcss.plugin')],
 };

@@ -27,13 +27,13 @@ jobs:
       - name: Instaling packages 📦
         uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: yarn workspace @iron-linux/frontend run clean-install
+          cmd: yarn run clean-install
 
       # Builds the app
       - name: Building app ⛏
         uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: yarn workspace @iron-linux/frontend run build
+          cmd: yarn run build
         env:
           NEXT_PUBLIC_BASE_PATH: "/IronLinuxFrontEnd"
 
@@ -41,17 +41,17 @@ jobs:
       - name: Exporting app 💥
         uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: yarn workspace @iron-linux/frontend run export
+          cmd: yarn run export
         env:
           NEXT_PUBLIC_BASE_PATH: /IronLinuxFrontEnd
 
       # Creates a .nojekyll file to disable github jekyll
       - name: Creating ".nojekyll" file
-        run: sudo touch ./packages/frontend/out/.nojekyll
+        run: sudo touch ./out/.nojekyll
 
       # Deploys the app
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: packages/frontend/out # The folder the action should deploy.
+          folder: out # The folder the action should deploy.
