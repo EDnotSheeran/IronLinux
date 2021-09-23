@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { Button, Carousel, Stars } from '@components';
-import { Currency, WordHighLight } from '@helpers';
+import { Currency, WordHighLight } from '@helpers/utils';
 import { GetStaticProps } from 'next';
 import { comments } from './api/comments';
 import { courses } from './api/courses';
@@ -351,7 +351,7 @@ const Home: React.FC<HomePageProps> = ({
                 Seu Nome
               </label>
               <input
-                className="border-2 rounded-md p-2 w-full"
+                className="border-2 focus:border-black rounded-md p-2 w-full"
                 name="name"
                 type="text"
               />
@@ -361,7 +361,7 @@ const Home: React.FC<HomePageProps> = ({
                 Seu E-Mail
               </label>
               <input
-                className="border-2 rounded-md p-2 w-full"
+                className="border-2 focus:border-black rounded-md p-2 w-full"
                 name="email"
                 type="text"
               />
@@ -371,7 +371,7 @@ const Home: React.FC<HomePageProps> = ({
                 Assunto
               </label>
               <input
-                className="border-2 rounded-md p-2 w-full"
+                className="border-2 focus:border-black rounded-md p-2 w-full"
                 name="subject"
                 type="text"
               />

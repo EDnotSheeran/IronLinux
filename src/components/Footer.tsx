@@ -9,35 +9,35 @@ const Footer: React.FC = ({ children }) => {
           <li className="mb-10">
             <img className="" src="/iron-logo.svg" alt="iron-logo.svg" />
           </li>
-          <li className="my-1">
+          <li className="my-1 hover:text-gold">
             <a href="#">Home</a>
           </li>
-          <li className="my-1">
+          <li className="my-1 hover:text-gold">
             <a href="#">Sobre Nós</a>
           </li>
-          <li className="my-1">
+          <li className="my-1 hover:text-gold">
             <a href="#">Blog</a>
           </li>
-          <li className="my-1">
+          <li className="my-1 hover:text-gold">
             <a href="#">Termos de Serviço</a>
           </li>
         </ul>
         <ul className="w-full md:mx-16 font-poppins">
           <li className="font-bold mt-5 mb-9">Serviços</li>
-          <li className="my-1">
+          <li className="my-1 hover:text-gold">
             <a href="#">Cursos</a>
           </li>
           <li className="my-1">
             <a href="#">Consultorias</a>
           </li>
-          <li className="my-1">
+          <li className="my-1 hover:text-gold">
             <a href="#">Treinamentos</a>
           </li>
         </ul>
         <div className="font-poppins pt-10 lg:pt-5">
           <p className="font-bold">Conheça nossa NewsLetter</p>
           <input
-            className="border-2 rounded-md border-blue-bluesh p-3 w-72 placeholder-current font-extralight mt-1 mb-4"
+            className="border-2 rounded-md border-blue-bluesh focus:border-black p-3 w-72 placeholder-current font-extralight mt-1 mb-4"
             type="text"
             placeholder="Digite seu e-mail..."
           />

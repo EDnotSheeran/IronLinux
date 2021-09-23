@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetServerSideProps, GetServerSidePropsResult } from 'next';
 import { SearchIcon } from '@heroicons/react/solid';
-import { Currency } from '@helpers';
+import { Currency } from '@helpers/utils';
 import { Select, Button, Pagination } from '@components';
 import Link from 'next/link';
 
@@ -15,7 +15,7 @@ const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
             <h6 className="font-bold my-3">Filtros</h6>
             <div className="flex flex-wrap w-full">
               <div className="relative my-3 w-full max-w-60 mr-3">
-                <button className="bg-gold text-white rounded-md w-12 h-12 flex justify-center items-center absolute left-0">
+                <button className="bg-gold hover:bg-gold-dark text-white rounded-md w-12 h-12 flex justify-center items-center absolute left-0">
                   <SearchIcon className="w-6" />
                 </button>
                 <input
@@ -48,7 +48,10 @@ const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
         <div className="flex flex-wrap mt-10">
           {courses.map((course, i) => {
             return (
-              <div key={i} className="w-full md:w-1/2 lg:w-1/4 mb-10">
+              <div
+                key={i}
+                className="w-full max-w-80 mx-auto md:w-1/2 lg:w-1/4 mb-10"
+              >
                 <div className="flex flex-col justify-center items-center mx-2 pb-6 h-full bx-shaddow rounded-md">
                   <img className="w-full" src={course.imageURL} alt="image" />
                   <h3 className="text-lg font-semibold text-center my-5 ">
@@ -61,7 +64,7 @@ const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
                     {Currency(course.price, 'pt-BR', 'BRL')}
                   </h2>
                   <Link href="/courses/1">
-                    <a className="bg-gold font-poppins text-white text-bold rounded-md py-2 px-5 pointer-events-auto mt-3">
+                    <a className="bg-gold hover:bg-gold-dark font-poppins text-white text-bold rounded-md py-2 px-5 pointer-events-auto mt-3">
                       Comprar
                     </a>
                   </Link>

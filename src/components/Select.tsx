@@ -20,6 +20,8 @@ const colourStyles:
     return {
       ...styles,
       minWidth: '5rem',
+      outline: 'none',
+      boxShadow: 'none',
     };
   },
   control: styles => {
@@ -29,10 +31,14 @@ const colourStyles:
       borderColor: 'rgba(209, 213, 219, var(--tw-border-opacity))',
       borderWidth: '2px',
       flexDirection: 'row-reverse',
+      outline: 'none',
+      boxShadow: 'none',
       ':active': {
+        outline: 'none',
         boxShadow: 'none',
       },
       ':hover': {
+        outline: 'none',
         boxShadow: 'none',
         borderColor: 'rgb(209, 213, 219)',
       },
@@ -42,6 +48,9 @@ const colourStyles:
     return {
       ...styles,
       backgroundColor: 'rgb(244, 190, 2)',
+      ':hover': {
+        backgroundColor: 'rgb(224, 176, 0)',
+      },
       width: '3rem',
       height: '3rem',
       marginTop: '-2px',
@@ -50,11 +59,23 @@ const colourStyles:
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      cursor: 'pointer',
+      color: 'white',
     };
   },
   indicatorSeparator: () => {
     return {
       display: 'none',
+    };
+  },
+  placeholder: () => {
+    return {
+      color: 'rgb(156, 163, 175)',
+    };
+  },
+  dropdownIndicator: () => {
+    return {
+      color: 'white',
     };
   },
 };

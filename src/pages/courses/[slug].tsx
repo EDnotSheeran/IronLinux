@@ -31,8 +31,8 @@ const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
         <title>CCNA Cisco</title>
       </Head>
       <div className="oval-bg-t-page"></div>
-      {/* Sobre o Curso */}
-      <div className="container lg:px-0 mx-auto flex mb-10">
+      {/* Sobre o Curso Desktop */}
+      <div className="container lg:px-0 mx-auto mb-10 hidden lg:flex">
         {/* Resumo */}
         <div className="w-full mt-20">
           <h1 className="font-semibold text-7xl">CCNA Cisco</h1>
@@ -133,6 +133,106 @@ const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
           </div>
         </div>
       </div>
+
+      {/* Sobre o Curso Mobile */}
+      <div className="container lg:px-0 mx-auto mb-10 lg:hidden">
+        {/* Resumo */}
+        <div className="w-full mt-20">
+          <img
+            className="w-full max-h-96 object-cover mb-3 rounded-md"
+            src="/oracle.svg"
+            alt=""
+          />
+          <h1 className="font-semibold text-5xl my-10">CCNA Cisco</h1>
+          <div className="divide-y p-4 rounded-md">
+            <ul className="">
+              <li className="flex align-middle my-5">
+                <ClockIcon className="w-7 mr-3 text-gold" />
+                <p className="text-brown text-xl max-w-5/6">
+                  <strong>Carga Horaria:</strong> 15h
+                </p>
+              </li>
+              <li className="flex align-middle my-5">
+                <GlobeAltIcon className="w-7 mr-3 text-gold" />
+                <p className="text-brown text-xl max-w-5/6">
+                  <strong>Categoria:</strong> Programação, Segurança
+                </p>
+              </li>
+              <li className="flex align-middle my-5">
+                <ChartBarIcon className="w-7 mr-3 text-gold" />
+                <p className="text-brown text-xl max-w-5/6">
+                  <strong>Nível:</strong> Básico
+                </p>
+              </li>
+              <li className="flex align-middle my-5">
+                <TranslateIcon className="w-7 mr-3 text-gold" />
+                <p className="text-brown text-xl max-w-5/6">
+                  <strong>Idioma:</strong> Português
+                </p>
+              </li>
+              <li className="flex align-middle my-5">
+                <AcademicCapIcon className="w-7 mr-3 text-gold" />
+                <p className="text-brown text-xl max-w-5/6">
+                  <strong>Certificado:</strong> Sim
+                </p>
+              </li>
+            </ul>
+            <div className="flex flex-col items-center mb-4">
+              <p className="text-brown text-2xl my-5">
+                <strong>Preço:</strong> R$250,00
+              </p>
+              <Link href="/">
+                <a className="flex w-full items-center justify-center bg-gold hover:bg-gold-dark text-white px-3 py-2 rounded-t rounded-b btn-shaddow">
+                  <ShoppingCartIcon className="w-7" />
+                  <strong className="text-lg ml-3">Comprar</strong>
+                </a>
+              </Link>
+            </div>
+          </div>
+          <div className="mt-20">
+            <h3 className="font-bold text-xl mb-5">Estudando esse mês</h3>
+            <div className="relative h-20">
+              <img
+                className="max-w-20 max-h-20 w-full h-full absolute top-0 left-0"
+                src="/avatars/vinicius.png"
+                alt=""
+              />
+              <img
+                className="max-w-20 max-h-20 w-full h-full absolute top-0 left-14"
+                src="/avatars/vinicius.png"
+                alt=""
+              />
+              <img
+                className="max-w-20 max-h-20 w-full h-full absolute top-0 left-28"
+                src="/avatars/vinicius.png"
+                alt=""
+              />
+              <img
+                className="max-w-20 max-h-20 w-full h-full absolute top-0 left-42"
+                src="/avatars/vinicius.png"
+                alt=""
+              />
+            </div>
+            <p className="mt-5">e mais 200 alunos(as)</p>
+          </div>
+          <div className="mt-16 pr-10 max-w-3xl">
+            <h3 className="font-semibold text-xl mb-5">Resumo</h3>
+            <p className="font-medium">
+              Python é uma linguagem ultra moderna, utilizada por grandes
+              empresas como Google, YouTube, Industrial Light & Magic, Globo e
+              muitas outras. Fácil de aprender, com código limpo e organizado,
+              Python vem ganhando cada vez mais espaço, e chegou a sua hora de
+              aprender. Curso criado pelo Prof. Gustavo Guanabara com uma
+              temática divertida de vídeo-game para motivar seus alunos, é
+              dividido em mundos para facilitar o estudo.
+              <br /> <br />O primeiro mundo foi pensando de forma a apresentar a
+              linguagem ao aluno, o professor irá introduzir a linguagem, seus
+              conceitos, montar o primeiro programa e ensinar alguns recursos
+              básicos.
+            </p>
+          </div>
+        </div>
+      </div>
       {/* Counteúdo */}
       <div className="container mx-auto lg:px-0 mb-10">
         <ul className="divide-y rounded-md bx-shaddow px-4">
@@ -155,12 +255,12 @@ const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
                 </Disclosure.Button>
 
                 <Disclosure.Panel>
-                  <span>
+                  <p className="block ml-3">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
                     optio corporis quas, rerum in ullam asperiores dignissimos
                     deleniti soluta laborum veniam quia eius iure aliquam
                     distinctio sit quidem. Necessitatibus, doloribus?
-                  </span>
+                  </p>
                 </Disclosure.Panel>
               </>
             )}
@@ -180,12 +280,12 @@ const Course: React.FC<CourseProps> = ({ top10StudentsList }) => {
                 </Disclosure.Button>
 
                 <Disclosure.Panel>
-                  <span>
+                  <p className="block ml-3">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
                     optio corporis quas, rerum in ullam asperiores dignissimos
                     deleniti soluta laborum veniam quia eius iure aliquam
                     distinctio sit quidem. Necessitatibus, doloribus?
-                  </span>
+                  </p>
                 </Disclosure.Panel>
               </>
             )}

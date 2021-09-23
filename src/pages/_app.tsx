@@ -3,7 +3,7 @@ import Head from 'next/head';
 import '@styles/tailwind.css';
 import { Layout } from '@components';
 
-const MyApp: React.FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const getLayout =
     Component.getLayout ?? ((page: ReactElement) => <Layout>{page}</Layout>);
   return getLayout(
