@@ -22,20 +22,11 @@
       "@root/*": [
         "./*"
       ],
-      "@pages": [
-        "./src/pages"
-      ],
       "@pages/*": [
         "./src/pages/*"
       ],
-      "@public": [
-        "./public"
-      ],
       "@public/*": [
         "./public/*"
-      ],
-      "@styles": [
-        "./src/styles"
       ],
       "@styles/*": [
         "./src/styles/*"
@@ -43,20 +34,11 @@
       "@components": [
         "./src/components"
       ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@helpers": [
-        "./src/helpers"
-      ],
-      "@helpers/*": [
-        "./src/helpers/*"
+      "@libs/*": [
+        "src/libs/*"
       ],
       "@assets/*": [
         "./src/context/*"
-      ],
-      "@context": [
-        "./src/context"
       ],
       "@context/*": [
         "./src/context/*"

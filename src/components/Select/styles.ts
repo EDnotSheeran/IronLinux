@@ -1,7 +1,6 @@
-import React from 'react';
-import ReactSelect, { GroupTypeBase, Styles } from 'react-select';
+import { GroupTypeBase, Styles } from 'react-select';
 
-const colourStyles:
+const styles:
   | Partial<
       Styles<
         {
@@ -80,14 +79,4 @@ const colourStyles:
   },
 };
 
-const Select: React.FC<SelectProps> = ({ options, placeholder }) => {
-  return (
-    <ReactSelect
-      styles={colourStyles}
-      options={options}
-      placeholder={placeholder}
-    />
-  );
-};
-
-export default Select;
+export default styles;

@@ -30,7 +30,3 @@ type Course = {
   price: number;
   slug: string;
 };
-
-type CoursesPageProps = {
-  courses: Course[];
-};

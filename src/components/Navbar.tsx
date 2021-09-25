@@ -2,13 +2,10 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import { Button } from '@components/index';
+import { Button } from '@components';
 import { useNavigation } from '@context/Navigation';
 import { useRouter } from 'next/router';
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
+import { classNames } from '@libs/utils';
 
 const Navbar: React.FC = () => {
   const router = useRouter();

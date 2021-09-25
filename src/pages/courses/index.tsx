@@ -1,11 +1,24 @@
 import React from 'react';
 import { GetServerSideProps, GetServerSidePropsResult } from 'next';
 import { SearchIcon } from '@heroicons/react/solid';
-import { Currency } from '@helpers/utils';
-import { Select, Button, Pagination } from '@components';
+import { Currency } from '@libs/utils';
+import { Select, Pagination } from '@components';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { stringify } from 'querystring';
 
-const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
+type Props = {
+  courses: Course[];
+  categories: { value: string; label: string }[];
+  page: number;
+};
+
+const Courses: React.FC<Props> = ({ courses = [], page, categories }) => {
+  const coursesPerPage = 8;
+  const coursesCount = 33;
+  const pageCount = Math.ceil(coursesCount / coursesPerPage);
+  const router = useRouter();
+
   return (
     <>
       <div className="oval-bg">
@@ -27,12 +40,25 @@ const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
               </div>
               <div className="my-3 w-full max-w-60">
                 <Select
-                  options={[
-                    { value: 'chocolate', label: 'Chocolate' },
-                    { value: 'strawberry', label: 'Strawberry' },
-                    { value: 'vanilla', label: 'Vanilla' },
-                  ]}
+                  id="categories"
+                  value={
+                    router.query.category
+                      ? {
+                          label: String(router.query.category),
+                          value: String(router.query.category),
+                        }
+                      : null
+                  }
+                  options={categories}
                   placeholder="Categorias"
+                  onChange={item => {
+                    router.push(
+                      `?${stringify({
+                        ...router.query,
+                        category: item?.value,
+                      })}`
+                    );
+                  }}
                 />
               </div>
             </div>
@@ -74,7 +100,7 @@ const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
           })}
         </div>
         <div className="flex justify-center mt-10 mb-5">
-          <Pagination pages={4} activePage={1} />
+          <Pagination page={page} pageCount={pageCount} perPage={4} />
         </div>
       </section>
       <div className="oval-bg-reverse h-60"></div>
@@ -84,14 +110,21 @@ const Courses: React.FC<CoursesPageProps> = ({ courses = [] }) => {
 
 export default Courses;
 
-export const getServerSideProps: GetServerSideProps = async (
-  context
-): Promise<GetServerSidePropsResult<CoursesPageProps>> => {
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+}): Promise<GetServerSidePropsResult<Props>> => {
   const res = await fetch('http://localhost:3000/api/courses');
   const courses = await res.json();
+
   return {
     props: {
       courses,
+      page: Number(query.page) || 1,
+      categories: [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ],
     },
   };
 };

@@ -1,45 +1,65 @@
 import React from 'react';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/solid';
+import { classNames } from '@libs/utils';
+import { useRouter } from 'next/router';
+import { stringify } from 'querystring';
 
-const Pagination: React.FC<PaginationProps> = ({ pages }) => {
+type Props = {
+  page: number;
+  pageCount: number;
+  perPage: number;
+};
+
+const Pagination: React.FC<Props> = ({ page, pageCount, perPage }) => {
+  const router = useRouter();
+  let arr = [...Array(pageCount)]
+    .map((_, i) => i + 1)
+    .filter(x => x > page - 1 && x < page + perPage);
+  const previousPage = page - 1 > 0 ? page - 1 : 1;
+  const nextPage = page + 1 < pageCount ? page + 1 : pageCount;
+
   return (
-    <div className="flex">
-      <Square href="?page=1">
+    <nav className="flex" aria-label="Pagination">
+      <Link href={`?${stringify({ ...router.query, page: previousPage })}`}>
         <ChevronLeftIcon className="w-6" />
-      </Square>
+      </Link>
       <div className="flex flex-wrap flex-1 max-h-14 overflow-hidden justify-evenly">
-        <Square href="?page=1">1</Square>
-        <Square active href="?page=2">
-          2
-        </Square>
-        <Square href="?page=3">3</Square>
-        <Square href="?page=4">4</Square>
+        {arr.map(num => (
+          <Link
+            key={num}
+            href={`?${stringify({ ...router.query, page: num })}`}
+            active={page === num}
+          >
+            {num}
+          </Link>
+        ))}
       </div>
-      <Square href="?page=1">
+      <Link href={`?${stringify({ ...router.query, page: nextPage })}`}>
         <ChevronRightIcon className="w-6" />
-      </Square>
-    </div>
+      </Link>
+    </nav>
   );
 };
 
 export default Pagination;
 
-const Square: React.FC<{ href: string; active?: boolean }> = ({
-  children,
-  href,
-  active,
-}) => {
+type LinkProps = { href: string; active?: boolean };
+
+const Link: React.FC<LinkProps> = ({ children, href, active }) => {
   return (
-    <Link href={href}>
+    <NextLink href={href}>
       <a
-        className={
-          'border-2 border-gold rounded-md w-14 h-14 flex justify-center items-center mx-2 ' +
-          (active ? 'bg-white text-gold' : 'bg-gold text-white')
-        }
+        className={classNames(
+          'border-2 border-gold rounded-md w-14 h-14 flex justify-center items-center mx-2 ',
+          'hover:border-gold-dark',
+          active
+            ? 'bg-white text-gold hover:bg-gray-100'
+            : 'bg-gold text-white hover:bg-gold-dark'
+        )}
       >
         {children}
       </a>
-    </Link>
+    </NextLink>
   );
 };

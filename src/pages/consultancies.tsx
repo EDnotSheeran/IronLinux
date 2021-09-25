@@ -1,9 +1,10 @@
 import React from 'react';
 import { ReactNode } from 'react-transition-group/node_modules/@types/react';
+import { classNames } from '@libs/utils';
 
 type Panels = 'SECURITY' | 'WEB' | 'APLICATIONS' | 'INOVATION';
 
-const Consultancies: React.FC = ({ children }) => {
+const Consultancies: React.FC = () => {
   const [activePanel, setActivePanel] = React.useState<Panels>();
   const [panel, setPanel] = React.useState<ReactNode>(DefaultPanel);
 
@@ -35,7 +36,10 @@ const Consultancies: React.FC = ({ children }) => {
         <div className="grid grid-cols-2 lg:flex">
           <button
             onClick={() => setActivePanel('SECURITY')}
-            className="flex-1 flex flex-col items-center mb-10"
+            className={classNames(
+              'flex-1 flex flex-col items-center mb-10 pb-5 border-b-2',
+              activePanel === 'SECURITY' ? 'border-gold' : 'border-gray-200'
+            )}
           >
             <img
               className="w-full max-w-32 mb-5"
@@ -48,7 +52,10 @@ const Consultancies: React.FC = ({ children }) => {
           </button>
           <button
             onClick={() => setActivePanel('WEB')}
-            className="flex-1 flex flex-col items-center mb-10"
+            className={classNames(
+              'flex-1 flex flex-col items-center mb-10 pb-5 border-b-2',
+              activePanel === 'WEB' ? 'border-gold' : 'border-gray-200'
+            )}
           >
             <img
               className="w-full max-w-32 mb-5"
@@ -61,7 +68,10 @@ const Consultancies: React.FC = ({ children }) => {
           </button>
           <button
             onClick={() => setActivePanel('APLICATIONS')}
-            className="flex-1 flex flex-col items-center mb-10"
+            className={classNames(
+              'flex-1 flex flex-col items-center mb-10 pb-5 border-b-2',
+              activePanel === 'APLICATIONS' ? 'border-gold' : 'border-gray-200'
+            )}
           >
             <img
               className="w-full max-w-32 mb-5"
@@ -74,7 +84,10 @@ const Consultancies: React.FC = ({ children }) => {
           </button>
           <button
             onClick={() => setActivePanel('INOVATION')}
-            className="flex-1 flex flex-col items-center mb-10"
+            className={classNames(
+              'flex-1 flex flex-col items-center mb-10 pb-5 border-b-2',
+              activePanel === 'INOVATION' ? 'border-gold' : 'border-gray-200'
+            )}
           >
             <img
               className="w-full max-w-32 mb-5"

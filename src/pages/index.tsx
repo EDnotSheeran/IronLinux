@@ -1,8 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import { Button, Carousel, Stars } from '@components';
-import { Currency, WordHighLight } from '@helpers/utils';
+import { Currency, WordHighLight } from '@libs/utils';
 import { GetStaticProps } from 'next';
+
+// API
 import { comments } from './api/comments';
 import { courses } from './api/courses';
 import { recentPosts } from './api/posts';
