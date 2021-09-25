@@ -1,23 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Button } from '@components';
-import { useNavigation } from '@context/Navigation';
 import { useRouter } from 'next/router';
 import { classNames } from '@libs/utils';
 
 const Navbar: React.FC = () => {
   const router = useRouter();
-  const { navigation, setNavigation } = useNavigation();
 
-  const item = navigation.find(x => x.href == router.pathname);
-  navigation.map(x => (x.current = false));
-  if (item) {
-    const i = navigation.indexOf(item);
-    navigation[i].current = true;
-  }
-  setNavigation(navigation);
+  const navigation = [
+    { name: 'Home', href: '/', current: false },
+    { name: 'Cursos', href: '/courses', current: false },
+    { name: 'Consultoria', href: '/consultancies', current: false },
+    { name: 'Blog', href: '/blog', current: false },
+    { name: 'Sobre Nós', href: '/about', current: false },
+    { name: 'Fale Conosco', href: '/contact', current: false },
+  ];
+
+  navigation.map(x => {
+    x.current = x.href === router.pathname ? true : false;
+  });
 
   return (
     <Disclosure as="nav">

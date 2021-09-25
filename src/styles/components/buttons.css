@@ -3,8 +3,6 @@
 @layer base {
   /* https://codepen.io/michealjroberts/pen/ExjYKXL */
   .button {
-    /* min-width: 150px; */
-    /* max-width: 250px; */
     z-index: 1;
     -webkit-backface-visibility: hidden;
     -moz-osx-font-smoothing: grayscale;
@@ -427,7 +425,6 @@
   }
 
   .button--glass:hover span {
-    /* padding-right: 10px; */
     font-size: 15px;
   }
 

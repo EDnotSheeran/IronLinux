@@ -116,6 +116,11 @@ export const getServerSideProps: GetServerSideProps = async ({
   const res = await fetch('http://localhost:3000/api/courses');
   const courses = await res.json();
 
+  // Teste - Faz a pagina demorar para carregar
+  await new Promise(resolve => {
+    setTimeout(resolve, 3000);
+  });
+
   return {
     props: {
       courses,
