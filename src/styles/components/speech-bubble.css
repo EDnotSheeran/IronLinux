@@ -1,0 +1,50 @@
+@tailwind base;
+
+@layer base {
+  [class*='speech-bubble'] {
+    position: relative;
+    border-radius: 9999px;
+    padding: 1rem;
+    background: #f4be02;
+    z-index: 2;
+    margin-top: 40px;
+    width: fit-content;
+  }
+  [class*='speech-bubble']:before {
+    content: '';
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    z-index: 0;
+  }
+
+  .speech-bubble-right:before {
+    border-left: 15px solid transparent;
+    border-right: 15px solid #f4be02;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid #f4be02;
+    transform: rotate(25deg);
+    left: 50px;
+    top: -40px;
+  }
+
+  .speech-bubble-middle:before {
+    border-left: 15px solid transparent;
+    border-right: 15px solid #f4be02;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid #f4be02;
+    transform: rotate(-15deg);
+    left: calc(50% - 25px);
+    top: -30px;
+  }
+
+  .speech-bubble-left:before {
+    border-left: 15px solid #f4be02;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #f4be02;
+    border-bottom: 30px solid transparent;
+    transform: rotate(125deg);
+    right: 70px;
+    top: -35px;
+  }
+}

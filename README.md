@@ -19,3 +19,12 @@
 - [Commitzen](https://commitizen.github.io/cz-cli/)
 - [Husky](https://typicode.github.io/husky/#/)
 - [Commitlint](https://commitlint.js.org/#/)
+
+# Possiveis features
+
+- Adicionar botao de subir ao inicio da pagina
+
+# Pesquisar
+
+- Como trabalhar com captcha
+- Como integrar a hotmart, para pegar os dados diretamente deles

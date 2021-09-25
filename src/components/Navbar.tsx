@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Link from 'next/link';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import { ButtonGold } from '@components/Buttons';
-
-const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Cursos', href: '#', current: false },
-  { name: 'Consultoria', href: '#', current: false },
-  { name: 'Blog', href: '#', current: false },
-  { name: 'Sobre Nós', href: '#', current: false },
-  { name: 'Fale Conosco', href: '#', current: false },
-];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
+import { Button } from '@components';
+import { useNavigation } from '@context/Navigation';
+import { useRouter } from 'next/router';
+import { classNames } from '@libs/utils';
 
 const Navbar: React.FC = () => {
+  const router = useRouter();
+  const { navigation, setNavigation } = useNavigation();
+
+  const item = navigation.find(x => x.href == router.pathname);
+  navigation.map(x => (x.current = false));
+  if (item) {
+    const i = navigation.indexOf(item);
+    navigation[i].current = true;
+  }
+  setNavigation(navigation);
+
   return (
     <Disclosure as="nav">
       {({ open }) => (
         <>
-          <div className="mx-auto py-8 px-8 max-w-screen-2xl">
+          <div className="mx-auto py-4 md:py-8 px-8 max-w-screen-2xl">
             <div className="flex items-center justify-between h-16">
               <div className="flex w-full items-center justify-between">
                 <div className="flex-shrink-0">
@@ -35,22 +37,22 @@ const Navbar: React.FC = () => {
                   <div className="ml-10 items-center flex ">
                     {navigation.map(item =>
                       item.name != 'Fale Conosco' ? (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current ? 'text-gold' : 'text-grey',
-                            'px-3 py-2 text-base hover:underline'
-                          )}
-                          aria-current={item.current ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </a>
+                        <Link key={item.name} href={item.href}>
+                          <a
+                            className={classNames(
+                              item.current ? 'text-gold' : 'text-grey',
+                              'px-3 py-2 text-base hover:text-gold'
+                            )}
+                            aria-current={item.current ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </a>
+                        </Link>
                       ) : null
                     )}
-                    <ButtonGold data-text="Fale Conosco">
+                    <Button className="bg-gold rounded-md text-white font-poppins font-medium ml-10 xl:ml-24 py-2 tracking-widest w-60">
                       Fale Conosco
-                    </ButtonGold>
+                    </Button>
                   </div>
                 </div>
                 <div className="-mr-2 flex lg:hidden">
@@ -70,19 +72,19 @@ const Navbar: React.FC = () => {
           <Disclosure.Panel className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navigation.map(item => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? 'text-gold'
-                      : 'text-gray-500 hover:text-black',
-                    'block px-3 py-2 rounded-md text-base'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
-                </a>
+                <Link key={item.name} href={item.href}>
+                  <a
+                    className={classNames(
+                      item.current
+                        ? 'text-gold'
+                        : 'text-gray-500 hover:text-black',
+                      'block px-3 py-2 rounded-md text-base'
+                    )}
+                    aria-current={item.current ? 'page' : undefined}
+                  >
+                    {item.name}
+                  </a>
+                </Link>
               ))}
             </div>
           </Disclosure.Panel>
