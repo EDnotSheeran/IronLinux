@@ -5,6 +5,8 @@
 @tailwind components;
 @tailwind utilities;
 @import './components/buttons.css';
+@import './components/scrollbar.css';
+@import './components/speech-bubble.css';
 
 @layer base {
   h1,
@@ -14,6 +16,90 @@
   h6,
   a,
   p {
-    @apply font-rubik;
+    @apply font-poppins;
+  }
+
+  input:focus {
+    @apply outline-none;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  body::-webkit-scrollbar {
+    width: 8px;
+    background: #e5e5e5;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply bg-gold;
+  }
+
+  .w-fit {
+    width: fit-content;
+  }
+
+  .oval-bg,
+  .oval-bg-reverse,
+  .oval-bg-t-page {
+    position: relative;
+  }
+
+  .oval-bg::before,
+  .oval-bg-reverse::before,
+  .oval-bg-t-page::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 349px;
+    z-index: -1;
+    background: url('/oval-bg.svg');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
+    background-size: cover;
+  }
+
+  .oval-bg::before {
+    bottom: 0;
+  }
+
+  .oval-bg-reverse::before {
+    top: 0;
+    transform: rotate(180deg);
+  }
+
+  .oval-bg-t-page {
+    top: -100px;
+  }
+
+  @media (min-width: 640px) {
+    .oval-top::before {
+      height: 50%;
+    }
+  }
+  @media (min-width: 768px) {
+    .oval-top::before {
+      height: 60%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .oval-top::before {
+      height: 70%;
+    }
+  }
+  @media (min-width: 1536px) {
+    .oval-top::before {
+      height: 100%;
+    }
+  }
+
+  .bg-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(244, 190, 2, 0.2) 0%,
+      rgba(244, 190, 2, 0) 100%
+    );
   }
 }

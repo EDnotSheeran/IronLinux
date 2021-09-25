@@ -1,10 +1,19 @@
-import React from 'react';
-import { AppProps } from 'next/app';
+import React, { ReactElement } from 'react';
+import Head from 'next/head';
 import '@styles/tailwind.css';
+import { Layout } from '@components';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  return (
+  const getLayout =
+    Component.getLayout ?? ((page: ReactElement) => <Layout>{page}</Layout>);
+  return getLayout(
     <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+      </Head>
       <Component {...pageProps} />
     </>
   );
