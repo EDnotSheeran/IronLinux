@@ -1,5 +1,5 @@
 import { Layout } from '@components';
-import { useUser, fetcher } from '@lib/hooks';
+import { useUser, fetcher } from '@libs/hooks';
 import useSWR from 'swr';
 
 const UserList: NextPage = () => {
@@ -9,7 +9,7 @@ const UserList: NextPage = () => {
       <h2>All users</h2>
       {!!users?.length && (
         <ul>
-          {users.map((user: User) => (
+          {users.map((user: any) => (
             <li key={user.username}>
               <pre>{JSON.stringify(user, null, 2)}</pre>
             </li>
@@ -84,7 +84,7 @@ const AdminPage: NextPage = () => {
 };
 
 AdminPage.getLayout = function getLayout(page) {
-  return <Layout.Login>{page}</Layout.Login>;
+  return page;
 };
 
 export default AdminPage;

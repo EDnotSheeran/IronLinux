@@ -1,7 +1,7 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import prisma from '@lib/prisma';
-import { validatePassword } from '@lib/auth';
+import prisma from '@libs/prisma';
+import { validatePassword } from '@libs/auth';
 
 passport.serializeUser<string>((user, done) => {
   // serialize the user id into session

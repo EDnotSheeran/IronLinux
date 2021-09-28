@@ -1,6 +1,6 @@
 import nextConnect from 'next-connect';
-import passport from '@lib/passport';
-import session from '@lib/session';
+import passport from '@libs/passport';
+import session from '@libs/session';
 import { NextApiResponse } from 'next';
 
 const auth = nextConnect<NextApiRequest, NextApiResponse>()

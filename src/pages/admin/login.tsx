@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import Link from 'next/link';
-import { useUser } from '@lib/hooks';
+import { useUser } from '@libs/hooks';
 
 const Login: NextPage = () => {
   const [user, { mutate }] = useUser();
@@ -73,3 +73,5 @@ const Login: NextPage = () => {
 };
 
 export default Login;
+
+Login.getLayout = page => page;

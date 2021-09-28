@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Router from 'next/router';
-import { useUser } from '@lib/hooks';
+import { useUser } from '@libs/hooks';
 import { Layout } from '@components';
 
 const ProfileEdit: NextPage = () => {
@@ -106,6 +106,4 @@ const ProfilePage: NextPage = () => {
 
 export default ProfilePage;
 
-ProfilePage.getLayout = function getLayout(page) {
-  return <Layout.Login>{page}</Layout.Login>;
-};
+ProfilePage.getLayout = page => page;

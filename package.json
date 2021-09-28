@@ -17,12 +17,13 @@
     "clean-install": "rm -rf node_modules && yarn install --frozen-lockfile --silent",
     "db:pull": "prisma db pull",
     "db:push": "prisma db push",
-    "docker:start": "docker-compose up -d && yarn db:push",
+    "docker:start": "docker-compose up -d",
     "docker:build": "docker-compose build",
     "docker:stop": "docker-compose down",
     "docker:clean": "docker system prune -af",
     "docker:clean-volumes": "docker system prune -f",
-    "docker:terminal": "docker exec -it /bin/sh"
+    "docker:terminal": "docker exec -it /bin/sh",
+    "docker:scan": "docker scan"
   },
   "dependencies": {
     "@hapi/iron": "^6.0.0",
