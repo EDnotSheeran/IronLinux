@@ -41,6 +41,9 @@ module.exports = {
         42: '10.5rem',
         43: '10.75rem',
       },
+      width: {
+        fit: 'fit-content',
+      },
       maxWidth: {
         px: '1px',
         0.5: '0.125rem',

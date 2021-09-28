@@ -44,7 +44,7 @@ const Home: React.FC<HomePageProps> = ({
       </section>
       {/* Principal */}
       {/* Uma ampla diversidades de aprendizados */}
-      <div className="oval oval-bottom">
+      <div className="bg-oval">
         <section className="container mx-auto pb-10">
           <h3 className="font-bold text-3xl text-center mb-14">
             Uma ampla diversidades de aprendizados
@@ -247,8 +247,8 @@ const Home: React.FC<HomePageProps> = ({
         </div>
       </section>
       {/* Certificação Expert */}
-      {/* Contate nossos experts */}
-      <div className="oval oval-top">
+      {/* Precisa de Um Expecialista ? */}
+      <div className="bg-oval-reverse">
         <section className="bg-oval mb-20 pb-28 pt-28">
           <h3 className="text-4xl font-bold text-center text-grey-500 mb-8">
             Precisa de um especialista?
@@ -307,7 +307,6 @@ const Home: React.FC<HomePageProps> = ({
           </>
         </section>
       </div>
-      {/* Contate nossos experts */}
       {/* Últimos posts do blog */}
       <section className="container mx-auto mb-20">
         <h3 className="text-4xl font-bold text-center text-grey-500 mb-8">
@@ -337,7 +336,7 @@ const Home: React.FC<HomePageProps> = ({
       </section>
       {/* Últimos posts do blog */}
       {/* Fale Conosco */}
-      <div className="oval oval-bottom mb-10">
+      <div className="bg-oval">
         <section className="container mx-auto lg:flex lg:flex-row pb-28 pt-28 ">
           <div className="lg:w-1/2">
             <img

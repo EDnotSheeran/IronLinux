@@ -6,24 +6,15 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  // Encapsula a pagina em um layout provido pela função getLayout de cada pagina
   const getLayout =
     Component.getLayout ?? ((page: ReactElement) => <Layout>{page}</Layout>);
 
-  // NProgress.configure({
-
-  // });
-
-  //
   Router.events.on('routeChangeStart', url => {
     NProgress.start();
-    console.log(url);
   });
 
-  //
   Router.events.on('routeChangeComplete', url => {
     NProgress.done();
-    console.log(url);
   });
 
   return getLayout(
