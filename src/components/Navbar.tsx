@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
                 <div className="flex-shrink-0">
                   <img
                     className="w-60 xl:w-full"
-                    src="/iron-logo.svg"
+                    src="/img/iron-logo.svg"
                     alt="Logo"
                   />
                 </div>

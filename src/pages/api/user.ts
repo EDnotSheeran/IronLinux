@@ -1,8 +1,18 @@
 import nextConnect from 'next-connect';
-import auth from '@middlewares/auth';
+import auth, { isAuthenticated } from '@middlewares/auth';
 import prisma from '@libs/prisma';
 import { hashPassword } from '@libs/auth';
 import { NextApiResponse } from 'next';
+import { Prisma } from '@prisma/client';
+
+const userSelect = Prisma.validator<Prisma.UserSelect>()({
+  id: true,
+  name: true,
+  email: true,
+  role: true,
+  createdAt: true,
+  updatedAt: true,
+});
 
 const handler = nextConnect<NextApiRequest, NextApiResponse>();
 
@@ -35,14 +45,7 @@ handler
         hash,
         salt,
       },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        role: true,
-        createdAt: true,
-        updatedAt: true,
-      },
+      select: userSelect,
     });
 
     req.logIn(user, (err: Error) => {
@@ -53,15 +56,7 @@ handler
       });
     });
   })
-  .use((req, res, next) => {
-    // handlers after this (PUT, DELETE) all require an authenticated user
-    // This middleware to check if user is authenticated before continuing
-    if (!req.user) {
-      res.status(401).send('unauthenticated');
-    } else {
-      next();
-    }
-  })
+  .use(isAuthenticated)
   .put(async (req, res) => {
     const { name } = req.body;
     const user = await prisma.user.update({
@@ -71,14 +66,7 @@ handler
       where: {
         id: req.user.id,
       },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        role: true,
-        createdAt: true,
-        updatedAt: true,
-      },
+      select: userSelect,
     });
     res.json({ user });
   })

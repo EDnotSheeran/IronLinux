@@ -4,7 +4,7 @@ services:
   db:
     container_name: db
     image: postgres:latest
-    # restart: always
+    restart: always
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: username
@@ -12,6 +12,7 @@ services:
     ports:
       - 5432:5432
 
+  # Development
   app:
     links:
       - 'db:database'
@@ -20,7 +21,7 @@ services:
     build:
       context: .
       dockerfile: ./.docker/Dockerfile.dev
-    image: tailwind-blog:latest
+    image: iron-linux:latest
     ports:
       - 3000:3000
       - 5555:5555 # Prisma Studio

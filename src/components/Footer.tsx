@@ -7,7 +7,7 @@ const Footer: React.FC = ({ children }) => {
       <div className="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto border-t-2 pt-7 border-b-2 pb-7 flex flex-wrap justify-start pl-10 md:grid md:grid-cols-2 lg:grid-cols-3 place-content-center">
         <ul className="font-poppins">
           <li className="mb-10">
-            <img className="" src="/iron-logo.svg" alt="iron-logo.svg" />
+            <img className="" src="/img/iron-logo.svg" alt="iron-logo.svg" />
           </li>
           <li className="my-1 hover:text-gold">
             <a href="#">Home</a>
@@ -48,17 +48,17 @@ const Footer: React.FC = ({ children }) => {
           <ul className="flex mt-6">
             <li className="mr-4">
               <a href="#">
-                <img src="/icons/facebook.svg" alt="facebook" />
+                <img src="/img/icons/facebook.svg" alt="facebook" />
               </a>
             </li>
             <li className="mr-4">
               <a href="#">
-                <img src="/icons/instagram.svg" alt="facebook" />
+                <img src="/img/icons/instagram.svg" alt="facebook" />
               </a>
             </li>
             <li className="mr-4">
               <a href="#">
-                <img src="/icons/linkedin.svg" alt="facebook" />
+                <img src="/img/icons/linkedin.svg" alt="facebook" />
               </a>
             </li>
           </ul>

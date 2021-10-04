@@ -9,6 +9,8 @@ WORKDIR /app
 COPY package.json yarn.lock .env ./
 COPY prisma ./prisma/
 
+ENV DATABASE_HOST=db
+
 RUN yarn --frozen-lockfile
 RUN yarn prisma generate
 

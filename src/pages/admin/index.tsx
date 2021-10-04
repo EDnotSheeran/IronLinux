@@ -1,4 +1,3 @@
-import { Layout } from '@components';
 import { useUser, fetcher } from '@libs/hooks';
 import useSWR from 'swr';
 
@@ -83,8 +82,6 @@ const AdminPage: NextPage = () => {
   );
 };
 
-AdminPage.getLayout = function getLayout(page) {
-  return page;
-};
+AdminPage.getLayout = page => page;
 
 export default AdminPage;

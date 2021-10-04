@@ -1,4 +1,4 @@
-import nextConnect from 'next-connect';
+import nextConnect, { NextHandler } from 'next-connect';
 import passport from '@libs/passport';
 import session from '@libs/session';
 import { NextApiResponse } from 'next';
@@ -21,3 +21,31 @@ const auth = nextConnect<NextApiRequest, NextApiResponse>()
   .use(passport.session());
 
 export default auth;
+
+export function isAuthenticated(
+  req: NextApiRequest,
+  res: NextApiResponse,
+  next: NextHandler
+) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.status(401).send('unauthenticated');
+  }
+}
+
+export function isAdmin(
+  req: NextApiRequest,
+  res: NextApiResponse,
+  next: NextHandler
+) {
+  if (req.isAuthenticated()) {
+    if (req.user.role === 'Admin') {
+      next();
+    } else {
+      res.status(403).send('forbiden');
+    }
+  } else {
+    res.status(401).send('unauthenticated');
+  }
+}

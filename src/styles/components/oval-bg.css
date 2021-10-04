@@ -1,7 +1,0 @@
-@tailwind base;
-
-@layer base {
-  .oval-bg-t-page {
-    top: -100px;
-  }
-}

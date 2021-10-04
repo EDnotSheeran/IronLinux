@@ -1,5 +1,3 @@
-@tailwind base;
-
 @layer base {
   [class*='speech-bubble'] {
     position: relative;

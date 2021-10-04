@@ -28,7 +28,7 @@ const Home: React.FC<HomePageProps & Props> = ({
   return (
     <>
       <Head>
-        <title>Página Inicial</title>
+        <title>Iron Linux</title>
       </Head>
       {/* Principal */}
       <section className="flex px-5 lg:px-0 justify-center items-center gap-7 lg:gap-10 lg:mt-10 flex-row flex-wrap mb-20">
