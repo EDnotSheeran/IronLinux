@@ -34,6 +34,9 @@
       "@components": [
         "./src/components"
       ],
+      "@middlewares/*": [
+        "./src/middlewares/*"
+      ],
       "@libs/*": [
         "src/libs/*"
       ],
@@ -50,7 +53,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+   ],
   "exclude": [
     "node_modules"
   ]

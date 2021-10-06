@@ -25,5 +25,42 @@ module.exports = function ({ addComponents }) {
     '.btn-shaddow': {
       boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25);',
     },
+    '.bg-gradient': {
+      background:
+        'linear-gradient(180deg, rgba(244, 190, 2, 0.2) 0%, rgba(244, 190, 2, 0) 100%)',
+    },
+    '.bg-oval': {
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        width: '100%',
+        height: '349px',
+        zIndex: '-1',
+        background: 'url("/img/oval-bg.svg")',
+        backgroundRepeat: 'no-repeat',
+        backgroundPositionX: 'center',
+        backgroundPositionY: 'bottom',
+        backgroundSize: 'cover',
+        bottom: '0',
+      },
+    },
+    '.bg-oval-reverse': {
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        width: '100%',
+        height: '349px',
+        zIndex: '-1',
+        background: 'url("/img/oval-bg.svg")',
+        backgroundRepeat: 'no-repeat',
+        backgroundPositionX: 'center',
+        backgroundPositionY: 'bottom',
+        backgroundSize: 'cover',
+        top: '0',
+        transform: 'rotate(180deg)',
+      },
+    },
   });
 };

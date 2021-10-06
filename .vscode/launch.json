@@ -1,19 +1,19 @@
-// launch.json
 {
-"configurations": [
-  {
+  "configurations": [
+    {
       "type": "node",
       "name": "vscode-jest-tests",
       "request": "launch",
-      "runtimeArgs": ["workspace","${command:extension.yarnWorkspaceName}", "run", "test"], // ${yarnWorkspaceName} is what we're missing
-      "args": [
-          "--runInBand"
-      ],
-      "runtimeExecutable": "yarn",   // ...along with this one,
-                                    // will run each Yarn workspace test script
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,
-  }
-]
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "yarn",
+      "args": [
+        "test",
+        "--runInBand",
+        "--watchAll=false"
+      ]
+    }
+  ]
 }

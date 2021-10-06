@@ -1,5 +1,3 @@
-@tailwind base;
-
 @layer base {
   .scroll-snap-x-m {
     scroll-snap-type: x mandatory;

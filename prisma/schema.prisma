@@ -1,0 +1,148 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Post {
+  id      String  @id @default(uuid())
+  title   String
+  slug    String  @unique
+  content String?
+
+  ogImage    String
+  coverImage String
+
+  published Boolean @default(false)
+  views     Int     @default(0)
+
+  authorId   String
+  User       User      @relation(fields: [authorId], references: [id])
+  tagId      String?
+  Tag        Tag?      @relation(fields: [tagId], references: [name])
+  categoryId String?
+  Category   Category? @relation(fields: [categoryId], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deleted   Boolean   @default(false)
+}
+
+model Tag {
+  name  String @id
+  posts Post[]
+}
+
+model Category {
+  id             String     @id @default(uuid())
+  parentId       String?
+  parentCategory Category?  @relation("CategoryToCategory", fields: [parentId], references: [id])
+  Category       Category[] @relation("CategoryToCategory")
+  Post           Post[]
+}
+
+model Profile {
+  id  String  @id @default(uuid())
+  bio String?
+
+  userId String @unique
+  User   User   @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id    String @id @default(uuid())
+  name  String
+  email String @unique
+  hash  String
+  salt  String
+
+  Post    Post[]
+  Profile Profile?
+  role    Role                @default(User)
+  Courses TeachersOnCourses[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deleted   Boolean   @default(false)
+  confirmed Boolean   @default(false)
+
+}
+
+enum Role {
+  User
+  Admin
+}
+
+model Comment {
+  id String @id @default(uuid())
+
+  author  String
+  avatar  String?
+  job     String
+  content String
+  rating  Int
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deleted   Boolean   @default(false)
+}
+
+model Application {
+  id          String        @id @default(uuid())
+  logo        String
+  SocialMedia SocialMedia[]
+}
+
+model SocialMedia {
+  id       String   @id @default(uuid())
+  platform Platform
+  href     String
+
+  ApplicationId String
+  Application   Application @relation(fields: [ApplicationId], references: [id])
+}
+
+enum Platform {
+  Facebook
+  Instagram
+  Twitter
+  Linkedin
+  Youtube
+  Github
+  Hotmart
+}
+
+model Course {
+  id          String @id @default(uuid())
+  title       String
+  cover       String
+  description String
+  price       Int
+  slug        String
+
+  Teachers TeachersOnCourses[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deleted   Boolean   @default(false)
+}
+
+model TeachersOnCourses {
+  teacher   User   @relation(fields: [teacherId], references: [id])
+  teacherId String
+  course    Course @relation(fields: [courseId], references: [id])
+  courseId  String
+
+  @@id([teacherId, courseId])
+}
+
+model Page {
+  id            String @id
+  configuration Json
+}

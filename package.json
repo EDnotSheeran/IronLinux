@@ -1,30 +1,55 @@
 {
-  "name": "@iron-linux/frontend",
+  "name": "@iron-linux/core",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "next dev",
     "dev:debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "deploy": "yarn export && touch ./out/.nojekyll && gh-pages -d out",
-    "clean-install": "rm -rf node_modules && yarn install --frozen-lockfile --silent"
+    "clean-install": "rm -rf node_modules && yarn install --frozen-lockfile --silent",
+    "db:pull": "prisma db pull",
+    "db:push": "prisma db push",
+    "docker:start": "docker-compose up -d",
+    "docker:build": "docker-compose build",
+    "docker:stop": "docker-compose down",
+    "docker:clean": "docker system prune -af",
+    "docker:clean-volumes": "docker system prune -f",
+    "docker:terminal": "docker exec -it /bin/sh",
+    "docker:scan": "docker scan"
   },
   "dependencies": {
+    "@hapi/iron": "^6.0.0",
     "@headlessui/react": "^1.3.0",
     "@heroicons/react": "^1.0.1",
+    "@prisma/client": "^3.0.2",
+    "@types/cookie": "^0.4.1",
+    "@types/passport": "^1.0.7",
+    "@types/passport-local": "^1.0.34",
     "@types/tailwindcss": "^2.2.1",
     "babel-jest": "^27.2.0",
+    "cookie": "^0.4.1",
     "next": "^11.1.3-canary.30",
+    "next-connect": "^0.10.2",
+    "next-mdx-remote": "^3.0.4",
+    "nprogress": "^0.2.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-icons": "^4.2.0",
+    "react-icons": "^4.3.1",
     "react-select": "^4.3.1",
-    "tailwindcss": "^2.2.15"
+    "reading-time": "^1.4.0",
+    "swr": "^1.0.0",
+    "tailwindcss": "^2.2.15",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
@@ -36,6 +61,7 @@
     "@testing-library/react": "^12.0.0",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.12.5",
+    "@types/nprogress": "^0.2.0",
     "@types/react": "17.0.11",
     "@types/react-select": "^4.0.17",
     "@typescript-eslint/eslint-plugin": "^3.9.1",
@@ -56,9 +82,15 @@
     "jest": "26.4.2",
     "lint-staged": "^11.1.2",
     "postcss": "^8.0.9",
+    "postcss-import": "^14.0.2",
+    "postcss-nesting": "^8.0.1",
     "prettier": "^2.3.1",
+    "prisma": "^3.0.2",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.js"
   },
   "config": {
     "commitizen": {

@@ -3,24 +3,53 @@ import Head from 'next/head';
 import { Button, Carousel, Stars } from '@components';
 import { Currency, WordHighLight } from '@libs/utils';
 import { GetStaticProps } from 'next';
+import Error from 'next/error';
+import prisma from '@libs/prisma';
 
 // API
-import { comments } from './api/comments';
 import { courses } from './api/courses';
 import { recentPosts } from './api/posts';
 import { specialities } from './api/specialities';
 
-const Home: React.FC<HomePageProps> = ({
+type Props = {
+  errorCode?: number;
+
+  recentPosts: Post[];
+  comments: {
+    author: string;
+    job: string;
+    avatar: string | null;
+    content: string;
+    rating: number;
+  }[];
+  courses: Course[];
+  specialities: Speciality[];
+  sections: {
+    main: {
+      heading: {
+        value: string;
+        highlight: string[];
+      };
+      paragraph: string;
+      imageURL: string;
+    };
+  };
+};
+
+const Home: NextPage<Props> = ({
+  errorCode,
   recentPosts,
   comments,
   courses,
   specialities,
   sections: { main },
 }) => {
+  if (errorCode) return <Error statusCode={errorCode} />;
+
   return (
     <>
       <Head>
-        <title>Página Inicial</title>
+        <title>Iron Linux</title>
       </Head>
       {/* Principal */}
       <section className="flex px-5 lg:px-0 justify-center items-center gap-7 lg:gap-10 lg:mt-10 flex-row flex-wrap mb-20">
@@ -29,7 +58,7 @@ const Home: React.FC<HomePageProps> = ({
             {WordHighLight(main.heading.value, main.heading.highlight)}
           </h3>
           <p className="font-poppins text-brown text-base mt-2 md:mt-6 xl:text-lg 2xl:text-xl">
-            {main.paragraph}
+            {''}
           </p>
           <button className="text-xs md:text-base mt-8 border-2 rounded-lg py-3 px-3 max-w-52 md:max-w-max  sm:px-3 font-bold border-black hover:bg-black hover:text-white transition-colors">
             Conheça nossas Consultorias
@@ -42,10 +71,9 @@ const Home: React.FC<HomePageProps> = ({
           <img className="w-full" src={main.imageURL} alt="image" />
         </div>
       </section>
-      {/* Principal */}
       {/* Uma ampla diversidades de aprendizados */}
-      <div className="oval oval-bottom">
-        <section className="container mx-auto pb-10">
+      <div className="bg-oval">
+        <section className=" bg-oval container mx-auto pb-10">
           <h3 className="font-bold text-3xl text-center mb-14">
             Uma ampla diversidades de aprendizados
           </h3>
@@ -74,7 +102,6 @@ const Home: React.FC<HomePageProps> = ({
           </Button>
         </section>
       </div>
-      {/* Uma ampla diversidades de aprendizados */}
       {/* Cursos Disponíveis */}
       <section className="container mx-auto pt-10 pb-20">
         <h1 className="text-2xl md:text-3xl font-bold text-center  py-10">
@@ -108,7 +135,6 @@ const Home: React.FC<HomePageProps> = ({
           })}
         </Carousel>
       </section>
-      {/* Cursos Disponíveis */}
       {/* Comentários */}
       <section className="flex items-center bg-gradient py-8 mb-10">
         <Carousel buttons={true}>
@@ -117,30 +143,29 @@ const Home: React.FC<HomePageProps> = ({
               <div className="flex flex-col items-center">
                 <img
                   className="max-w-24 rounded-full mb-3"
-                  src={comment.author.avatarURL}
+                  src={comment.avatar ?? '/img/avatars/profile-pic.svg'}
                   alt=""
                 />
                 <q className="text-center font-rubik max-w-70 leading-7">
                   {comment.content}
                 </q>
                 <p className="text-center font-rubik text-lg font-medium leading-7">
-                  {comment.author.name}
+                  {comment.author}
                 </p>
                 <p className="text-center font-rubik text-sm py-2 text-grey">
-                  {comment.author.job}
+                  {comment.job}
                 </p>
-                <Stars max={5} value={comment.stars} />
+                <Stars max={5} value={comment.rating} />
               </div>
             </Carousel.Item>
           ))}
         </Carousel>
       </section>
-      {/* Comentários */}
       {/*  Uma ampla seleção de cursos */}
       <section className="container mx-auto mb-10 flex gap-10 flex-col-reverse lg:flex-row-reverse">
         {/* Imagem */}
         <div className="w-full lg:w-1/2 p-6">
-          <img src="/man-touching.svg" alt="man-touching" />
+          <img src="/img/man-touching.svg" alt="man-touching" />
         </div>
         {/* Imagem */}
         {/* Texto */}
@@ -190,11 +215,10 @@ const Home: React.FC<HomePageProps> = ({
         </div>
         {/* Texto */}
       </section>
-      {/*  Uma ampla seleção de cursos */}
       {/* Certificação Expert */}
       <section className="container mx-auto mb-10 flex gap-10 px-10 flex-col-reverse lg:flex-row">
         <div className="w-full lg:w-1/2 p-6">
-          <img src="/product-manager.svg" alt="product-manager" />
+          <img src="/img/product-manager.svg" alt="product-manager" />
         </div>
         <div className="w-full lg:w-1/2 mt-7">
           <p className="text-grey-500 font-medium text-sm md:text-base">
@@ -212,7 +236,7 @@ const Home: React.FC<HomePageProps> = ({
             <li className="flex items-center my-7">
               <img
                 className="mr-9 w-8 lg:w-9"
-                src="/icons/tick.svg"
+                src="/img/icons/tick.svg"
                 alt="tick"
               />
               <p className="text-grey-500 font-medium text-sm md:text-base">
@@ -222,7 +246,7 @@ const Home: React.FC<HomePageProps> = ({
             <li className="flex items-center my-7">
               <img
                 className="mr-9 w-8 lg:w-9"
-                src="/icons/tick.svg"
+                src="/img/icons/tick.svg"
                 alt="tick"
               />
               <p className="text-grey-500 font-medium text-sm md:text-base">
@@ -233,7 +257,7 @@ const Home: React.FC<HomePageProps> = ({
             <li className="flex items-center my-7">
               <img
                 className="mr-9 w-8 lg:w-9"
-                src="/icons/tick.svg"
+                src="/img/icons/tick.svg"
                 alt="tick"
               />
               <p className="text-grey-500 font-medium text-sm md:text-base">
@@ -246,68 +270,66 @@ const Home: React.FC<HomePageProps> = ({
           </Button>
         </div>
       </section>
-      {/* Certificação Expert */}
-      {/* Contate nossos experts */}
-      <div className="oval oval-top">
-        <section className="bg-oval mb-20 pb-28 pt-28">
-          <h3 className="text-4xl font-bold text-center text-grey-500 mb-8">
-            Precisa de um especialista?
-          </h3>
-          <div className="mb-10">
-            <p className="text-blue-1 text-base font-medium text-center">
-              Você precisa de alguma ajuda com:
-            </p>
-            <p className="text-blue-1 text-base font-medium text-center">
-              Linux, Segurança, Servidores ou Roteadores?
-            </p>
-          </div>
-          <Button className="bg-gold text-white mx-auto my-4 px-4 py-4 rounded-md font-bold font-poppins tracking-wider">
-            Contate nossos experts
-          </Button>
-          <>
-            <Carousel className="w-full lg:justify-around mt-10 block">
-              <Carousel.Item className="w-full lg:w-1/3 flex flex-col items-center">
-                <img
-                  className="w-40"
-                  src="/avatars/vinicius.png"
-                  alt="Vinicius"
-                />
-                <p className="text-center font-bold font-rubik text-lg">
-                  Vinicius
+      {/* Precisa de Um Expecialista ? */}
+      <section className="bg-oval-reverse mb-20 pb-28 pt-28">
+        <h3 className="text-4xl font-bold text-center text-grey-500 mb-8">
+          Precisa de um especialista?
+        </h3>
+        <div className="mb-10">
+          <p className="text-blue-1 text-base font-medium text-center">
+            Você precisa de alguma ajuda com:
+          </p>
+          <p className="text-blue-1 text-base font-medium text-center">
+            Linux, Segurança, Servidores ou Roteadores?
+          </p>
+        </div>
+        <Button className="bg-gold text-white mx-auto my-4 px-4 py-4 rounded-md font-bold font-poppins tracking-wider">
+          Contate nossos experts
+        </Button>
+        <>
+          <Carousel className="w-full lg:justify-around mt-10 block">
+            <Carousel.Item className="w-full lg:w-1/3 flex flex-col items-center">
+              <img
+                className="w-40"
+                src="/img/avatars/vinicius.png"
+                alt="Vinicius"
+              />
+              <p className="text-center font-bold font-rubik text-lg">
+                Vinicius
+              </p>
+              <div className="speech-bubble-right ">
+                <p className="font-medium text-base">
+                  Eu posso ajudar com Servidores
                 </p>
-                <div className="speech-bubble-right ">
-                  <p className="font-medium text-base">
-                    Eu posso ajudar com Servidores
-                  </p>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item className="w-full lg:w-1/3 flex flex-col items-center">
-                <img className="w-40" src="/avatars/gustavo.png" alt="Lucas" />
-                <p className="text-center font-bold font-rubik text-lg ">
-                  Gustavo
+              </div>
+            </Carousel.Item>
+            <Carousel.Item className="w-full lg:w-1/3 flex flex-col items-center">
+              <img
+                className="w-40"
+                src="/img/avatars/gustavo.png"
+                alt="Lucas"
+              />
+              <p className="text-center font-bold font-rubik text-lg ">
+                Gustavo
+              </p>
+              <div className="speech-bubble-middle">
+                <p className="font-medium text-base">
+                  Eu posso ajudar com pentest
                 </p>
-                <div className="speech-bubble-middle">
-                  <p className="font-medium text-base">
-                    Eu posso ajudar com pentest
-                  </p>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item className="w-full lg:w-1/3 flex flex-col items-center">
-                <img className="w-40" src="/avatars/lucas.png" alt="Lucas" />
-                <p className="text-center font-bold font-rubik text-lg">
-                  Lucas
+              </div>
+            </Carousel.Item>
+            <Carousel.Item className="w-full lg:w-1/3 flex flex-col items-center">
+              <img className="w-40" src="/img/avatars/lucas.png" alt="Lucas" />
+              <p className="text-center font-bold font-rubik text-lg">Lucas</p>
+              <div className="speech-bubble-left">
+                <p className="font-medium text-base">
+                  Eu posso ajudar com redes
                 </p>
-                <div className="speech-bubble-left">
-                  <p className="font-medium text-base">
-                    Eu posso ajudar com redes
-                  </p>
-                </div>
-              </Carousel.Item>
-            </Carousel>
-          </>
-        </section>
-      </div>
-      {/* Contate nossos experts */}
+              </div>
+            </Carousel.Item>
+          </Carousel>
+        </>
+      </section>
       {/* Últimos posts do blog */}
       <section className="container mx-auto mb-20">
         <h3 className="text-4xl font-bold text-center text-grey-500 mb-8">
@@ -335,13 +357,12 @@ const Home: React.FC<HomePageProps> = ({
           ))}
         </Carousel>
       </section>
-      {/* Últimos posts do blog */}
       {/* Fale Conosco */}
-      <div className="oval oval-bottom mb-10">
+      <div className="bg-oval">
         <section className="container mx-auto lg:flex lg:flex-row pb-28 pt-28 ">
           <div className="lg:w-1/2">
             <img
-              src="/telemarketing.svg"
+              src="/img/telemarketing.svg"
               className="hidden lg:block w-full"
               alt="Fale Conosco"
             />
@@ -391,14 +412,24 @@ const Home: React.FC<HomePageProps> = ({
           </div>
         </section>
       </div>
-      {/* Fale Conosco */}
     </>
   );
 };
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<HomePageProps> = async context => {
+export const getStaticProps: GetStaticProps<Props> = async context => {
+  const comments = await prisma.comment.findMany({
+    take: 6,
+    select: {
+      author: true,
+      job: true,
+      avatar: true,
+      content: true,
+      rating: true,
+    },
+  });
+
   return {
     props: {
       recentPosts,
@@ -413,7 +444,7 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async context => {
           },
           paragraph:
             'IronLinux presta serviços de treinamento e consultoria nas principais áreas de segurança e sistemas operacionais. Descubra mais entrando em contato conosco.',
-          imageURL: '/people-studying-on-pc.svg',
+          imageURL: '/img/people-studying-on-pc.svg',
         },
       },
     },

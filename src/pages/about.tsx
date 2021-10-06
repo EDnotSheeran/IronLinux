@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@components';
 
-const About: React.FC = ({ children }) => {
+const About: NextPage = ({ children }) => {
   return (
     <>
       <div className="oval-bg-t-page relative"></div>

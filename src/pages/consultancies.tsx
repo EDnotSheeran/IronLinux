@@ -4,7 +4,7 @@ import { classNames } from '@libs/utils';
 
 type Panels = 'SECURITY' | 'WEB' | 'APLICATIONS' | 'INOVATION';
 
-const Consultancies: React.FC = () => {
+const Consultancies: NextPage = () => {
   const [activePanel, setActivePanel] = React.useState<Panels>();
   const [panel, setPanel] = React.useState<ReactNode>(DefaultPanel);
 

@@ -1,0 +1,9 @@
+User-Agent: *
+Disallow: /_
+Disallow: /admin/
+Disallow: /paypal
+Disallow: /pagamento-cancelado
+Disallow: /contato-enviado
+Disallow: /newsletter-cadastrado
+Disallow: /compra
+Allow: /

@@ -3,7 +3,7 @@ import { NextApiHandler } from 'next';
 export const courses = [
   {
     title: 'Oracle',
-    imageURL: '/oracle.svg',
+    imageURL: '/img/oracle.svg',
     description:
       'Fique especialista em banco de dados com os melhores profissionais do mercado',
     price: 250,
@@ -11,7 +11,7 @@ export const courses = [
   },
   {
     title: 'Python',
-    imageURL: '/python.svg',
+    imageURL: '/img/python.svg',
     description:
       'Fique especialista em Python com os melhores profissionais do mercado',
     price: 250,
@@ -19,7 +19,7 @@ export const courses = [
   },
   {
     title: 'Android',
-    imageURL: '/android.svg',
+    imageURL: '/img/android.svg',
     description:
       'Fique especialista em Pentest Mobile com os melhores profissionais do mercado',
     price: 250,
@@ -27,7 +27,7 @@ export const courses = [
   },
   {
     title: 'CCNA Oracle',
-    imageURL: '/cisco.svg',
+    imageURL: '/img/cisco.svg',
     description:
       'Fique especialista em redes de computadores com os melhores profissionais do mercado',
     price: 250,
@@ -35,7 +35,7 @@ export const courses = [
   },
   {
     title: 'Oracle',
-    imageURL: '/oracle.svg',
+    imageURL: '/img/oracle.svg',
     description:
       'Fique especialista em banco de dados com os melhores profissionais do mercado',
     price: 250,
@@ -43,7 +43,7 @@ export const courses = [
   },
   {
     title: 'Python',
-    imageURL: '/python.svg',
+    imageURL: '/img/python.svg',
     description:
       'Fique especialista em Python com os melhores profissionais do mercado',
     price: 250,
@@ -51,7 +51,7 @@ export const courses = [
   },
   {
     title: 'Android',
-    imageURL: '/android.svg',
+    imageURL: '/img/android.svg',
     description:
       'Fique especialista em Pentest Mobile com os melhores profissionais do mercado',
     price: 250,
@@ -59,7 +59,7 @@ export const courses = [
   },
   {
     title: 'CCNA Oracle',
-    imageURL: '/cisco.svg',
+    imageURL: '/img/cisco.svg',
     description:
       'Fique especialista em redes de computadores com os melhores profissionais do mercado',
     price: 250,

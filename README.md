@@ -1,16 +1,34 @@
-# IronLinuxFrontEnd
+<h1 align="center">IronLinux</h1>
 
-- Atualizar pacotes, next versao 9 ainda passar para 11, react 16 -> 17e etc
-- Remover pacotes desnecessarios como next-images e etc
-- instalar e configurar commitzen, husky, lint-staged para padronização e testes de commits
-- configurar um workflow para os merges na master terem o deploy feito automaticamente
-- Criar scripts de testes mais profundos com as variaveis no node e scripts para serem utilizados pelo workflow
-- instalar e configurar o tailwind com o postcss
-- passar links de fontes para o css
+<img align="right" height="300" src="https://ironlinux.com.br/wp-content/uploads/2019/07/slide02.png" alt="logo">
 
-- fazer pasta assets funcionar com o alias do tsconfig
+<div align="left">
+  <h3><b>IronLinux:</b> tecnologia, segurança e agilidade.</h3>
+</div>
 
-# Links de Docs
+<details>
+  <summary>Iniciando desenvolvimento do projeto</summary>
+
+- Requisitos:
+  - Docker/Compose
+  - node v15.x~
+  - yarn v1.22^
+- Instalando as dependencias
+
+  - `yarn`
+
+- Construindo os containers
+  - `yarn docker:start`
+- Criando as tabelas no banco de dados
+
+  - `yarn db:push`
+
+- A aplicacao estara rodando na porta 3000
+
+</details>
+<br>
+<details>
+  <summary>Links de Docs</summary>
 
 - [Heroicons](https://heroicons.com/)
 - [Tailwind](https://tailwindcss.com/docs)
@@ -19,12 +37,18 @@
 - [Commitzen](https://commitizen.github.io/cz-cli/)
 - [Husky](https://typicode.github.io/husky/#/)
 - [Commitlint](https://commitlint.js.org/#/)
-
-# Possiveis features
+</details>
+<br>
+<details>
+  <summary>Possiveis features</summary>
 
 - Adicionar botao de subir ao inicio da pagina
-
-# Pesquisar
+</details>
+<br>
+<details>
+  <summary>Pesquisar</summary>
 
 - Como trabalhar com captcha
 - Como integrar a hotmart, para pegar os dados diretamente deles
+- Como serao salvas as imagens e como serao referenciadas no banco
+</details>
