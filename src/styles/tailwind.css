@@ -22,6 +22,10 @@
     @apply font-poppins;
   }
 
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+
   input:focus {
     @apply outline-none;
   }
@@ -38,5 +42,19 @@
   body::-webkit-scrollbar-thumb {
     @apply bg-gold;
     @apply rounded-full;
+  }
+}
+
+@layer utilities {
+  @variants responsive {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
   }
 }

@@ -1,33 +1,31 @@
-import { useUser, fetcher } from '@libs/hooks';
-import useSWR from 'swr';
+import { Dashboard } from '@components';
 
 const UserList: NextPage = () => {
-  const { data: { users } = {} } = useSWR('/api/users', fetcher);
+  // const { data: { users } = {} } = useSWR('/api/users', fetcher);
   return (
     <>
       <h2>All users</h2>
-      {!!users?.length && (
+      {/* {!!users?.length && (
         <ul>
           {users.map((user: any) => (
             <li key={user.username}>
               <pre>{JSON.stringify(user, null, 2)}</pre>
             </li>
-          ))}
+          ))} */}
 
-          <style jsx>{`
+      {/* <style jsx>{`
             pre {
               white-space: pre-wrap;
               word-wrap: break-word;
             }
           `}</style>
         </ul>
-      )}
+      )} */}
     </>
   );
 };
 
 const AdminPage: NextPage = () => {
-  const [user] = useUser();
   return (
     <>
       <h1>
@@ -62,12 +60,7 @@ const AdminPage: NextPage = () => {
           Home
         </li>
       </ol>
-      {user && (
-        <>
-          <p>Currently logged in as:</p>
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-        </>
-      )}
+
       <UserList />
       <style jsx>{`
         li {
@@ -82,6 +75,6 @@ const AdminPage: NextPage = () => {
   );
 };
 
-AdminPage.getLayout = page => page;
+AdminPage.getLayout = page => <Dashboard>{page}</Dashboard>;
 
 export default AdminPage;

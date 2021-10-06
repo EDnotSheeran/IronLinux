@@ -1,1 +1,1 @@
-export const APP_NAME = 'EDnotSheeran';
+export const APP_NAME = 'IronLinux';

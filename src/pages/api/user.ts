@@ -19,14 +19,7 @@ const handler = nextConnect<NextApiRequest, NextApiResponse>();
 handler
   .use(auth)
   .get(async (req, res) => {
-    return res.json({
-      user: {
-        ...req.user,
-        hash: undefined,
-        salt: undefined,
-        deleted: undefined,
-      },
-    });
+    return res.json({ user: req.user });
   })
   .post(async (req, res) => {
     const { email, password, name } = req.body;
@@ -50,7 +43,6 @@ handler
 
     req.logIn(user, (err: Error) => {
       if (err) throw err;
-      // Log the signed up user in
       return res.status(201).json({
         user,
       });

@@ -28,10 +28,14 @@ module.exports = {
         },
         grey: {
           DEFAULT: '#4F5665',
+          200: '#58555e',
           300: '#544837',
           500: '#2F281E',
         },
         brown: '#544837',
+        pink: {
+          10: '#f9f6fd',
+        },
       },
       spacing: {
         41: '10.25rem',
@@ -40,6 +44,7 @@ module.exports = {
       },
       width: {
         fit: 'fit-content',
+        18: '4.5rem',
       },
       maxWidth: {
         px: '1px',
@@ -162,6 +167,9 @@ module.exports = {
         '7/12': '58.333333%',
         '8/12': '66.666667%',
         '9/12': '75%',
+      },
+      borderRadius: {
+        50: '50%',
       },
     },
   },

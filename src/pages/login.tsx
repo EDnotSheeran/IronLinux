@@ -11,7 +11,7 @@ const Login: NextPage = () => {
     e.preventDefault();
 
     const body = {
-      username: e.currentTarget.username.value,
+      email: e.currentTarget.email.value,
       password: e.currentTarget.password.value,
     };
     const res = await fetch('/api/login', {
@@ -29,9 +29,11 @@ const Login: NextPage = () => {
     }
   };
 
+  console.log(user);
+
   useEffect(() => {
     // redirect to home if user is authenticated
-    if (user) Router.push('/');
+    if (user) Router.push('/dashboard');
   }, [user]);
 
   return (
@@ -41,11 +43,11 @@ const Login: NextPage = () => {
       <div className="form-container">
         <form onSubmit={onSubmit}>
           <label>
-            <span>Username</span>
+            <span>email</span>
             <input
               className="border-2 border-gray-500"
               type="text"
-              name="username"
+              name="email"
               required
             />
           </label>

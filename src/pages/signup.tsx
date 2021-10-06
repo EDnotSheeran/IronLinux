@@ -11,7 +11,7 @@ const SignupPage: NextPage = () => {
     e.preventDefault();
 
     const body = {
-      username: e.currentTarget.username.value,
+      email: e.currentTarget.email.value,
       password: e.currentTarget.password.value,
       name: (e.currentTarget.name as unknown as HTMLInputElement).value,
     };
@@ -21,7 +21,7 @@ const SignupPage: NextPage = () => {
       return;
     }
 
-    const res = await fetch('/api/users', {
+    const res = await fetch('/api/user', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
@@ -29,7 +29,6 @@ const SignupPage: NextPage = () => {
 
     if (res.status === 201) {
       const userObj = await res.json();
-      // set user to useSWR state
       mutate(userObj);
     } else {
       setErrorMsg(await res.text());
@@ -37,8 +36,7 @@ const SignupPage: NextPage = () => {
   };
 
   useEffect(() => {
-    // redirect to home if user is authenticated
-    if (user) Router.push('/admin');
+    if (user) Router.push('/dashboard');
   }, [user]);
 
   return (
@@ -48,11 +46,11 @@ const SignupPage: NextPage = () => {
       <div className="flex justify-center">
         <form className="flex flex-col" onSubmit={onSubmit}>
           <label>
-            <span>Username</span>
+            <span>email</span>
             <input
               className="border-2 border-gray-500 ml-auto"
               type="text"
-              name="username"
+              name="email"
               required
             />
           </label>

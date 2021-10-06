@@ -4,18 +4,39 @@ import { Button, Carousel, Stars } from '@components';
 import { Currency, WordHighLight } from '@libs/utils';
 import { GetStaticProps } from 'next';
 import Error from 'next/error';
+import prisma from '@libs/prisma';
 
 // API
-import { comments } from './api/comments';
 import { courses } from './api/courses';
 import { recentPosts } from './api/posts';
 import { specialities } from './api/specialities';
 
 type Props = {
   errorCode?: number;
+
+  recentPosts: Post[];
+  comments: {
+    author: string;
+    job: string;
+    avatar: string | null;
+    content: string;
+    rating: number;
+  }[];
+  courses: Course[];
+  specialities: Speciality[];
+  sections: {
+    main: {
+      heading: {
+        value: string;
+        highlight: string[];
+      };
+      paragraph: string;
+      imageURL: string;
+    };
+  };
 };
 
-const Home: React.FC<HomePageProps & Props> = ({
+const Home: NextPage<Props> = ({
   errorCode,
   recentPosts,
   comments,
@@ -50,10 +71,9 @@ const Home: React.FC<HomePageProps & Props> = ({
           <img className="w-full" src={main.imageURL} alt="image" />
         </div>
       </section>
-      {/* Principal */}
       {/* Uma ampla diversidades de aprendizados */}
       <div className="bg-oval">
-        <section className="container mx-auto pb-10">
+        <section className=" bg-oval container mx-auto pb-10">
           <h3 className="font-bold text-3xl text-center mb-14">
             Uma ampla diversidades de aprendizados
           </h3>
@@ -82,7 +102,6 @@ const Home: React.FC<HomePageProps & Props> = ({
           </Button>
         </section>
       </div>
-      {/* Uma ampla diversidades de aprendizados */}
       {/* Cursos Disponíveis */}
       <section className="container mx-auto pt-10 pb-20">
         <h1 className="text-2xl md:text-3xl font-bold text-center  py-10">
@@ -116,7 +135,6 @@ const Home: React.FC<HomePageProps & Props> = ({
           })}
         </Carousel>
       </section>
-      {/* Cursos Disponíveis */}
       {/* Comentários */}
       <section className="flex items-center bg-gradient py-8 mb-10">
         <Carousel buttons={true}>
@@ -125,25 +143,24 @@ const Home: React.FC<HomePageProps & Props> = ({
               <div className="flex flex-col items-center">
                 <img
                   className="max-w-24 rounded-full mb-3"
-                  src={comment.author.avatarURL}
+                  src={comment.avatar ?? '/img/avatars/profile-pic.svg'}
                   alt=""
                 />
                 <q className="text-center font-rubik max-w-70 leading-7">
                   {comment.content}
                 </q>
                 <p className="text-center font-rubik text-lg font-medium leading-7">
-                  {comment.author.name}
+                  {comment.author}
                 </p>
                 <p className="text-center font-rubik text-sm py-2 text-grey">
-                  {comment.author.job}
+                  {comment.job}
                 </p>
-                <Stars max={5} value={comment.stars} />
+                <Stars max={5} value={comment.rating} />
               </div>
             </Carousel.Item>
           ))}
         </Carousel>
       </section>
-      {/* Comentários */}
       {/*  Uma ampla seleção de cursos */}
       <section className="container mx-auto mb-10 flex gap-10 flex-col-reverse lg:flex-row-reverse">
         {/* Imagem */}
@@ -198,7 +215,6 @@ const Home: React.FC<HomePageProps & Props> = ({
         </div>
         {/* Texto */}
       </section>
-      {/*  Uma ampla seleção de cursos */}
       {/* Certificação Expert */}
       <section className="container mx-auto mb-10 flex gap-10 px-10 flex-col-reverse lg:flex-row">
         <div className="w-full lg:w-1/2 p-6">
@@ -254,7 +270,6 @@ const Home: React.FC<HomePageProps & Props> = ({
           </Button>
         </div>
       </section>
-      {/* Certificação Expert */}
       {/* Precisa de Um Expecialista ? */}
       <section className="bg-oval-reverse mb-20 pb-28 pt-28">
         <h3 className="text-4xl font-bold text-center text-grey-500 mb-8">
@@ -342,7 +357,6 @@ const Home: React.FC<HomePageProps & Props> = ({
           ))}
         </Carousel>
       </section>
-      {/* Últimos posts do blog */}
       {/* Fale Conosco */}
       <div className="bg-oval">
         <section className="container mx-auto lg:flex lg:flex-row pb-28 pt-28 ">
@@ -398,32 +412,41 @@ const Home: React.FC<HomePageProps & Props> = ({
           </div>
         </section>
       </div>
-      {/* Fale Conosco */}
     </>
   );
 };
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<HomePageProps & Props> =
-  async context => {
-    return {
-      props: {
-        recentPosts,
-        comments,
-        courses,
-        specialities,
-        sections: {
-          main: {
-            heading: {
-              value: 'Quer aprender mais sobre o mundo de Linux e Segurança ?',
-              highlight: ['Linux', 'Segurança'],
-            },
-            paragraph:
-              'IronLinux presta serviços de treinamento e consultoria nas principais áreas de segurança e sistemas operacionais. Descubra mais entrando em contato conosco.',
-            imageURL: '/img/people-studying-on-pc.svg',
+export const getStaticProps: GetStaticProps<Props> = async context => {
+  const comments = await prisma.comment.findMany({
+    take: 6,
+    select: {
+      author: true,
+      job: true,
+      avatar: true,
+      content: true,
+      rating: true,
+    },
+  });
+
+  return {
+    props: {
+      recentPosts,
+      comments,
+      courses,
+      specialities,
+      sections: {
+        main: {
+          heading: {
+            value: 'Quer aprender mais sobre o mundo de Linux e Segurança ?',
+            highlight: ['Linux', 'Segurança'],
           },
+          paragraph:
+            'IronLinux presta serviços de treinamento e consultoria nas principais áreas de segurança e sistemas operacionais. Descubra mais entrando em contato conosco.',
+          imageURL: '/img/people-studying-on-pc.svg',
         },
       },
-    };
+    },
   };
+};

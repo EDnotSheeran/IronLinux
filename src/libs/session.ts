@@ -3,10 +3,8 @@ import { NextHandler } from 'next-connect';
 import { createLoginSession, getLoginSession } from './auth';
 
 function parseCookies(req: NextApiRequest) {
-  // For API Routes we don't need to parse the cookies.
   if (req.cookies) return req.cookies;
 
-  // For pages we do need to parse the cookies.
   const cookie = req.headers?.cookie;
   return parse(cookie || '');
 }
@@ -32,17 +30,14 @@ export default function session({
 
     if (token) {
       try {
-        // the cookie needs to be unsealed using the password `secret`
         unsealed = await getLoginSession(token, secret);
       } catch (e) {
-        // The cookie is invalid
         console.error(e);
       }
     }
 
     req.session = unsealed;
 
-    // We are proxying res.end to commit the session cookie
     const oldEnd = res.end;
 
     res.end = async function resEndProxy(

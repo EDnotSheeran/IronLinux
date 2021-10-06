@@ -4,7 +4,6 @@ import prisma from '@libs/prisma';
 import { validatePassword } from '@libs/auth';
 
 passport.serializeUser<string>((user, done) => {
-  // serialize the user id into session
   done(null, (user as User).id);
 });
 
@@ -14,7 +13,6 @@ passport.deserializeUser(
     id: string,
     done: (err: any, user?: false | User | null) => void
   ) => {
-    // deserialize the user id back into user object
     const user: User | null = await prisma.user.findUnique({ where: { id } });
     delete user?.salt;
     delete user?.hash;
