@@ -1,4 +1,4 @@
-import { Dashboard } from '@components';
+import { AdminLayout } from '@components';
 
 const UserList: NextPage = () => {
   // const { data: { users } = {} } = useSWR('/api/users', fetcher);
@@ -75,6 +75,6 @@ const AdminPage: NextPage = () => {
   );
 };
 
-AdminPage.getLayout = page => <Dashboard>{page}</Dashboard>;
+AdminPage.getLayout = page => <AdminLayout>{page}</AdminLayout>;
 
 export default AdminPage;

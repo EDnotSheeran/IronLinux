@@ -11,7 +11,7 @@ const AdminLayout: React.FC = ({ children }) => {
   const [user] = useUser();
 
   useEffect(() => {
-    if (!user) Router.push('/login');
+    if (!user) Router.push('/auth/login');
   }, [user]);
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const Header: React.FC = ({ children }) => {
 const NavBar: React.FC = () => {
   const { isOpen, setOpen } = useNavbar()!;
 
-  const [{ mutate }] = useUser();
+  const [user, { mutate }] = useUser();
 
   async function handleLogout() {
     await fetch('/api/logout');

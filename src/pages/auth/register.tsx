@@ -36,7 +36,7 @@ const SignupPage: NextPage = () => {
   };
 
   useEffect(() => {
-    if (user) Router.push('/dashboard');
+    if (user) Router.push('/admin');
   }, [user]);
 
   return (

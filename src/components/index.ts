@@ -6,4 +6,5 @@ export { default as Pagination } from './Pagination';
 export { default as Select } from './Select';
 export { default as Stars } from './Stars';
 export { default as Navbar } from './Navbar';
-export { default as Dashboard } from './Dashboard';
+export { default as AdminLayout } from './AdminLayout';
+export { default as LoginLayout } from './LoginLayout';
