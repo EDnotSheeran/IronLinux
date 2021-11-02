@@ -25,6 +25,7 @@ type PostComment = {
 };
 
 type Course = {
+  id: string;
   title: string;
   imageURL: string;
   description: string;

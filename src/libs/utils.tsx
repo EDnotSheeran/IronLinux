@@ -41,7 +41,7 @@ export function WordHighLight(text: string, highlightWords: string[]) {
   });
 }
 
-export function classNames(...classes: string[]) {
+export function classNames(...classes: (String | Boolean)[]) {
   return classes.filter(Boolean).join(' ');
 }
 
@@ -51,3 +51,6 @@ export const safePromise = (
   promise
     .then(result => ({ ok: true, result }))
     .catch(error => Promise.resolve({ ok: false, error }));
+
+export const delay = (time = 758) =>
+  new Promise(resolve => setTimeout(resolve, time));

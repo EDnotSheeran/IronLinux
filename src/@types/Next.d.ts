@@ -1,9 +1,9 @@
 type NextPage<T = {}> = import('next').NextPage<T> & {
-  getLayout?: (page: import('react').ReactElement) => import('react').ReactNode;
+  Layout?: import('react').FC;
 };
 
 type AppProps = import('next/app').AppProps & {
-  Component: NextPageW;
+  Component: NextPage;
 };
 
 type NextApiRequest = import('next').NextApiRequest &

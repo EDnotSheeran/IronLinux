@@ -40,7 +40,7 @@
   }
 
   body::-webkit-scrollbar-thumb {
-    @apply bg-gold;
+    /* @apply bg-gold; */
     @apply rounded-full;
   }
 }

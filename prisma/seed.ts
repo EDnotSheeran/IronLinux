@@ -1,5 +1,5 @@
-const { hashPassword } = require('../src/libs/auth');
-const { PrismaClient } = require('prisma/prisma-client');
+import { hashPassword } from '../src/libs/auth';
+import { PrismaClient } from 'prisma/prisma-client';
 
 const prisma = new PrismaClient();
 
@@ -7,13 +7,13 @@ async function main() {
   await prisma.user.create({
     data: {
       name: 'admin',
-      email: 'admin',
+      email: 'admin@admin',
       ...hashPassword('admin'),
       role: 'Admin',
     },
   });
 
-  await prisma.applicationProps.create({
+  await prisma.application.create({
     data: {
       logo: '/img/iron-logo.svg',
       SocialMedia: {

@@ -2,7 +2,7 @@ import { parse, serialize, CookieSerializeOptions } from 'cookie';
 import { NextHandler } from 'next-connect';
 import { createLoginSession, getLoginSession } from './auth';
 
-function parseCookies(req: NextApiRequest) {
+export function parseCookies(req: NextApiRequest) {
   if (req.cookies) return req.cookies;
 
   const cookie = req.headers?.cookie;

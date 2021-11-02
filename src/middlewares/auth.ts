@@ -6,7 +6,7 @@ import { NextApiResponse } from 'next';
 const auth = nextConnect<NextApiRequest, NextApiResponse>()
   .use(
     session({
-      name: 'sess',
+      name: process.env.AUTH_SESSION_NAME || 'sess',
       secret: process.env.TOKEN_SECRET,
       cookie: {
         maxAge: 60 * 60 * 8, // 8 hours,
@@ -22,7 +22,7 @@ const auth = nextConnect<NextApiRequest, NextApiResponse>()
 
 export default auth;
 
-export function isAuthenticated(
+export async function isAuthenticated(
   req: NextApiRequest,
   res: NextApiResponse,
   next: NextHandler
@@ -34,7 +34,7 @@ export function isAuthenticated(
   }
 }
 
-export function isAdmin(
+export async function isAdmin(
   req: NextApiRequest,
   res: NextApiResponse,
   next: NextHandler

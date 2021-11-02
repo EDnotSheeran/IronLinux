@@ -9,4 +9,12 @@ module.exports = {
       'avatars.githubusercontent.com',
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/home',
+      },
+    ];
+  },
 };

@@ -7,9 +7,9 @@ import Error from 'next/error';
 import prisma from '@libs/prisma';
 
 // API
-import { courses } from './api/courses';
-import { recentPosts } from './api/posts';
-import { specialities } from './api/specialities';
+import { courses } from '../api/courses';
+import { recentPosts } from '../api/posts';
+import { specialities } from '../api/specialities';
 
 type Props = {
   errorCode?: number;

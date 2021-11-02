@@ -1,7 +1,7 @@
 import React from 'react';
-import { Navbar, Footer } from '@components';
+import { Navbar, Footer } from '@components/home';
 
-const Layout: React.FC = ({ children }) => {
+const HomeLayout: React.FC = ({ children }) => {
   return (
     <>
       <Navbar />
@@ -11,4 +11,4 @@ const Layout: React.FC = ({ children }) => {
   );
 };
 
-export default Layout;
+export default HomeLayout;
